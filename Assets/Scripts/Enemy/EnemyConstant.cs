@@ -41,6 +41,7 @@ public class Constant : SingletonMono<Constant>
     public static float speed_decay;
     public static float speed_range;
     public static float speed_mul;
+    public static float max_speed;
 
     private void Start()
     {
@@ -106,5 +107,6 @@ public class Constant : SingletonMono<Constant>
         pentagon_call_cnt = enemyData.pentagon_call_cnt;
         speed_range = enemyData.rhombus_speed_range;
         speed_mul = enemyData.rhombus_speed_mul;
+        max_speed = enemyData.max_speed;
     }
 }

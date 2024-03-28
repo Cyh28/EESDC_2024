@@ -27,10 +27,10 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         base_control = BaseControl.GetInstance();
         rightUp = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         leftDown = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        right = rightUp.x;
-        left = leftDown.x;
-        up = rightUp.y;
-        down = leftDown.y;
+        right = rightUp.x+5;
+        left = leftDown.x-5;
+        up = rightUp.y+5;
+        down = leftDown.y-5;
     }
 
     // Update is called once per frame
@@ -61,7 +61,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
                     y = Random.Range(up, up + 5);
             }
             // should be random
-            int randomValue = Random.Range(0, 8); // ����0��3֮����������
+            int randomValue = Random.Range(0, 8);
             Enemy newEnemy;
             switch (randomValue)
             {

@@ -12,5 +12,6 @@ public class EnemyData : ScriptableObject
     public float rhombus_speed_range;
     public float rhombus_speed_mul;
     public int pentagon_call_cnt;
+    public float max_speed;
 }
 
