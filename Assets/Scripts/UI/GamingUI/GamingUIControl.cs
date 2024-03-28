@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     public AnimationCurve animationCurve;
     public float animationTime;
     public GameObject energyIcon;
+    bool energyIconPlaying;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,20 +37,23 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     }
     public void UpdateEnergy()
     {
-        StartCoroutine(EnergyAnim(energyIcon, animationCurve));
+        if (!energyIconPlaying)
+            StartCoroutine(EnergyAnim(energyIcon, animationCurve));
         energyText.text = BaseControl.GetInstance().GetEnergy().ToString();
     }
     IEnumerator EnergyAnim(GameObject animGameObject, AnimationCurve animationCurve)
     {
+        energyIconPlaying = true;
         float timer = 0;
         Vector3 BasicScale = animGameObject.transform.localScale;
         while (timer <= animationTime)
         {
             animGameObject.transform.localScale = animationCurve.Evaluate(timer / animationTime) * BasicScale;
-            Debug.Log("time:" + timer + "  value:" + animationCurve.Evaluate(timer / animationTime) * BasicScale);
+            // Debug.Log("time:" + timer + "  value:" + animationCurve.Evaluate(timer / animationTime) * BasicScale);
             timer += Time.deltaTime;
             yield return 0;
         }
+        energyIconPlaying = false;
     }
     public void UpdateScore()
     {
@@ -56,14 +61,22 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     }
     public void DefenderButtonDown()
     {
-        PlayerControl.GetInstance().holdingDefender = true;
+        if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().defenderData.cost)
+            PlayerControl.GetInstance().holdingDefender = true;
     }
     public void BeaconButtonDown()
     {
-        PlayerControl.GetInstance().holdingBeacon = true;
+        if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().beaconData.cost)
+            PlayerControl.GetInstance().holdingBeacon = true;
     }
     public void ProjectorButtonDown()
     {
-        PlayerControl.GetInstance().holdingProjector = true;
+        if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().projectorData.cost)
+            PlayerControl.GetInstance().holdingProjector = true;
+    }
+    public void ParcloseButtonDown()
+    {
+        if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().parcloseData.cost)
+            PlayerControl.GetInstance().holdingParclose = true;
     }
 }

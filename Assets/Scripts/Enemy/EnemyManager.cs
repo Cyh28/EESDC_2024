@@ -40,7 +40,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         if (generate_cnt-- == 0)
         {
             GenerateEnemy();
-            generate_cnt = 100;
+            generate_cnt = 1000;
         }
 
     }
@@ -101,11 +101,11 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         if (enemies.Contains(enemy))
         {
             // Debug.Log("Enemy Dies");
-            if (enemy.info.type==EnemyType.Circle)
+            if (enemy.info.type == EnemyType.Circle)
             {
                 Hatch(enemy.rb.position, EnemyType.Dot);
             }
-            if(enemy.info.type==EnemyType.Rhombus)
+            if (enemy.info.type == EnemyType.Rhombus)
             {
                 SpeedUp(enemy.rb.position);
             }
@@ -113,7 +113,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             base_control.AddScore(enemy.score);
             enemies.Remove(enemy);
             Destroy(enemy.gameObject);
-            
+
         }
     }
     void CheckHp()
@@ -125,7 +125,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {
                 RemoveEnemy(enemy);
             }
-            else if (enemy.info.type == EnemyType.Hexagon && enemy.info.hp <= Constant.HpDic[EnemyType.Hexagon]/2 && enemy.givenBirth==false)
+            else if (enemy.info.type == EnemyType.Hexagon && enemy.info.hp <= Constant.HpDic[EnemyType.Hexagon] / 2 && enemy.givenBirth == false)
             {
                 enemy.givenBirth = true;
                 Hatch(enemy.rb.position, EnemyType.Rhombus);
@@ -147,22 +147,22 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     {
         foreach (Enemy enemy in enemies)
         {
-            if ((enemy.rb.position-pos).magnitude<Constant.speed_range)
+            if ((enemy.rb.position - pos).magnitude < Constant.speed_range)
             {
                 enemy.rb.velocity *= Constant.speed_mul;
             }
         }
     }
-    public void Hatch(Vector2 pos,EnemyType type)
+    public void Hatch(Vector2 pos, EnemyType type)
     {
         if (type == EnemyType.Dot)
         {
             Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
-            Vector2 target = new Vector2(Random.Range(pos.x-2f,pos.x+2f),Random.Range(pos.y-2f,pos.y+2f));
+            Vector2 target = new Vector2(Random.Range(pos.x - 2f, pos.x + 2f), Random.Range(pos.y - 2f, pos.y + 2f));
             newEnemy.SetTarget(target);
             enemies.Add(newEnemy);
         }
-        else if(type==EnemyType.Rhombus)
+        else if (type == EnemyType.Rhombus)
         {
             Rhombus newEnemy = Instantiate(rhombus, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Rhombus>();
             Vector2 target = new Vector2(Random.Range(pos.x - 2f, pos.x + 2f), Random.Range(pos.y - 2f, pos.y + 2f));

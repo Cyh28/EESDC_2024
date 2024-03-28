@@ -9,11 +9,13 @@ public class LaserControl : MonoBehaviour
     private float lifeTime = 0;
     Animator animator;
     Collider2D collideBox;
+    Transform trail;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         collideBox = GetComponent<Collider2D>();
+        trail = transform.Find("Trail");
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class LaserControl : MonoBehaviour
             collision.GetComponent<Enemy>().TakeDamage(laserData.damage[level]);
             collideBox.enabled = false;
             animator.SetTrigger("Disappear");
+            trail.gameObject.SetActive(false);
         }
     }
     public void Disappear()

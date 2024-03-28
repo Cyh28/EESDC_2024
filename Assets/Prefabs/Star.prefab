@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 133828417732283856}
   - component: {fileID: 1967588114830942560}
   - component: {fileID: 1437758526354166358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Star
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +129,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   ani: {fileID: 0}
+  info:
+    pos: {x: 0, y: 0}
+    vel: {x: 0, y: 0}
+    hp: 0
+    type: 0
   target: {x: 0, y: 0}
   speed: 0
   decay_cnt: 0

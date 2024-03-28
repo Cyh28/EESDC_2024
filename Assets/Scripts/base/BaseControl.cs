@@ -28,9 +28,9 @@ public class BaseControl : SingletonMono<BaseControl>, IBase
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Heath" + health);
-        Debug.Log("Energy" + energy);
-        Debug.Log("Score" + score);
+        // Debug.Log("Heath" + health);
+        // Debug.Log("Energy" + energy);
+        // Debug.Log("Score" + score);
 
     }
 

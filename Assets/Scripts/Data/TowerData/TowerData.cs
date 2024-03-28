@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class TowerData : ScriptableObject
 {
+    public int cost;
     public float rotarySpeed;
     public float firingRate;
     public int health;

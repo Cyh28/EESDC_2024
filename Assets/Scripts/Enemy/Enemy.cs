@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour, IEnemy
 {
     public Rigidbody2D rb;
     public Animator ani;
+    [SerializeField]
     public EnemyInfo info;
 
     public Vector2 target;

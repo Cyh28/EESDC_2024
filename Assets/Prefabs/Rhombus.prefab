@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3507258455999091529}
   - component: {fileID: 7076997798758751376}
   - component: {fileID: 1069931169835323115}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rhombus
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -179,6 +179,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   ani: {fileID: 0}
+  info:
+    pos: {x: 0, y: 0}
+    vel: {x: 0, y: 0}
+    hp: 0
+    type: 0
   target: {x: 0, y: 0}
   speed: 0
   decay_cnt: 0

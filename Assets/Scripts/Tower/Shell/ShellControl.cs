@@ -7,7 +7,7 @@ public class ShellControl : MonoBehaviour
     public ShellData shellData;
     Animator animator;
     public int level;
-    public float lifeTimeMax;
+    public float lifeTimeMax, destroyTimeMax;
     private float lifeTime = 0;
     public GameObject shell, shockWave;
     public Rigidbody2D rbShell;
@@ -24,19 +24,25 @@ public class ShellControl : MonoBehaviour
         lifeTime += Time.deltaTime;
         if (lifeTime > lifeTimeMax)
         {
-            Explode();
-            StartCoroutine(DelayDestroy());
+            if (shockWave && !shockWave.activeInHierarchy)
+            {
+                Explode();
+                StartCoroutine(DelayDestroy());
+            }
         }
+        if (lifeTime > destroyTimeMax)
+            Destroy(gameObject);
     }
     void Explode()
     {
         rbShell.velocity = Vector3.zero;
         animator.SetTrigger("Disappear");
         shockWave.SetActive(true);
+        shockWave.GetComponent<ShockWaveControl>().Explode();
     }
     IEnumerator DelayDestroy()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)

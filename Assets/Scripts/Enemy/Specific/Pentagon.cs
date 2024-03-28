@@ -16,14 +16,14 @@ public class Pentagon : Enemy
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
-        pentagon_call_cnt=Constant.pentagon_call_cnt;
-        manager=EnemyManager.GetInstance();
+        pentagon_call_cnt = Constant.pentagon_call_cnt;
+        manager = EnemyManager.GetInstance();
     }
     new void Update()
     {
         base.Update();
         pentagon_call_cnt--;
-        if(pentagon_call_cnt==0)
+        if (pentagon_call_cnt == 0)
         {
             manager.Hatch(rb.position, EnemyType.Dot);
             pentagon_call_cnt = Constant.pentagon_call_cnt;

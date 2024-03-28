@@ -44,7 +44,9 @@ public class ProjectorLightControl : MonoBehaviour
         // Debug.Log(lightSourceList.Length);
         foreach (GameObject lightSource in lightSourceList)
         {
-            if (!lightSource.transform.parent.parent.GetComponent<BeaconControl>().lightEnabled)
+            BeaconControl beaconControl;
+            lightSource.transform.parent.parent.TryGetComponent<BeaconControl>(out beaconControl);
+            if (!beaconControl || !beaconControl.lightEnabled)
                 continue;
             if (signLightEnabled[1])
                 break;

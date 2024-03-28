@@ -304,6 +304,7 @@ MonoBehaviour:
   shellData: {fileID: 11400000, guid: 473dc586f0ccb7340b860dbaefb82de1, type: 2}
   level: 0
   lifeTimeMax: 0
+  destroyTimeMax: 10
   shell: {fileID: 0}
   shockWave: {fileID: 0}
   rbShell: {fileID: 0}

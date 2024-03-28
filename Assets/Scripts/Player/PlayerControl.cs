@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerControl : SingletonMono<PlayerControl>
 {
-    public bool holdingDefender, holdingBeacon, holdingProjector;
+    public bool holdingDefender, holdingBeacon, holdingProjector, holdingParclose;
     public bool setDirection1, setDirection2;
-    public GameObject defender, beacon, projector;
+    public GameObject defender, beacon, projector, parclose;
     public GameObject holdingObject;
     public Quaternion quaternion1, quaternion2;
     public Vector2 dropPos;
@@ -71,6 +71,31 @@ public class PlayerControl : SingletonMono<PlayerControl>
                 if (Input.GetMouseButtonDown(1))
                 {
                     holdingProjector = false;
+                    Destroy(holdingObject);
+                }
+            }
+        }
+        if (holdingParclose)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                holdingParclose = false;
+                Destroy(holdingObject);
+                TowerManager.GetInstance().CreateTower(
+                    TowerType.Parclose,
+                    Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                    Quaternion.identity);
+            }
+            else
+            {
+                if (!holdingObject)
+                {
+                    holdingObject = Instantiate(parclose);
+                }
+                holdingObject.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (Input.GetMouseButtonDown(1))
+                {
+                    holdingParclose = false;
                     Destroy(holdingObject);
                 }
             }
