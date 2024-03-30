@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284fac10e414df0478386aba0077af81, type: 3}
+  m_Name: LevelData_1
+  m_EditorClassIdentifier: 
+  batches:
+  - triangle_num: 2
+    square_num: 2
+    circle_num: 2
+    dot_num: 2
+    pentagon_num: 0
+    hexagon_num: 0
+    rhombus_num: 0
+    star_num: 0
+  - triangle_num: 2
+    square_num: 2
+    circle_num: 2
+    dot_num: 1
+    pentagon_num: 1
+    hexagon_num: 1
+    rhombus_num: 1
+    star_num: 1
+  - triangle_num: 2
+    square_num: 3
+    circle_num: 3
+    dot_num: 2
+    pentagon_num: 2
+    hexagon_num: 3
+    rhombus_num: 3
+    star_num: 2

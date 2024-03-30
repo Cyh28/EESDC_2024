@@ -44,22 +44,12 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         }
 
     }
-    void GenerateEnemy()
+    void GenerateEnemy(Batch batch)
     {
         int generateNum = (int)(Time.time % 10) + 1;
         float x, y;
         for (int i = 0; i < generateNum; i++)
         {
-            x = Random.Range(left - 5, right + 5);
-            if (x < left || x > right)
-                y = Random.Range(down - 5, up + 5);
-            else
-            {
-                if (Random.value < 0.5f)
-                    y = Random.Range(down - 5, down);
-                else
-                    y = Random.Range(up, up + 5);
-            }
             // should be random
             int randomValue = Random.Range(0, 8);
             Enemy newEnemy;
@@ -96,6 +86,8 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             enemies.Add(newEnemy);
         }
     }
+    
+    
     void RemoveEnemy(Enemy enemy)
     {
         if (enemies.Contains(enemy))

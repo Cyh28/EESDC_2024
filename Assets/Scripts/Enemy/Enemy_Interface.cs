@@ -10,6 +10,19 @@ public struct EnemyInfo
     public int hp;
     public EnemyType type;
 }
+
+[Serializable]
+public struct Batch
+{
+    public int triangle_num;
+    public int square_num;
+    public int circle_num;
+    public int dot_num;
+    public int pentagon_num;
+    public int hexagon_num;
+    public int rhombus_num;
+    public int star_num;
+};
 public interface IEnemy
 {//敌人基类继承自此接口
     public void TakeDamage(int damage);//用于对敌人造成伤害

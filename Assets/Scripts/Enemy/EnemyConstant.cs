@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UnityEditor.PackageManager;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using UnityEngine.UIElements;
 public enum EnemyType
 {
     None,
@@ -21,6 +22,8 @@ public enum EnemyType
 }
 public class Constant : SingletonMono<Constant>
 {
+    public LevelData levelData_1;
+    public LevelData levelData_2;
     public NormalEnemy dotData;
     public NormalEnemy circleData;
     public NormalEnemy hexagonData;
@@ -35,6 +38,8 @@ public class Constant : SingletonMono<Constant>
     public static Dictionary<EnemyType, int> DamageDic;
     public static Dictionary<EnemyType, int> ScoreDic;
     public static Dictionary<EnemyType, int> EnergyDic;
+    public static Dictionary<int, Batch[]> LevelDic;
+
     public static int decay_cnt;
     public static int damage_cnt;
     public static int pentagon_call_cnt;
@@ -100,6 +105,12 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.reward_energy},
             {EnemyType.Hexagon,hexagonData.reward_energy},
         };
+        LevelDic = new Dictionary<int, Batch[]>
+        {
+            {1,levelData_1.batches },
+            {2,levelData_2.batches},
+        };
+
 
         speed_decay = enemyData.speed_decay;
         decay_cnt = enemyData.decay_cnt;
