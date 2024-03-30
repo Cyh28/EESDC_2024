@@ -14,12 +14,10 @@ public class Enemy : MonoBehaviour, IEnemy
     public Vector2 target;
     public float speed_rate;
     public float max_speed;
-    public int decay_cnt;
 
     private BaseControl baseC;
     private ShieldControl shieldC;
     public int damage;
-    public int damage_cnt;
     public int score;
     public int energy;
 
@@ -32,8 +30,6 @@ public class Enemy : MonoBehaviour, IEnemy
         rb = GetComponent<Rigidbody2D>();
         rb.angularVelocity = 128;
         baseC = BaseControl.GetInstance();
-        decay_cnt = Constant.decay_cnt;
-        damage_cnt = Constant.damage_cnt;
         max_speed = Constant.max_speed;
         ani = GetComponent<Animator>();
     }

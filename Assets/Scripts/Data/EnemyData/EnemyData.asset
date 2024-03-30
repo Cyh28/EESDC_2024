@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c60bad57fe1f340a2b10e71b0e297f, type: 3}
   m_Name: EnemyData
   m_EditorClassIdentifier: 
-  decay_cnt: 30
   speed_decay: 0.9
-  damage_cnt: 1000
   rhombus_speed_range: 20
   rhombus_speed_mul: 2
   pentagon_call_cnt: 1000
   max_speed: 10
+  generate_gap_time: 3

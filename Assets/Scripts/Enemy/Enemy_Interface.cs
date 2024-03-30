@@ -22,6 +22,7 @@ public struct Batch
     public int hexagon_num;
     public int rhombus_num;
     public int star_num;
+    public float gap_time;
 };
 public interface IEnemy
 {//敌人基类继承自此接口
