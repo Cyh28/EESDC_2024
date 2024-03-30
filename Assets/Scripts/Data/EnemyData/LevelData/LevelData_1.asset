@@ -21,6 +21,7 @@ MonoBehaviour:
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
+    gap_time: 5
   - triangle_num: 2
     square_num: 2
     circle_num: 2
@@ -29,6 +30,7 @@ MonoBehaviour:
     hexagon_num: 1
     rhombus_num: 1
     star_num: 1
+    gap_time: 5
   - triangle_num: 2
     square_num: 3
     circle_num: 3
@@ -37,3 +39,4 @@ MonoBehaviour:
     hexagon_num: 3
     rhombus_num: 3
     star_num: 2
+    gap_time: 5
