@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 8cc45e7586c6440489398a8ad13e06e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,14 +108,15 @@ MonoBehaviour:
     hp: 0
     type: 0
   target: {x: 0, y: 0}
-  speed: 0
-  decay_cnt: 0
+  speed_rate: 0
+  max_speed: 0
   damage: 0
-  damage_cnt: 0
   score: 0
   energy: 0
   givenBirth: 0
-  attackMode: 0
+  attack_mode: 0
+  attack_base: 0
+  attack_sheild: 0
 --- !u!50 &43382002743060029
 Rigidbody2D:
   serializedVersion: 4

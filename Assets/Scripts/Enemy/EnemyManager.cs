@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 using UnityEngine.UIElements;
 public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
 {
+    List<Enemy> enemies = new List<Enemy>();
     public Triangle triangle;
     public Circle circle;
     public Dot dot;
@@ -12,90 +15,116 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     public Star star;
     public Pentagon pentagon;
     public Hexagon hexagon;
+    Dictionary<int, Enemy> prefabDic;
+    BaseControl base_control;
 
-    private BaseControl base_control;
-    List<Enemy> enemies = new List<Enemy>();
+    int current_level;
+    Batch[] current_batches;
+    int batch_length;
+    int batch_counter;
+    bool ready;
+
     Vector3 rightUp;
     Vector3 leftDown;
     float right;
     float left;
     float up;
     float down;
-    int generate_cnt = 0;
     void Start()
     {
+        ready = false;
         base_control = BaseControl.GetInstance();
         rightUp = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         leftDown = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        right = rightUp.x;
-        left = leftDown.x;
-        up = rightUp.y;
-        down = leftDown.y;
+        right = rightUp.x+5;
+        left = leftDown.x-5;
+        up = rightUp.y+5;
+        down = leftDown.y- 5;
+        ChangeLevel(1);
+        prefabDic = new Dictionary<int, Enemy>
+        {
+            {0,triangle },
+            {1,dot},
+            {2,square},
+            {3,circle},
+            {4,rhombus },
+            {5,pentagon },
+            {6,hexagon},
+            {7,star},
+        };
+        StartCoroutine(GenerateAlong());
+        StartCoroutine(WaitTillReady(10f));
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckHp();
-        if (generate_cnt-- == 0)
+        Debug.Log(batch_counter);
+        if(ready)
         {
-            GenerateEnemy();
-            generate_cnt = 1000;
+            ready = false;
+            StartCoroutine(GenerateBatch(current_batches[batch_counter]));
+            batch_counter++;
+            if (batch_counter < batch_length)
+            {
+                StartCoroutine(WaitTillReady(current_batches[batch_counter-1].gap_time));
+            }
         }
-
     }
-    void GenerateEnemy()
+
+    IEnumerator WaitTillReady(float time)
     {
-        int generateNum = (int)(Time.time % 10) + 1;
-        float x, y;
-        for (int i = 0; i < generateNum; i++)
+        yield return new WaitForSeconds(time);
+        ready= true;
+    }
+    IEnumerator GenerateAlong()
+    {
+        int num_line=0;
+        int count = 0;
+        while (true)
         {
-            x = Random.Range(left - 5, right + 5);
-            if (x < left || x > right)
-                y = Random.Range(down - 5, up + 5);
-            else
+            count++;
+            yield return new WaitForSeconds(Constant.generate_gap_time);
+            for (int i = 0; i < num_line+count % 4;i++) 
             {
-                if (Random.value < 0.5f)
-                    y = Random.Range(down - 5, down);
-                else
-                    y = Random.Range(up, up + 5);
+                int randomValue = UnityEngine.Random.Range(0, 4);
+                GenerateEnemy(randomValue, 1);
+                yield return new WaitForSeconds(0.2f);
             }
-            // should be random
-            int randomValue = Random.Range(0, 8); // ����0��3֮����������
-            Enemy newEnemy;
-            switch (randomValue)
-            {
-                case 0:
-                    newEnemy = Instantiate(triangle, new Vector3(x, y, 0), Quaternion.identity);
-                    break;
-                case 1:
-                    newEnemy = Instantiate(dot, new Vector3(x, y, 0), Quaternion.identity);
-                    break;
-                case 2:
-                    newEnemy = Instantiate(square, new Vector3(x, y, 0), Quaternion.identity);
-                    break;
-                case 3:
-                    newEnemy = Instantiate(circle, new Vector3(x, y, 0), Quaternion.identity);
-                    break;
-                case 4:
-                    newEnemy = Instantiate(rhombus, new Vector3(x, y, 0), Quaternion.identity);
-                    break;
-                case 5:
-                    newEnemy = Instantiate(pentagon, new Vector3(x, y, 0), Quaternion.identity);
-                    break;
-                case 6:
-                    newEnemy = Instantiate(hexagon, new Vector3(x, y, 0), Quaternion.identity);
-                    break;
-                case 7:
-                    newEnemy = Instantiate(star, new Vector3(x, y, 0), Quaternion.identity);
-                    break;
-                default:
-                    newEnemy = null;
-                    break;
-            }
+            if (count % 10 == 0)
+                num_line++;
+        }
+    }
+    IEnumerator GenerateBatch(Batch batch)
+    {
+        GenerateEnemy(0, batch.triangle_num);
+        yield return new WaitForSeconds(0.5f);
+        GenerateEnemy(1, batch.dot_num);
+        yield return new WaitForSeconds(0.5f);
+        GenerateEnemy(2, batch.square_num);
+        yield return new WaitForSeconds(0.5f);
+        GenerateEnemy(3, batch.circle_num);
+        yield return new WaitForSeconds(0.5f);
+        GenerateEnemy(4, batch.rhombus_num);
+        yield return new WaitForSeconds(0.5f);
+        GenerateEnemy(5, batch.pentagon_num);
+        yield return new WaitForSeconds(0.5f);
+        GenerateEnemy(6, batch.hexagon_num);
+        yield return new WaitForSeconds(0.5f);
+        GenerateEnemy(7, batch.star_num);
+    }
+    
+    void GenerateEnemy(int index,int num)
+    {
+        for(int i=0;i<num;i++)
+        {
+            Vector3 position = RandomPosition();
+            Enemy newEnemy = Instantiate(prefabDic[index], position, Quaternion.identity);
             enemies.Add(newEnemy);
         }
     }
+    
     void RemoveEnemy(Enemy enemy)
     {
         if (enemies.Contains(enemy))
@@ -158,16 +187,38 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         if (type == EnemyType.Dot)
         {
             Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
-            Vector2 target = new Vector2(Random.Range(pos.x - 2f, pos.x + 2f), Random.Range(pos.y - 2f, pos.y + 2f));
+            Vector2 target = new Vector2(UnityEngine.Random.Range(pos.x - 2f, pos.x + 2f), UnityEngine.Random.Range(pos.y - 2f, pos.y + 2f));
             newEnemy.SetTarget(target);
             enemies.Add(newEnemy);
         }
         else if (type == EnemyType.Rhombus)
         {
             Rhombus newEnemy = Instantiate(rhombus, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Rhombus>();
-            Vector2 target = new Vector2(Random.Range(pos.x - 2f, pos.x + 2f), Random.Range(pos.y - 2f, pos.y + 2f));
+            Vector2 target = new Vector2(UnityEngine.Random.Range(pos.x - 2f, pos.x + 2f), UnityEngine.Random.Range(pos.y - 2f, pos.y + 2f));
             newEnemy.SetTarget(target);
             enemies.Add(newEnemy);
         }
+    }
+    Vector3 RandomPosition()
+    {
+        float x, y;
+        x = UnityEngine.Random.Range(left - 5, right + 5);
+        if (x < left || x > right)
+            y = UnityEngine.Random.Range(down - 5, up + 5);
+        else
+        {
+            if (UnityEngine.Random.value < 0.5f)
+                y = UnityEngine.Random.Range(down - 5, down);
+            else
+                y = UnityEngine.Random.Range(up, up + 5);
+        }
+        return new Vector3(x, y,0);
+    }
+    public void ChangeLevel(int level)
+    {
+        current_level = level;
+        current_batches = Constant.LevelDic[current_level];
+        batch_length = current_batches.Length;
+        batch_counter = 0;
     }
 }

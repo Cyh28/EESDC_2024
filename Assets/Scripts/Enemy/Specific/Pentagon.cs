@@ -12,16 +12,16 @@ public class Pentagon : Enemy
         base.Start();
         info.type = EnemyType.Pentagon;
         info.hp = Constant.HpDic[info.type];
-        speed = Constant.SpeedDic[info.type];
+        speed_rate = Constant.SpeedDic[info.type];
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
         pentagon_call_cnt = Constant.pentagon_call_cnt;
         manager = EnemyManager.GetInstance();
     }
-    private void Update()
+    new void Update()
     {
-        Step2Place();
+        base.Update();
         pentagon_call_cnt--;
         if (pentagon_call_cnt == 0)
         {
