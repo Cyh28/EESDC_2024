@@ -10,13 +10,13 @@ public class Triangle : Enemy
         base.Start();
         info.type = EnemyType.Triangle;
         info.hp = Constant.HpDic[info.type];
-        speed = Constant.SpeedDic[info.type];
+        speed_rate = Constant.SpeedDic[info.type];
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
     }
-    private void Update()
+    new void Update()
     {
-        Step2Place();
+        base.Update();
     }
 }

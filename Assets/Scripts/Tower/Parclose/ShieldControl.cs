@@ -22,6 +22,7 @@ public class ShieldControl : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(currentDurability);
         if (chargingEnergy == 100)
         {
             if (currentDurability == 0)

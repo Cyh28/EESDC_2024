@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class EnemyData : ScriptableObject
 {
-    public int decay_cnt;
     public float speed_decay;
-    public int damage_cnt;
     public float rhombus_speed_range;
     public float rhombus_speed_mul;
     public int pentagon_call_cnt;
+    public float max_speed;
+    public float generate_gap_time;
 }
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UnityEditor.PackageManager;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using UnityEngine.UIElements;
 public enum EnemyType
 {
     None,
@@ -21,6 +22,8 @@ public enum EnemyType
 }
 public class Constant : SingletonMono<Constant>
 {
+    public LevelData levelData_1;
+    public LevelData levelData_2;
     public NormalEnemy dotData;
     public NormalEnemy circleData;
     public NormalEnemy hexagonData;
@@ -35,15 +38,22 @@ public class Constant : SingletonMono<Constant>
     public static Dictionary<EnemyType, int> DamageDic;
     public static Dictionary<EnemyType, int> ScoreDic;
     public static Dictionary<EnemyType, int> EnergyDic;
-    public static int decay_cnt;
-    public static int damage_cnt;
+    public static Dictionary<int, Batch[]> LevelDic;
+
     public static int pentagon_call_cnt;
     public static float speed_decay;
     public static float speed_range;
     public static float speed_mul;
+    public static float max_speed;
+    public static float generate_gap_time;
 
-    private void Start()
+    new private void Awake()
     {
+        LevelDic = new Dictionary<int, Batch[]>
+        {
+            {1,levelData_1.batches },
+            {2,levelData_2.batches},
+        };
         HpDic = new Dictionary<EnemyType, int>
         {
             {EnemyType.Triangle, triangleData.hp },
@@ -100,11 +110,12 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Hexagon,hexagonData.reward_energy},
         };
 
+
         speed_decay = enemyData.speed_decay;
-        decay_cnt = enemyData.decay_cnt;
-        damage_cnt = enemyData.damage_cnt;
         pentagon_call_cnt = enemyData.pentagon_call_cnt;
         speed_range = enemyData.rhombus_speed_range;
         speed_mul = enemyData.rhombus_speed_mul;
+        max_speed = enemyData.max_speed;
+        generate_gap_time=enemyData.generate_gap_time;
     }
 }
