@@ -53,16 +53,16 @@ public class ShieldControl : MonoBehaviour
     }
     void DestroyShield()
     {
+        chargingEnergy = 0;
         StartCoroutine(IDestroyShield());
     }
     IEnumerator IDestroyShield()
     {
-        chargingEnergy = 0;
         float time = 0;
         while (time < 1)
         {
             time += Time.deltaTime / shieldData.formTime;
-            transform.localScale = Vector3.one * formShield.Evaluate(time) * shieldData.radius;
+            transform.localScale = Vector3.one * destroyShield.Evaluate(time) * shieldData.radius;
             yield return null;
         }
     }
