@@ -79,4 +79,9 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
         if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().parcloseData.cost)
             PlayerControl.GetInstance().holdingParclose = true;
     }
+    public void DetonationButtonDown()
+    {
+        if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().detonationData.cost)
+            PlayerControl.GetInstance().holdingDetonation = true;
+    }
 }

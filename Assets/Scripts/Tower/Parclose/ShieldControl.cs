@@ -22,7 +22,7 @@ public class ShieldControl : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(currentDurability);
+        // Debug.Log(currentDurability);
         if (chargingEnergy == 100)
         {
             if (currentDurability == 0)
@@ -69,6 +69,7 @@ public class ShieldControl : MonoBehaviour
     }
     public void ShieldTakeDamage(int damage)
     {
+        Debug.Log("shield damaged");
         if (currentDurability > 0)
         {
             currentDurability -= damage;

@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class DetonationControl : MonoBehaviour
 {
+    GameObject detonationExplode, entity;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(DelayExplode());
+        detonationExplode = transform.Find("ShockWave").gameObject;
+        entity = transform.Find("Entity").gameObject;
+        StartCoroutine(DelayTrigger());
     }
-    IEnumerator DelayExplode()
+    IEnumerator DelayTrigger()
     {
-        yield return new WaitForSeconds(1);
-        Explode();
+        yield return new WaitForSeconds(ParaDefine.GetInstance().detonationData.explodeTime);
+        entity.SetActive(false);
+        Trigger();
     }
-    void Explode()
+    void Trigger()
     {
-
+        detonationExplode.SetActive(true);
+        detonationExplode.GetComponent<DetonationExplodeControl>().Trigger();
     }
 
     // Update is called once per frame

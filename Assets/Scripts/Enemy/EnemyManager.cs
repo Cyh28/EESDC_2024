@@ -36,10 +36,10 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         base_control = BaseControl.GetInstance();
         rightUp = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         leftDown = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        right = rightUp.x+5;
-        left = leftDown.x-5;
-        up = rightUp.y+5;
-        down = leftDown.y- 5;
+        right = rightUp.x + 5;
+        left = leftDown.x - 5;
+        up = rightUp.y + 5;
+        down = leftDown.y - 5;
         ChangeLevel(1);
         prefabDic = new Dictionary<int, Enemy>
         {
@@ -60,15 +60,15 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     void Update()
     {
         CheckHp();
-        Debug.Log(batch_counter);
-        if(ready)
+        // Debug.Log(batch_counter);
+        if (ready)
         {
             ready = false;
             StartCoroutine(GenerateBatch(current_batches[batch_counter]));
             batch_counter++;
             if (batch_counter < batch_length)
             {
-                StartCoroutine(WaitTillReady(current_batches[batch_counter-1].gap_time));
+                StartCoroutine(WaitTillReady(current_batches[batch_counter - 1].gap_time));
             }
         }
     }
@@ -76,17 +76,17 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     IEnumerator WaitTillReady(float time)
     {
         yield return new WaitForSeconds(time);
-        ready= true;
+        ready = true;
     }
     IEnumerator GenerateAlong()
     {
-        int num_line=0;
+        int num_line = 0;
         int count = 0;
         while (true)
         {
             count++;
             yield return new WaitForSeconds(Constant.generate_gap_time);
-            for (int i = 0; i < num_line+count % 4;i++) 
+            for (int i = 0; i < num_line + count % 4; i++)
             {
                 int randomValue = UnityEngine.Random.Range(0, 4);
                 GenerateEnemy(randomValue, 1);
@@ -114,17 +114,17 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         yield return new WaitForSeconds(0.5f);
         GenerateEnemy(7, batch.star_num);
     }
-    
-    void GenerateEnemy(int index,int num)
+
+    void GenerateEnemy(int index, int num)
     {
-        for(int i=0;i<num;i++)
+        for (int i = 0; i < num; i++)
         {
             Vector3 position = RandomPosition();
             Enemy newEnemy = Instantiate(prefabDic[index], position, Quaternion.identity);
             enemies.Add(newEnemy);
         }
     }
-    
+
     void RemoveEnemy(Enemy enemy)
     {
         if (enemies.Contains(enemy))
@@ -212,7 +212,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             else
                 y = UnityEngine.Random.Range(up, up + 5);
         }
-        return new Vector3(x, y,0);
+        return new Vector3(x, y, 0);
     }
     public void ChangeLevel(int level)
     {

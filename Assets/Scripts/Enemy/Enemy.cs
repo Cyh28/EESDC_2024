@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour, IEnemy
     public bool attack_mode = false;
     public bool attack_base = false;
     public bool attack_sheild = false;
+    public float attackCDTimer;
+    public float attackCD;
     protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,11 +34,14 @@ public class Enemy : MonoBehaviour, IEnemy
         baseC = BaseControl.GetInstance();
         max_speed = Constant.max_speed;
         ani = GetComponent<Animator>();
+        attackCD = 1f;
     }
     protected void Update()
     {
-       attack_mode = attack_base || attack_sheild;
-       Step2Place();
+        attack_mode = attack_base || attack_sheild;
+        Step2Place();
+        Attack();
+        attack_sheild = attack_base = false;
     }
     public void Step2Place()
     {
@@ -48,7 +53,7 @@ public class Enemy : MonoBehaviour, IEnemy
             {
                 SetTarget(new Vector2(0, 0));
             }
-            if(rb.velocity.magnitude<max_speed)
+            if (rb.velocity.magnitude < max_speed)
                 rb.AddForce(r / norm * speed_rate);
         }
     }
@@ -77,21 +82,38 @@ public class Enemy : MonoBehaviour, IEnemy
     }
     public void Attack()
     {
-        if (attack_base)
-            baseC.DamageBase(damage);
-        else if (attack_sheild)
-            shieldC.ShieldTakeDamage(damage);
+        if (attackCDTimer > 0)
+        {
+            attackCDTimer -= Time.deltaTime;
+            if (attackCDTimer < 0)
+                attackCDTimer = 0;
+        }
+        if (attackCDTimer == 0)
+        {
+            if (attack_base)
+            {
+                baseC.DamageBase(damage);
+                attackCDTimer = attackCD;
+            }
+            else if (attack_sheild && shieldC)
+            {
+                shieldC.ShieldTakeDamage(damage);
+                attackCDTimer = attackCD;
+            }
+        }
     }
-    public void OnTriggerStay2D(Collider2D other)
+    public void OnCollisionStay2D(Collision2D other)
     {
-        if (other.CompareTag("Base"))
+        Debug.Log("colliderstay");
+        if (other.collider.CompareTag("Base"))
         {
             attack_base = true;
             rb.velocity *= 0f;
         }
-        else if(other.CompareTag("Shield"))
+        else if (other.collider.CompareTag("Shield"))
         {
-            shieldC = other.GetComponent<ShieldControl>();
+            shieldC = other.collider.GetComponent<ShieldControl>();
+            Debug.Log("shield get");
             attack_sheild = true;
             rb.velocity *= 0f;
         }

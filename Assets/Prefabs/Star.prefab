@@ -104,7 +104,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 92933c4923557d946943c0f0659c9216, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -113,7 +113,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &133828417732283856
 MonoBehaviour:
@@ -144,6 +144,8 @@ MonoBehaviour:
   attack_mode: 0
   attack_base: 0
   attack_sheild: 0
+  attackCDTimer: 0
+  attackCD: 0.8
 --- !u!95 &1967588114830942560
 Animator:
   serializedVersion: 5
@@ -194,7 +196,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -209,15 +211,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.09346959, y: -0.051130965}
-      - {x: 0.06267503, y: -0.12308501}
-      - {x: -0.0038396716, y: -0.22091757}
-      - {x: -0.041347884, y: -0.14652304}
-      - {x: -0.07446073, y: -0.070026}
-      - {x: -0.15285996, y: -0.033945095}
-      - {x: -0.26976824, y: -0.0053343214}
-      - {x: -0.08385026, y: 0.077588506}
-      - {x: 0.0010349154, y: 0.2600714}
-      - {x: 0.09380019, y: 0.08080186}
-      - {x: 0.27143285, y: 0.0032995343}
+    - - {x: 0.103148125, y: 0.06735566}
+      - {x: 0.27574414, y: 0.004969636}
+      - {x: 0.09106815, y: -0.040565692}
+      - {x: -0.0012635859, y: -0.22587888}
+      - {x: -0.08499796, y: -0.044754136}
+      - {x: -0.2728405, y: 0.001443272}
+      - {x: -0.104875565, y: 0.07035385}
+      - {x: 0.00022302102, y: 0.26354432}
   m_UseDelaunayMesh: 0

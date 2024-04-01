@@ -49,3 +49,4 @@ MonoBehaviour:
   beacon: {fileID: 3433082403525711199, guid: 2c4e1f1192f763b4db598e67be705a38, type: 3}
   projector: {fileID: 6522925231576946489, guid: 4614212cf130db043b16430b0772dc3f, type: 3}
   parclose: {fileID: 4073955105087369930, guid: a047da4188eab6e4290daf2946426033, type: 3}
+  detonation: {fileID: 4829863663768339583, guid: b519ee9e7c2bf8d4f84dc722f95967ce, type: 3}
