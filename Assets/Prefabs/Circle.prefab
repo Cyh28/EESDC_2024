@@ -52,7 +52,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 92933c4923557d946943c0f0659c9216, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -61,7 +61,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &6738617838702667842
 MonoBehaviour:
@@ -92,6 +92,8 @@ MonoBehaviour:
   attack_mode: 0
   attack_base: 0
   attack_sheild: 0
+  attackCDTimer: 0
+  attackCD: 0
 --- !u!58 &274847080332482146
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -121,10 +123,10 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0018129392, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.31506446
 --- !u!212 &7568230145621792502

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e43302e418f2034dbfb7ad7a88e792d, type: 3}
   m_Name: ProjectorData
   m_EditorClassIdentifier: 
+  cost: 10
   rotarySpeed: 300
   firingRate: 0.7
   health: 100

@@ -17,4 +17,5 @@ public class ParaDefine : SingletonMono<ParaDefine>
     }
     public LitColorSetting signDisableColor, signEnableColor;
     public TowerData defenderData, beaconData, projectorData, parcloseData;
+    public DetonationData detonationData;
 }

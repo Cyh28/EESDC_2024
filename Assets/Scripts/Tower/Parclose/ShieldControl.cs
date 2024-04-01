@@ -22,7 +22,7 @@ public class ShieldControl : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(currentDurability);
+        // Debug.Log(currentDurability);
         if (chargingEnergy == 100)
         {
             if (currentDurability == 0)
@@ -54,21 +54,22 @@ public class ShieldControl : MonoBehaviour
     }
     void DestroyShield()
     {
+        chargingEnergy = 0;
         StartCoroutine(IDestroyShield());
     }
     IEnumerator IDestroyShield()
     {
-        chargingEnergy = 0;
         float time = 0;
         while (time < 1)
         {
             time += Time.deltaTime / shieldData.formTime;
-            transform.localScale = Vector3.one * formShield.Evaluate(time) * shieldData.radius;
+            transform.localScale = Vector3.one * destroyShield.Evaluate(time) * shieldData.radius;
             yield return null;
         }
     }
     public void ShieldTakeDamage(int damage)
     {
+        Debug.Log("shield damaged");
         if (currentDurability > 0)
         {
             currentDurability -= damage;
