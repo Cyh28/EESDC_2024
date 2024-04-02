@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour, IEnemy
     }
     protected void Update()
     {
+        ani.SetTrigger("Die");
         attack_mode = attack_base || attack_sheild;
         Step2Place();
         Attack();
