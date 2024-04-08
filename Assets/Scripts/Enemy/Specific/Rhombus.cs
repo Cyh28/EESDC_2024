@@ -19,4 +19,8 @@ public class Rhombus : Enemy
     {
         base.Update();
     }
+    public void SelfDestroy()
+    {
+        Destroy(this.gameObject);
+    }
 }

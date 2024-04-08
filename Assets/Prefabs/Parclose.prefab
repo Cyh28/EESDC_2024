@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 4366914082301741315}
   m_Layer: 0
   m_Name: Parclose
-  m_TagString: Shield
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -482,6 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7582168ea1458cc49b363d838a1c165c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  towerData: {fileID: 0}
   chargingState: 0
   shield: {fileID: 0}
 --- !u!1 &4593650174762532075
@@ -768,7 +770,7 @@ GameObject:
   - component: {fileID: 2922929959555684011}
   m_Layer: 3
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -894,7 +896,7 @@ MonoBehaviour:
   - {x: -0.04203534, y: -0.21973974, z: 0}
   m_ShapePathHash: -401280251
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40668
+  m_InstanceId: 32156
   m_LocalBounds:
     m_Center: {x: -0.0000538826, y: 0.0005067587, z: 0}
     m_Extent: {x: 0.29054093, y: 0.2904083, z: 0}

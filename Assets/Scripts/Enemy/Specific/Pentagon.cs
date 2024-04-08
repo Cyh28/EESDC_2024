@@ -29,4 +29,8 @@ public class Pentagon : Enemy
             pentagon_call_cnt = Constant.pentagon_call_cnt;
         }
     }
+    public void SelfDestroy()
+    {
+        Destroy(this.gameObject);
+    }
 }
