@@ -30,6 +30,7 @@ public class DefenderControl : TowerBase
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("health:"+health);
         SearchForEnemy();
         // Debug.Log(chargingState);
     }
@@ -44,8 +45,8 @@ public class DefenderControl : TowerBase
                 return 1;
             return 0;
         });
-        Debug.Log("sort finished , firstenemyPos: " + ((enemyList.Count > 0) ? enemyList[0].pos.ToString() : "null") + "  vel:" +
-        ((enemyList.Count > 0) ? enemyList[0].vel.ToString() : "null"));
+        //Debug.Log("sort finished , firstenemyPos: " + ((enemyList.Count > 0) ? enemyList[0].pos.ToString() : "null") + "  vel:" +
+        //((enemyList.Count > 0) ? enemyList[0].vel.ToString() : "null"));
         foreach (EnemyInfo enemy in enemyList)
         {
             if (enemy.hp > 0)

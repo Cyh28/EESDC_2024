@@ -10,7 +10,7 @@ public class TowerBase : MonoBehaviour
     {
         health = towerData.health;
     }
-    void DamageTower(int damage)
+    public void DamageTower(int damage)
     {
         health -= damage;
         if (health < 0)

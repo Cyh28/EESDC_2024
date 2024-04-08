@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParcloseControl : MonoBehaviour
+public class ParcloseControl : TowerBase
 {
     public int chargingState;
     public GameObject shield;

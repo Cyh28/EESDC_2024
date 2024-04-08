@@ -8,6 +8,7 @@ TagManager:
   - LightSource
   - Base
   - Shield
+  - Tower
   layers:
   - Default
   - TransparentFX
