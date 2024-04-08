@@ -857,7 +857,7 @@ GameObject:
   - component: {fileID: 4873589388666150760}
   m_Layer: 0
   m_Name: Projector
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -893,7 +893,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   towerData: {fileID: 11400000, guid: 251b181669ba6e945a40e4043a2ad79e, type: 2}
-  projectorData: {fileID: 11400000, guid: 251b181669ba6e945a40e4043a2ad79e, type: 2}
   shellData: {fileID: 11400000, guid: 473dc586f0ccb7340b860dbaefb82de1, type: 2}
   currentAngle: 0
   battery: {fileID: 0}

@@ -19,4 +19,8 @@ public class Star : Enemy
     {
         base.Update();
     }
+    public void SelfDestroy()
+    {
+        Destroy(this.gameObject);
+    }
 }
