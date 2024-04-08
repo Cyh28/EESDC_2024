@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
     private BaseControl baseC;
     private ShieldControl shieldC;
+    private TowerBase towerC;
     public int damage;
     public int score;
     public int energy;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public bool attack_mode = false;
     public bool attack_base = false;
     public bool attack_sheild = false;
+    public bool attack_tower = false;
     public float attackCDTimer;
     public float attackCD;
     protected void Start()
@@ -38,11 +40,10 @@ public class Enemy : MonoBehaviour, IEnemy
     }
     protected void Update()
     {
-        ani.SetTrigger("Die");
-        attack_mode = attack_base || attack_sheild;
+        attack_mode = attack_base || attack_sheild || attack_tower;
         Step2Place();
         Attack();
-        attack_sheild = attack_base = false;
+        attack_sheild = attack_base = attack_tower=false;
     }
     public void Step2Place()
     {
@@ -101,22 +102,30 @@ public class Enemy : MonoBehaviour, IEnemy
                 shieldC.ShieldTakeDamage(damage);
                 attackCDTimer = attackCD;
             }
+            else if (attack_tower && towerC)
+            {
+                towerC.DamageTower(damage);
+                attackCDTimer = attackCD;
+            }
         }
     }
-    public void OnCollisionStay2D(Collision2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("colliderstay");
-        if (other.collider.CompareTag("Base"))
+        if (other.collider.CompareTag("Tower"))
+        {
+            Debug.Log("tower get");
+            towerC = other.collider.GetComponent<TowerBase>();
+            attack_tower = true;
+        }
+        else if (other.collider.CompareTag("Base"))
         {
             attack_base = true;
-            rb.velocity *= 0f;
         }
         else if (other.collider.CompareTag("Shield"))
         {
             shieldC = other.collider.GetComponent<ShieldControl>();
             Debug.Log("shield get");
             attack_sheild = true;
-            rb.velocity *= 0f;
         }
     }
 }

@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 6241565386717072023}
   m_Layer: 0
   m_Name: Defender
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,7 +441,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   towerData: {fileID: 11400000, guid: 9325f592ad660d74fbb8551ac6d17acf, type: 2}
-  defenderData: {fileID: 11400000, guid: 9325f592ad660d74fbb8551ac6d17acf, type: 2}
   laserData: {fileID: 11400000, guid: c7cc92cb4ec2e234ca20aa4f78d58f40, type: 2}
   currentAngle: 0
   battery: {fileID: 0}
@@ -1408,7 +1407,7 @@ GameObject:
   - component: {fileID: 5073114577420200157}
   m_Layer: 3
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1526,7 +1525,7 @@ MonoBehaviour:
   - {x: -0.12465501, y: -0.4529965, z: 0}
   m_ShapePathHash: -826565579
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1272
+  m_InstanceId: 31758
   m_LocalBounds:
     m_Center: {x: 0.00005853176, y: 0.0001001358, z: 0}
     m_Extent: {x: 0.45289528, y: 0.45309663, z: 0}

@@ -142,7 +142,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             base_control.AddScore(enemy.score);
             enemy.ani.SetTrigger("Die");
             enemies.Remove(enemy);
-            Destroy(enemy.gameObject);
 
         }
     }
