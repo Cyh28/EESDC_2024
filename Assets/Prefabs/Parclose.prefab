@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  towerData: {fileID: 0}
+  towerData: {fileID: 11400000, guid: 21f2e1d049b769548a2240a09473c6e8, type: 2}
   chargingState: 0
   shield: {fileID: 0}
 --- !u!1 &4593650174762532075
@@ -896,7 +896,7 @@ MonoBehaviour:
   - {x: -0.04203534, y: -0.21973974, z: 0}
   m_ShapePathHash: -401280251
   m_Mesh: {fileID: 0}
-  m_InstanceId: 32156
+  m_InstanceId: 40216
   m_LocalBounds:
     m_Center: {x: -0.0000538826, y: 0.0005067587, z: 0}
     m_Extent: {x: 0.29054093, y: 0.2904083, z: 0}

@@ -7,8 +7,9 @@ public class ParcloseControl : TowerBase
     public int chargingState;
     public GameObject shield;
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
         shield = transform.Find("Shield").gameObject;
     }
 

@@ -12,8 +12,9 @@ public class BeaconControl : TowerBase
         chargingState += num;
     }
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
         lightSource = transform.Find("Battery").GetChild(0).gameObject;
     }
 

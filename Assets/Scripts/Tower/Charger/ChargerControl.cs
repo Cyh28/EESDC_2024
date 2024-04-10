@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChargerControl : MonoBehaviour
@@ -14,7 +13,7 @@ public class ChargerControl : MonoBehaviour
     }
     IEnumerator DelayTrigger()
     {
-        yield return new WaitForSeconds(ParaDefine.GetInstance().chargerData.explodeTime);
+        yield return new WaitForSeconds(ParaDefine.GetInstance().chargerData.explodeDelay);
         entity.SetActive(false);
         Trigger();
     }

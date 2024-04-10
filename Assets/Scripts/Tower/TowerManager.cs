@@ -9,10 +9,11 @@ public enum TowerType
     Projector,
     Parclose,
     Detonation,
+    Charger,
 }
 public class TowerManager : SingletonMono<TowerManager>
 {
-    public GameObject towerPa, defender, beacon, projector, parclose, detonation;
+    public GameObject towerPa, defender, beacon, projector, parclose, detonation, charger;
     GameObject obj;
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,9 @@ public class TowerManager : SingletonMono<TowerManager>
                 break;
             case TowerType.Detonation:
                 Instantiate(detonation, pos, baseQuaternion, towerPa.transform);
+                break;
+            case TowerType.Charger:
+                Instantiate(charger, pos, baseQuaternion, towerPa.transform);
                 break;
             case TowerType.Beacon:
                 obj = Instantiate(beacon, pos, baseQuaternion, towerPa.transform);

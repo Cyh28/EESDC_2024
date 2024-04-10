@@ -7,6 +7,7 @@ public class ChargerData : ScriptableObject
 {
     public int cost;
     public float lightRadius;
+    public float explodeDelay;
     public float explodeTime;
     public float lightLastTime;
     public AnimationCurve animationCurve;

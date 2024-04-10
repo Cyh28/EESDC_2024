@@ -9,6 +9,7 @@ TagManager:
   - Base
   - Shield
   - Tower
+  - ChargerLightSource
   layers:
   - Default
   - TransparentFX

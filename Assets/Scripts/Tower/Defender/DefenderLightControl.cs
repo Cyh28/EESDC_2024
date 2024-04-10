@@ -18,6 +18,7 @@ public class DefenderLightControl : MonoBehaviour
     {
         CheckGlobalLightDirection();
         CheckLightSourceDirection();
+        CheckChargerPosition();
         if (signLightEnabled[0] == false && signLightEnabled[1] == true)
             ChangeSignLightColor(true);
         if (signLightEnabled[0] == true && signLightEnabled[1] == false)
@@ -66,6 +67,22 @@ public class DefenderLightControl : MonoBehaviour
                 signLightEnabled[1] = false;
                 break;
             }
+        }
+    }
+    void CheckChargerPosition()
+    {
+        GameObject[] lightSourceList = GameObject.FindGameObjectsWithTag("ChargerLightSource");
+        foreach (GameObject lightSource in lightSourceList)
+        {
+            ChargerLightControl chargerLightControl;
+            lightSource.TryGetComponent<ChargerLightControl>(out chargerLightControl);
+            if (!chargerLightControl || !chargerLightControl.gameObject.activeInHierarchy)
+                continue;
+            if (signLightEnabled[1])
+                break;
+            Debug.Log("entity:" + entity.transform.position.ToString() + " charger:" + chargerLightControl.transform.position + " r:" + chargerLightControl.currentRadius);
+            if ((entity.transform.position - chargerLightControl.transform.position).magnitude < chargerLightControl.currentRadius)
+                signLightEnabled[1] = true;
         }
     }
     public void ChangeSignLightColor(bool enabled)
