@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 public class UIMain : MonoBehaviour
 {
-    
+
     public GameObject panelGamestart;
     public GameObject buttonGamestart;
     public GameObject buttonSetting;
@@ -15,15 +15,17 @@ public class UIMain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void GameStart()
     {
+        GameControl.GetInstance().gameState = GameState.Playing;
+        GameControl.GetInstance().gameLevel = GameLevel.Level1;
         SceneManager.LoadScene("Gaming_hzf");
     }
     public void GameSetting(GameObject Settingpanel)
@@ -38,10 +40,10 @@ public class UIMain : MonoBehaviour
     }
     public void GameExit()
     {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying=false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
-        #endif
+#endif
     }
 }

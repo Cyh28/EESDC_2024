@@ -19,8 +19,9 @@ public class DefenderControl : TowerBase
     public bool inAttackCD;
     public int chargingState;
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
         battery = transform.Find("Battery").gameObject;
         bulletFa = GameObject.Find("Bullet");
         batteryAnim = battery.GetComponent<Animator>();
@@ -30,7 +31,7 @@ public class DefenderControl : TowerBase
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("health:"+health);
+        Debug.Log("health:" + health);
         SearchForEnemy();
         // Debug.Log(chargingState);
     }

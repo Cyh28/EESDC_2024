@@ -32,11 +32,19 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     }
     public void UpdateHealth()
     {
+        if (!healthBar)
+            healthBar = transform.Find("BaseHealth").GetComponent<Slider>();
+        if (!healthText)
+            healthText = transform.Find("BaseHealth").Find("BaseHealthText").GetComponent<TextMeshProUGUI>();
         healthBar.value = 1.0f * BaseControl.GetInstance().GetHealth() / BaseControl.GetInstance().maxHealth;
         healthText.text = BaseControl.GetInstance().GetHealth().ToString();
     }
     public void UpdateEnergy()
     {
+        if (!energyText)
+            energyText = transform.Find("Energy").Find("EnergyText").GetComponent<TextMeshProUGUI>();
+        if (!energyIcon)
+            energyIcon = transform.Find("Energy").Find("EnergyIcon").gameObject;
         if (!energyIconPlaying)
             StartCoroutine(EnergyAnim(energyIcon, animationCurve));
         energyText.text = BaseControl.GetInstance().GetEnergy().ToString();
@@ -57,6 +65,8 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     }
     public void UpdateScore()
     {
+        if (!scoreText)
+            scoreText = transform.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         scoreText.text = "Score: " + BaseControl.GetInstance().GetScore();
     }
     public void DefenderButtonDown()
@@ -83,5 +93,10 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     {
         if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().detonationData.cost)
             PlayerControl.GetInstance().holdingDetonation = true;
+    }
+    public void ChargerButtonDown()
+    {
+        if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().chargerData.cost)
+            PlayerControl.GetInstance().holdingCharger = true;
     }
 }

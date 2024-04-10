@@ -6,7 +6,7 @@ public class TowerBase : MonoBehaviour
 {
     public int health;
     public TowerData towerData;
-    void Start()
+    public void Start()
     {
         health = towerData.health;
     }

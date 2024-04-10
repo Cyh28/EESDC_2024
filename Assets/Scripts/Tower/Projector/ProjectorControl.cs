@@ -18,8 +18,9 @@ public class ProjectorControl : TowerBase
     public bool inAttackCD;
     public int chargingState;
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
         battery = transform.Find("Battery").gameObject;
         bulletFa = GameObject.Find("Bullet");
         batteryAnim = battery.GetComponent<Animator>();

@@ -105,6 +105,7 @@ MonoBehaviour:
   holdingProjector: 0
   holdingParclose: 0
   holdingDetonation: 0
+  holdingCharger: 0
   setDirection1: 0
   setDirection2: 0
   defender: {fileID: 7444059525067153578, guid: c54e0b49af46ef548a202d4018bf75a8, type: 3}
@@ -112,6 +113,7 @@ MonoBehaviour:
   projector: {fileID: 1238840002471908252, guid: 3e7a48aa9a797f44d8894e6160057365, type: 3}
   parclose: {fileID: 4235152827119866060, guid: 1090d332bbee47045aba9929d9560186, type: 3}
   detonation: {fileID: 2797003371080796641, guid: 5d753317f99c72a45ac3c6210224895d, type: 3}
+  charger: {fileID: 1328204284593330962, guid: 38854f8f091e0b742bcd1e09340bc25f, type: 3}
   holdingObject: {fileID: 0}
   quaternion1: {x: 0, y: 0, z: 0, w: 0}
   quaternion2: {x: 0, y: 0, z: 0, w: 0}
@@ -156,7 +158,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 33528
+  m_InstanceId: -1270
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}

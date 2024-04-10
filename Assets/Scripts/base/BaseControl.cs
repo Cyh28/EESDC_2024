@@ -24,6 +24,7 @@ public class BaseControl : SingletonMono<BaseControl>, IBase
         energy = originEnergy;
         GamingUIControl.GetInstance().UpdateScore();
         GamingUIControl.GetInstance().UpdateEnergy();
+        GamingUIControl.GetInstance().UpdateHealth();
         // StartCoroutine(UpdatePerSecond());
     }
 
