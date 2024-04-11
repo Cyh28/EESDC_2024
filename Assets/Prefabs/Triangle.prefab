@@ -65,6 +65,7 @@ MonoBehaviour:
   attack_mode: 0
   attack_base: 0
   attack_sheild: 0
+  attack_tower: 0
   attackCDTimer: 0
   attackCD: 0
 --- !u!60 &6684348900567108665
@@ -103,7 +104,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -183,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1613225478, guid: bfa2b5e2e626aa748aff45c8671f448c, type: 3}
+  m_Sprite: {fileID: -1857553694, guid: aaa4c6c051f80e946886173722ba9f47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b023d0009afa7f74980b9289937a52bd
+guid: c2deedcbe36f17f40b241e3743737d9b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HexagonFlatTop-sheet-sheet_0
+      name: Square-DIE-sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0548ea301cf09a4e8fae93acf5ba076
-      internalID: 1976904552
+      spriteID: 2d12dfc09e67c864592fbad6159c855c
+      internalID: 807619739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HexagonFlatTop-sheet-sheet_1
+      name: Square-DIE-sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a508ed2d16e42d4dba91e78f5fdf119
-      internalID: 2004826507
+      spriteID: 2230ab94d9d80a3468e8d4e037611a34
+      internalID: 416782890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HexagonFlatTop-sheet-sheet_2
+      name: Square-DIE-sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f222347739410af4691382502e3a3327
-      internalID: 23219980
+      spriteID: 57d1bde762f8c164ab44431f2b65ad59
+      internalID: 1632689711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HexagonFlatTop-sheet-sheet_3
+      name: Square-DIE-sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 668df697408980a45b6dc5cb5a484694
-      internalID: 376935310
+      spriteID: 6f0013439fb236f45859397e29dee97e
+      internalID: -352114732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HexagonFlatTop-sheet-sheet_4
+      name: Square-DIE-sheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -208,29 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43f5d7fe3f2e2f1478f4363e3b816f20
-      internalID: 744623055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HexagonFlatTop-sheet-sheet_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2de9a744d52220d44b42c209433b9f20
-      internalID: -1117164793
+      spriteID: e8ac51d6e61ca154d9083b00fc533c98
+      internalID: -259377170
       vertices: []
       indices: 
       edges: []
@@ -246,12 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HexagonFlatTop-sheet-sheet_0: 1976904552
-      HexagonFlatTop-sheet-sheet_1: 2004826507
-      HexagonFlatTop-sheet-sheet_2: 23219980
-      HexagonFlatTop-sheet-sheet_3: 376935310
-      HexagonFlatTop-sheet-sheet_4: 744623055
-      HexagonFlatTop-sheet-sheet_5: -1117164793
+      Square-DIE-sheet_0: 807619739
+      Square-DIE-sheet_1: 416782890
+      Square-DIE-sheet_2: 1632689711
+      Square-DIE-sheet_3: -352114732
+      Square-DIE-sheet_4: -259377170
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

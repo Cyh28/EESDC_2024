@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 917b6ef5314ca0c4e977283a5a1c5736
+guid: a3adbb829002b414981c09f250aa56af
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Triangle-DIE_0
+      name: Rhombus-die-sheet-sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 584cff37b7ebb45498ddfd04be8ff2f8
-      internalID: -1433784748
+      spriteID: 0708eaf091f449f44922dc76814be0f3
+      internalID: 1193493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Triangle-DIE_1
+      name: Rhombus-die-sheet-sheet_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: debebb5275db4c04b9e097cbc6a0bf85
-      internalID: -677414443
+      spriteID: 10496e2480aaf4547b907b8f8c9a1739
+      internalID: 864648374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Triangle-DIE_2
+      name: Rhombus-die-sheet-sheet_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d673ee6fc9ee6f4a9b7a4e5db7bc2a2
-      internalID: 1570092582
+      spriteID: 3a8fb6f93712cfd46a6c7a2982aed946
+      internalID: -1994549838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Triangle-DIE_3
+      name: Rhombus-die-sheet-sheet_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ef891e18f7db1e4a9fcb38b35942f63
-      internalID: 1380851433
+      spriteID: d9ecf788b20af1842a4cdd2af1769008
+      internalID: 612591095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Triangle-DIE_4
+      name: Rhombus-die-sheet-sheet_4
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,29 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bb5ee84fd9934a4091762a353a62d11
-      internalID: 1814380118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Triangle-DIE_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b63afeaa7e88dec47ad4d7bec7624706
-      internalID: -615519105
+      spriteID: 2415822a7adc97e4da7dbbd740c6a049
+      internalID: -1012702368
       vertices: []
       indices: 
       edges: []
@@ -246,12 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Triangle-DIE_0: -1433784748
-      Triangle-DIE_1: -677414443
-      Triangle-DIE_2: 1570092582
-      Triangle-DIE_3: 1380851433
-      Triangle-DIE_4: 1814380118
-      Triangle-DIE_5: -615519105
+      Rhombus-die-sheet-sheet_0: 1193493
+      Rhombus-die-sheet-sheet_1: 864648374
+      Rhombus-die-sheet-sheet_2: -1994549838
+      Rhombus-die-sheet-sheet_3: 612591095
+      Rhombus-die-sheet-sheet_4: -1012702368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
