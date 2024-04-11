@@ -24,6 +24,7 @@ public struct Batch
     public int star_num;
     public float gap_time;
 };
+
 public interface IEnemy
 {//敌人基类继承自此接口
     public void TakeDamage(int damage);//用于对敌人造成伤害
