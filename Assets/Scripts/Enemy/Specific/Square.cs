@@ -23,4 +23,13 @@ public class Square : Enemy
     {
         Destroy(this.gameObject);
     }
+    public void ReSetVelocity()
+    {
+        rb.velocity = Vector2.zero;
+    }
+    public void Dead()
+    {
+        isDead = true;
+        GetComponent<Collider2D>().enabled = false;
+    }
 }

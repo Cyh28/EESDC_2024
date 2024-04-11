@@ -22,8 +22,11 @@ public enum EnemyType
 }
 public class Constant : SingletonMono<Constant>
 {
+    public LevelData levelData_0;
     public LevelData levelData_1;
     public LevelData levelData_2;
+    public LevelData levelData_3;
+
     public NormalEnemy dotData;
     public NormalEnemy circleData;
     public NormalEnemy hexagonData;
@@ -33,28 +36,46 @@ public class Constant : SingletonMono<Constant>
     public NormalEnemy pentagonData;
     public NormalEnemy starData;
     public EnemyData enemyData;
+
     public static Dictionary<EnemyType, int> HpDic;
     public static Dictionary<EnemyType, float> SpeedDic;
     public static Dictionary<EnemyType, int> DamageDic;
     public static Dictionary<EnemyType, int> ScoreDic;
     public static Dictionary<EnemyType, int> EnergyDic;
     public static Dictionary<int, Batch[]> LevelDic;
+    public static Dictionary<int, float> waitDic;
+    public static Dictionary<int, float> generateGapDic;
 
     public static float pentagon_call_time;
     public static float speed_decay;
     public static float speed_range;
     public static float speed_mul;
     public static float max_speed;
-    public static float generate_gap_time;
 
     new private void Awake()
     {
+        waitDic = new Dictionary<int, float>
+        {
+            {0,levelData_0.wait_time},
+            {1,levelData_1.wait_time},
+            {2,levelData_2.wait_time},
+            {3,levelData_3.wait_time},
+        };
+        generateGapDic = new Dictionary<int, float>
+        {
+            {0,levelData_0.generate_gap_time},
+            {1,levelData_1.generate_gap_time},
+            {2,levelData_2.generate_gap_time},
+            {3,levelData_3.generate_gap_time},
+        };
         LevelDic = new Dictionary<int, Batch[]>
         {
-            {1,levelData_1.batches },
+            {0,levelData_0.batches },
+            {1,levelData_1.batches},
             {2,levelData_2.batches},
+            {3,levelData_3.batches},
         };
-        HpDic = new Dictionary<EnemyType, int>
+            HpDic = new Dictionary<EnemyType, int>
         {
             {EnemyType.Triangle, triangleData.hp },
             {EnemyType.Dot, dotData.hp},
@@ -65,7 +86,7 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.hp},
             {EnemyType.Hexagon,hexagonData.hp},
         };
-        SpeedDic = new Dictionary<EnemyType, float>
+            SpeedDic = new Dictionary<EnemyType, float>
         {
             {EnemyType.Triangle, triangleData.speed},
             {EnemyType.Dot, dotData.speed},
@@ -76,7 +97,7 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.speed},
             {EnemyType.Hexagon,hexagonData.speed},
         };
-        DamageDic = new Dictionary<EnemyType, int>
+            DamageDic = new Dictionary<EnemyType, int>
         {
             {EnemyType.Triangle, triangleData.damage},
             {EnemyType.Dot, dotData.damage},
@@ -87,7 +108,7 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.damage},
             {EnemyType.Hexagon,hexagonData.damage},
         };
-        ScoreDic = new Dictionary<EnemyType, int>
+            ScoreDic = new Dictionary<EnemyType, int>
         {
             {EnemyType.Triangle, triangleData.reward_score},
             {EnemyType.Dot, dotData.reward_score},
@@ -98,7 +119,7 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.reward_score},
             {EnemyType.Hexagon,hexagonData.reward_score},
         };
-        EnergyDic = new Dictionary<EnemyType, int>
+            EnergyDic = new Dictionary<EnemyType, int>
         {
             {EnemyType.Triangle, triangleData.reward_energy},
             {EnemyType.Dot, dotData.reward_energy},
@@ -109,13 +130,10 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.reward_energy},
             {EnemyType.Hexagon,hexagonData.reward_energy},
         };
-
-
-        speed_decay = enemyData.speed_decay;
-        pentagon_call_time = enemyData.pentagon_call_time;
-        speed_range = enemyData.rhombus_speed_range;
-        speed_mul = enemyData.rhombus_speed_mul;
-        max_speed = enemyData.max_speed;
-        generate_gap_time=enemyData.generate_gap_time;
-    }
+            speed_decay = enemyData.speed_decay;
+            pentagon_call_time = enemyData.pentagon_call_time;
+            speed_range = enemyData.rhombus_speed_range;
+            speed_mul = enemyData.rhombus_speed_mul;
+            max_speed = enemyData.max_speed;
+        }
 }
