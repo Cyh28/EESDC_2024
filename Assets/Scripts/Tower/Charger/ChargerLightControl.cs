@@ -18,15 +18,16 @@ public class ChargerLightControl : MonoBehaviour
     IEnumerator Explode()
     {
         float timer = 0;
+
         while (timer <= ParaDefine.GetInstance().chargerData.explodeTime)
         {
-            currentRadius = ParaDefine.GetInstance().chargerData.lightRadius *
+            currentRadius = ParaDefine.GetInstance().chargerData.explodeRadius *
                 ParaDefine.GetInstance().chargerData.animationCurve.Evaluate(timer / ParaDefine.GetInstance().chargerData.explodeTime);
             light2D.pointLightOuterRadius = circleCollider2D.radius = currentRadius;
             timer += Time.deltaTime;
             yield return null;
         }
-        yield return new WaitForSeconds(ParaDefine.GetInstance().chargerData.lightLastTime);
+        yield return new WaitForSeconds(ParaDefine.GetInstance().chargerData.effectLastTime);
         // Destroy(gameObject);
         Destroy(transform.parent.gameObject);
     }

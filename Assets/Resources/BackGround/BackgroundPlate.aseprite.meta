@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 463ea6165f079f149813935cfa53e155
+guid: 99e4fd5f5f8983249872035c67198b1f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: DefenderUI
+  - name: BackgroundPlate_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 64
       height: 64
-    spriteID: 2fda444fe54546d4283b18902f48541b
+    spriteID: 3db767f012c9a6e4cbc35fe6b4f12704
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,23 +139,135 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: BackgroundPlate_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 76
+      width: 64
+      height: 64
+    spriteID: 4cdb517c8eb33234d8dbf6c182a079c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 76}
+  - name: BackgroundPlate_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 148
+      width: 64
+      height: 64
+    spriteID: 719b74941e6815f498d0bb3e39cc5647
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 148}
+  - name: BackgroundPlate_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 4
+      width: 64
+      height: 64
+    spriteID: 80a5cd5b342847c43b3ded0fb84b536f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 4}
+  - name: BackgroundPlate_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 76
+      width: 64
+      height: 64
+    spriteID: c6800e67e6608e843bd7c2975d566463
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 76}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 146926143
-    name: DefenderUI
+    guid: 1232353842
+    name: BackgroundPlate
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: DefenderUI
+    - name: BackgroundPlate_Frame_0
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 64
-      spriteId: 2fda444fe54546d4283b18902f48541b
+      spriteId: 3db767f012c9a6e4cbc35fe6b4f12704
+    - name: BackgroundPlate_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: 4cdb517c8eb33234d8dbf6c182a079c3
+    - name: BackgroundPlate_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: 719b74941e6815f498d0bb3e39cc5647
+    - name: BackgroundPlate_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: 80a5cd5b342847c43b3ded0fb84b536f
+    - name: BackgroundPlate_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: c6800e67e6608e843bd7c2975d566463
     linkedCells: []
     parentIndex: -1
   platformSettings: []

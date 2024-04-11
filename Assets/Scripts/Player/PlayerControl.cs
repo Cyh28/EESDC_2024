@@ -31,7 +31,8 @@ public class PlayerControl : SingletonMono<PlayerControl>
             {
                 holdingDefender = false;
                 Destroy(holdingObject);
-                TowerManager.GetInstance().CreateTower(
+                if (BaseControl.GetInstance().CostEnergy(ParaDefine.GetInstance().defenderData.cost))
+                    TowerManager.GetInstance().CreateTower(
                     TowerType.Defender,
                     Camera.main.ScreenToWorldPoint(Input.mousePosition),
                     Quaternion.identity);
@@ -56,7 +57,8 @@ public class PlayerControl : SingletonMono<PlayerControl>
             {
                 holdingProjector = false;
                 Destroy(holdingObject);
-                TowerManager.GetInstance().CreateTower(
+                if (BaseControl.GetInstance().CostEnergy(ParaDefine.GetInstance().projectorData.cost))
+                    TowerManager.GetInstance().CreateTower(
                     TowerType.Projector,
                     Camera.main.ScreenToWorldPoint(Input.mousePosition),
                     Quaternion.identity);
@@ -81,7 +83,8 @@ public class PlayerControl : SingletonMono<PlayerControl>
             {
                 holdingParclose = false;
                 Destroy(holdingObject);
-                TowerManager.GetInstance().CreateTower(
+                if (BaseControl.GetInstance().CostEnergy(ParaDefine.GetInstance().parcloseData.cost))
+                    TowerManager.GetInstance().CreateTower(
                     TowerType.Parclose,
                     Camera.main.ScreenToWorldPoint(Input.mousePosition),
                     Quaternion.identity);
@@ -106,7 +109,8 @@ public class PlayerControl : SingletonMono<PlayerControl>
             {
                 holdingDetonation = false;
                 Destroy(holdingObject);
-                TowerManager.GetInstance().CreateTower(
+                if (BaseControl.GetInstance().CostEnergy(ParaDefine.GetInstance().detonationData.cost))
+                    TowerManager.GetInstance().CreateTower(
                     TowerType.Detonation,
                     Camera.main.ScreenToWorldPoint(Input.mousePosition),
                     Quaternion.identity);
@@ -131,10 +135,11 @@ public class PlayerControl : SingletonMono<PlayerControl>
             {
                 holdingCharger = false;
                 Destroy(holdingObject);
-                TowerManager.GetInstance().CreateTower(
-                    TowerType.Charger,
-                    Camera.main.ScreenToWorldPoint(Input.mousePosition),
-                    Quaternion.identity);
+                if (BaseControl.GetInstance().CostEnergy(ParaDefine.GetInstance().chargerData.cost))
+                    TowerManager.GetInstance().CreateTower(
+                        TowerType.Charger,
+                        Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                        Quaternion.identity);
             }
             else
             {
@@ -161,7 +166,8 @@ public class PlayerControl : SingletonMono<PlayerControl>
                     // Debug.Log(quaternion2.eulerAngles);
                     holdingObject.transform.Find("Battery").transform.rotation = quaternion2;
                     setDirection2 = false;
-                    TowerManager.GetInstance().CreateTower(TowerType.Beacon, dropPos, quaternion1, quaternion2);
+                    if (BaseControl.GetInstance().CostEnergy(ParaDefine.GetInstance().beaconData.cost))
+                        TowerManager.GetInstance().CreateTower(TowerType.Beacon, dropPos, quaternion1, quaternion2);
                     holdingBeacon = false;
                     Destroy(holdingObject);
                 }

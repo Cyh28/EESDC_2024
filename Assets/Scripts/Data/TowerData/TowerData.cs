@@ -10,4 +10,10 @@ public class TowerData : ScriptableObject
     public float rotarySpeed;
     public float firingRate;
     public int health;
+    public float explodeRadius;
+    public float explodeDelay;
+    public float explodeTime;
+    public float effectLastTime;
+    public int damage;
+    public AnimationCurve animationCurve;
 }

@@ -22,10 +22,10 @@ public class DetonationExplodeControl : MonoBehaviour
     IEnumerator Explode()
     {
         float timer = 0;
-        while (timer <= ParaDefine.GetInstance().detonationData.explodeLastTime)
+        while (timer <= ParaDefine.GetInstance().detonationData.explodeTime)
         {
             transform.localScale = ParaDefine.GetInstance().detonationData.explodeRadius * Vector3.one *
-            ParaDefine.GetInstance().detonationData.animationCurve.Evaluate(timer / ParaDefine.GetInstance().detonationData.explodeLastTime);
+            ParaDefine.GetInstance().detonationData.animationCurve.Evaluate(timer / ParaDefine.GetInstance().detonationData.explodeTime);
             timer += Time.deltaTime;
             yield return null;
         }
