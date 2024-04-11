@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -13,6 +14,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     public AnimationCurve animationCurve;
     public float animationTime;
     public GameObject energyIcon;
+    Dictionary<TowerType, Tuple<TextMeshProUGUI, TextMeshProUGUI>> towerText = new Dictionary<TowerType, Tuple<TextMeshProUGUI, TextMeshProUGUI>>();
     bool energyIconPlaying;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,32 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
         energyIcon = transform.Find("Energy").Find("EnergyIcon").gameObject;
         energyText = transform.Find("Energy").Find("EnergyText").GetComponent<TextMeshProUGUI>();
         scoreText = transform.Find("ScoreText").GetComponent<TextMeshProUGUI>();
-
+        foreach (TowerType towerType in Enum.GetValues(typeof(TowerType)))
+        {
+            Debug.Log(towerType.ToString() + "Button");
+            if (towerType == TowerType.None)
+                continue;
+            towerText.Add(towerType, new Tuple<TextMeshProUGUI, TextMeshProUGUI>(
+                transform.Find("SideBar").Find(towerType.ToString() + "Button").Find("TowerName").GetComponent<TextMeshProUGUI>(),
+                transform.Find("SideBar").Find(towerType.ToString() + "Button").Find("TowerCost").GetComponent<TextMeshProUGUI>()));
+        }
+        if (ParaDefine.GetInstance().towerData.Count == 0)
+        {
+            ParaDefine.GetInstance().InitializeTowerData();
+        }
+        foreach (TowerType towerType in Enum.GetValues(typeof(TowerType)))
+        {
+            if (towerType == TowerType.None)
+                continue;
+            Debug.Log(ParaDefine.GetInstance().towerData.Count);
+        }
+        foreach (TowerType towerType in Enum.GetValues(typeof(TowerType)))
+        {
+            if (towerType == TowerType.None)
+                continue;
+            towerText[towerType].Item1.text = towerType.ToString();
+            towerText[towerType].Item2.text = ParaDefine.GetInstance().towerData[towerType].cost.ToString();
+        }
     }
 
     // Update is called once per frame

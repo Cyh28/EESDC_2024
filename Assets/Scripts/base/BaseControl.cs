@@ -45,6 +45,13 @@ public class BaseControl : SingletonMono<BaseControl>, IBase
     {
         return energy;
     }
+    public bool CostEnergy(int costEnergy)
+    {
+        if (energy < costEnergy)
+            return false;
+        energy -= costEnergy;
+        return true;
+    }
     public int GetScore()
     {
         return score;

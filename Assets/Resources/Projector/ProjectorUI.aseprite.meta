@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: ProjectorUI
     originalName: 
-    pivot: {x: 0.5, y: -0.033898305}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 60
-      height: 59
+      width: 64
+      height: 64
     spriteID: 3fb20798fbf3c2144af287ec9417cb59
     spriteBone: []
     spriteOutline: []
@@ -151,10 +151,10 @@ ScriptedImporter:
     - name: ProjectorUI
       frameIndex: 0
       cellRect:
-        x: 2
-        y: 2
-        width: 60
-        height: 59
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       spriteId: 3fb20798fbf3c2144af287ec9417cb59
     linkedCells: []
     parentIndex: -1
