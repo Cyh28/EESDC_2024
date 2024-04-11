@@ -65,6 +65,7 @@ MonoBehaviour:
   attack_mode: 0
   attack_base: 0
   attack_sheild: 0
+  attack_tower: 0
   attackCDTimer: 0
   attackCD: 0.8
 --- !u!58 &5091680844917473094
@@ -170,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2068809159, guid: b7a67a901f015ce4cb6f258150ec1a80, type: 3}
+  m_Sprite: {fileID: 1794760763, guid: 9190908b914e5b64184cd908cfa89f89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -40,7 +40,7 @@ public class Constant : SingletonMono<Constant>
     public static Dictionary<EnemyType, int> EnergyDic;
     public static Dictionary<int, Batch[]> LevelDic;
 
-    public static int pentagon_call_cnt;
+    public static float pentagon_call_time;
     public static float speed_decay;
     public static float speed_range;
     public static float speed_mul;
@@ -112,7 +112,7 @@ public class Constant : SingletonMono<Constant>
 
 
         speed_decay = enemyData.speed_decay;
-        pentagon_call_cnt = enemyData.pentagon_call_cnt;
+        pentagon_call_time = enemyData.pentagon_call_time;
         speed_range = enemyData.rhombus_speed_range;
         speed_mul = enemyData.rhombus_speed_mul;
         max_speed = enemyData.max_speed;

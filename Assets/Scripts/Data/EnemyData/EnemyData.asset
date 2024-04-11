@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed_decay: 0.9
   rhombus_speed_range: 20
-  rhombus_speed_mul: 2
+  rhombus_speed_mul: 1.2
   pentagon_call_cnt: 1000
   max_speed: 10
   generate_gap_time: 3

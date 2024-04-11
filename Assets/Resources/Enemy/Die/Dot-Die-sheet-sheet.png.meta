@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 788e10f9ba6c6254fb4a17245cd3344a
+guid: 9190908b914e5b64184cd908cfa89f89
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dot-sheet-sheet_0
+      name: Dot-Die-sheet-sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a1df0ef56ed5a04389cd774faee13d4
-      internalID: -1384427475
+      spriteID: 08f6088173b381349877392d16090459
+      internalID: 1794760763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dot-sheet-sheet_1
+      name: Dot-Die-sheet-sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02425f4d9009ca5468da17f9691f8ce9
-      internalID: 1381082209
+      spriteID: 4e0fd835f55ff84429c215617da0c532
+      internalID: -201555730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dot-sheet-sheet_2
+      name: Dot-Die-sheet-sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92756b743b290a4489ea4684d9b39336
-      internalID: -547948189
+      spriteID: 02891a01549b0b54a90e3b3a518e600b
+      internalID: 1051062506
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dot-sheet-sheet_3
+      name: Dot-Die-sheet-sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2e31548bd875da42a42f58c7a944acf
-      internalID: 441025685
+      spriteID: 6b8e753358509274e8d0699af4ecea87
+      internalID: 1383039602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dot-sheet-sheet_4
+      name: Dot-Die-sheet-sheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -208,29 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 318b69b69fbcee3479b97e338d022aee
-      internalID: 781753973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dot-sheet-sheet_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4b9e66e9d2f1f443863bb2fe58b39c9
-      internalID: 940352754
+      spriteID: ae88f14d83bd32c439af45eda226249f
+      internalID: -1466301657
       vertices: []
       indices: 
       edges: []
@@ -246,12 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dot-sheet-sheet_0: -1384427475
-      Dot-sheet-sheet_1: 1381082209
-      Dot-sheet-sheet_2: -547948189
-      Dot-sheet-sheet_3: 441025685
-      Dot-sheet-sheet_4: 781753973
-      Dot-sheet-sheet_5: 940352754
+      Dot-Die-sheet-sheet_0: 1794760763
+      Dot-Die-sheet-sheet_1: -201555730
+      Dot-Die-sheet-sheet_2: 1051062506
+      Dot-Die-sheet-sheet_3: 1383039602
+      Dot-Die-sheet-sheet_4: -1466301657
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
