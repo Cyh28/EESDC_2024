@@ -6,7 +6,7 @@ using UnityEngine;
 public class Pentagon : Enemy
 {
     private EnemyManager manager;
-    private int pentagon_call_cnt;
+    private float pentagon_call_time;
     new void Start()
     {
         base.Start();
@@ -16,21 +16,34 @@ public class Pentagon : Enemy
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
-        pentagon_call_cnt = Constant.pentagon_call_cnt;
+        pentagon_call_time = Constant.pentagon_call_time;
         manager = EnemyManager.GetInstance();
+        StartCoroutine(StartHatch());
     }
     new void Update()
     {
         base.Update();
-        pentagon_call_cnt--;
-        if (pentagon_call_cnt == 0)
+    }
+    IEnumerator StartHatch()
+    {
+        while (true)
         {
+            yield return new WaitForSeconds(pentagon_call_time);
             manager.Hatch(rb.position, EnemyType.Dot);
-            pentagon_call_cnt = Constant.pentagon_call_cnt;
         }
     }
     public void SelfDestroy()
     {
         Destroy(this.gameObject);
     }
+    public void ReSetVelocity()
+    {
+        rb.velocity = Vector2.zero;
+    }
+    public void Dead()
+    {
+        isDead = true;
+        GetComponent<Collider2D>().enabled = false;
+    }
+
 }

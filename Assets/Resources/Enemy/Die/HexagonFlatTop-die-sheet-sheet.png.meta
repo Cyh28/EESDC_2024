@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88a1160514e48c14ca3aea8818f0481e
+guid: a97ef8e0112488540b9210aea70abc10
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Square-DIE_0
+      name: HexagonFlatTop-die-sheet-sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f36babdc4de900a4c9060e377f2c87df
-      internalID: 287627916
+      spriteID: dc65540a6ea7cfb4393092d835f0c9da
+      internalID: -694086973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Square-DIE_1
+      name: HexagonFlatTop-die-sheet-sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 237b9f7f2dfb5314e9faef83a016b71b
-      internalID: 1534181796
+      spriteID: 5c63020275f9e3c4fbf3279486ec7341
+      internalID: 503137285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Square-DIE_2
+      name: HexagonFlatTop-die-sheet-sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b067af8ef228074d925098d33c971c4
-      internalID: -432150347
+      spriteID: 6ffb100043abd1046aa8fa5975828d86
+      internalID: 930687299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Square-DIE_3
+      name: HexagonFlatTop-die-sheet-sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32a7fb47e6ad13246b666d5112abc856
-      internalID: 43557734
+      spriteID: ee4785bcd97dcfc4cbee591a807a6f46
+      internalID: 1647723807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Square-DIE_4
+      name: HexagonFlatTop-die-sheet-sheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30ea585bde25e8440a98d305683d0b14
-      internalID: 1152195964
+      spriteID: b01ad61b9a59a48488837d2310a57bc5
+      internalID: 559355567
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Square-DIE_0: 287627916
-      Square-DIE_1: 1534181796
-      Square-DIE_2: -432150347
-      Square-DIE_3: 43557734
-      Square-DIE_4: 1152195964
+      HexagonFlatTop-die-sheet-sheet_0: -694086973
+      HexagonFlatTop-die-sheet-sheet_1: 503137285
+      HexagonFlatTop-die-sheet-sheet_2: 930687299
+      HexagonFlatTop-die-sheet-sheet_3: 1647723807
+      HexagonFlatTop-die-sheet-sheet_4: 559355567
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Circle : Enemy
 {
+    private EnemyManager manager;
     new void Start()
     {
         base.Start();
@@ -14,6 +15,7 @@ public class Circle : Enemy
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
+        manager = EnemyManager.GetInstance();
     }
     new void Update()
     {
@@ -22,5 +24,18 @@ public class Circle : Enemy
     public void SelfDestroy()
     {
         Destroy(this.gameObject);
+    }
+    public void Dead()
+    {
+        isDead = true;
+        GetComponent<Collider2D>().enabled = false;
+    }
+    public void ReSetVelocity()
+    {
+        rb.velocity = Vector2.zero;
+    }
+    public void CallDot()
+    {
+        manager.Hatch(rb.position, EnemyType.Dot);
     }
 }

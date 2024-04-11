@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public int damage;
     public int score;
     public int energy;
+    public bool isDead=false;
 
     public bool givenBirth = false;
     public bool attack_mode = false;
@@ -40,10 +41,11 @@ public class Enemy : MonoBehaviour, IEnemy
     }
     protected void Update()
     {
-        attack_mode = attack_base || attack_sheild || attack_tower;
-        Step2Place();
-        Attack();
-        attack_sheild = attack_base = attack_tower=false;
+        if (!isDead)
+        {
+            Step2Place();
+            Attack();
+        }
     }
     public void Step2Place()
     {
@@ -108,6 +110,7 @@ public class Enemy : MonoBehaviour, IEnemy
                 attackCDTimer = attackCD;
             }
         }
+        attack_sheild = attack_base = attack_tower = false;
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
@@ -127,5 +130,6 @@ public class Enemy : MonoBehaviour, IEnemy
             Debug.Log("shield get");
             attack_sheild = true;
         }
+        attack_mode = attack_base || attack_sheild || attack_tower;
     }
 }

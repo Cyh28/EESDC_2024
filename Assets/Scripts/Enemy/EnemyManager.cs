@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
 {
     List<Enemy> enemies = new List<Enemy>();
+
     public Triangle triangle;
     public Circle circle;
     public Dot dot;
@@ -20,6 +21,8 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
 
     int current_level;
     Batch[] current_batches;
+    float current_wait_time;
+    float current_generate_gap_time;
     int batch_length;
     int batch_counter;
     bool ready;
@@ -53,7 +56,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {7,star},
         };
         StartCoroutine(GenerateAlong());
-        StartCoroutine(WaitTillReady(10f));
+        StartCoroutine(WaitTillReady(current_wait_time));
     }
 
     // Update is called once per frame
@@ -85,7 +88,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         while (true)
         {
             count++;
-            yield return new WaitForSeconds(Constant.generate_gap_time);
+            yield return new WaitForSeconds(current_generate_gap_time);
             for (int i = 0; i < num_line + count % 4; i++)
             {
                 int randomValue = UnityEngine.Random.Range(0, 4);
@@ -99,19 +102,19 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     IEnumerator GenerateBatch(Batch batch)
     {
         GenerateEnemy(0, batch.triangle_num);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GenerateEnemy(1, batch.dot_num);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GenerateEnemy(2, batch.square_num);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GenerateEnemy(3, batch.circle_num);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GenerateEnemy(4, batch.rhombus_num);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GenerateEnemy(5, batch.pentagon_num);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GenerateEnemy(6, batch.hexagon_num);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GenerateEnemy(7, batch.star_num);
     }
 
@@ -129,11 +132,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     {
         if (enemies.Contains(enemy))
         {
-            // Debug.Log("Enemy Dies");
-            if (enemy.info.type == EnemyType.Circle)
-            {
-                Hatch(enemy.rb.position, EnemyType.Dot);
-            }
             if (enemy.info.type == EnemyType.Rhombus)
             {
                 SpeedUp(enemy.rb.position);
@@ -142,7 +140,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             base_control.AddScore(enemy.score);
             enemy.ani.SetTrigger("Die");
             enemies.Remove(enemy);
-
         }
     }
     void CheckHp()
@@ -218,6 +215,8 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     {
         current_level = level;
         current_batches = Constant.LevelDic[current_level];
+        current_wait_time = Constant.waitDic[current_level];
+        current_generate_gap_time = Constant.generateGapDic[current_level];
         batch_length = current_batches.Length;
         batch_counter = 0;
     }

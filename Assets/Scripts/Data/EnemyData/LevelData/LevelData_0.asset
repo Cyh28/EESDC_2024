@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c60bad57fe1f340a2b10e71b0e297f, type: 3}
-  m_Name: EnemyData
+  m_Script: {fileID: 11500000, guid: 284fac10e414df0478386aba0077af81, type: 3}
+  m_Name: LevelData_0
   m_EditorClassIdentifier: 
-  speed_decay: 0.9
-  rhombus_speed_range: 20
-  rhombus_speed_mul: 1.2
-  pentagon_call_cnt: 1000
-  max_speed: 10
-  generate_gap_time: 3
+  batches: []

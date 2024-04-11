@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 2867979636179856993}
   m_Layer: 3
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   - {x: -0.2640121, y: 0.17463732, z: 0}
   m_ShapePathHash: -1242891797
   m_Mesh: {fileID: 0}
-  m_InstanceId: -120636
+  m_InstanceId: 65964
   m_LocalBounds:
     m_Center: {x: -0.000019431114, y: -0.035120606, z: 0}
     m_Extent: {x: 0.30512246, y: 0.26684242, z: 0}
