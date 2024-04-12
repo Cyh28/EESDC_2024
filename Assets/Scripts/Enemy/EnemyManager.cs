@@ -16,6 +16,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     public Pentagon pentagon;
     public Hexagon hexagon;
     Dictionary<int, Enemy> prefabDic;
+    Dictionary<EnemyType, int> type2intDic;
     BaseControl base_control;
 
     int current_level;
@@ -56,7 +57,17 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {7,star},
             {8,dot},
         };
-        StartCoroutine(GenerateAlong());
+        type2intDic = new Dictionary<EnemyType, int>
+        {
+            {EnemyType.Triangle,0},
+            { EnemyType.Circle,1},
+            { EnemyType.Square,2},
+            { EnemyType.Hexagon,3},
+            { EnemyType.Rhombus,4},
+            { EnemyType.Pentagon,5},
+            { EnemyType.Star,7},
+            {EnemyType.Dot,8},
+        };
         if ((int)gameC.gameLevel == 0)
         {
             StartCoroutine(WaitTillClick());
@@ -73,13 +84,10 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         {
             ready = false;
             StartCoroutine(GenerateBatch(current_batches[batch_counter]));
+            StartCoroutine(WaitFor(current_batches[batch_counter].exist_time));
             batch_counter++;
             if (batch_counter > batch_length)
                 batch_counter = batch_length;
-            if (batch_counter < batch_length)
-            {
-                StartCoroutine(WaitFor(current_batches[batch_counter - 1].gap_time));
-            }
             if (batch_counter == batch_length && enemies.Count == 0)
             {
                 LoadNextLevel();
@@ -99,44 +107,43 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         yield return new WaitForSeconds(time);
         ready = true;
     }
-    IEnumerator GenerateAlong()
-    {
-        int num_line = 0;
-        int count = 0;
-        while (true)
-        {
-            count++;
-            yield return new WaitForSeconds(current_generate_gap_time);
-            for (int i = 0; i < num_line + count % 3; i++)
-            {
-                int randomValue = UnityEngine.Random.Range(0, 3);
-                GenerateEnemy(randomValue, 1);
-                yield return new WaitForSeconds(0.2f);
-            }
-            if (count % 10 == 0)
-                num_line++;
-        }
-    }
     IEnumerator GenerateBatch(Batch batch)
     {
-        float sec = 0.5f;
-        GenerateEnemy(0, batch.triangle_num);
-        yield return new WaitForSeconds(sec);
-        GenerateEnemy(1, batch.circle_num);
-        yield return new WaitForSeconds(sec);
-        GenerateEnemy(2, batch.square_num);
-        yield return new WaitForSeconds(sec);
-        GenerateEnemy(3, batch.hexagon_num);
-        yield return new WaitForSeconds(sec);
-        GenerateEnemy(4, batch.rhombus_num);
-        yield return new WaitForSeconds(sec);
-        GenerateEnemy(5, batch.swim_pentagon_num);
-        yield return new WaitForSeconds(sec);
-        GenerateEnemy(6, batch.rotate_pentagon_num);
-        yield return new WaitForSeconds(sec);
-        GenerateEnemy(7, batch.star_num);
-        yield return new WaitForSeconds(sec);
-        GenerateEnemy(8, batch.dot_num);
+        if (!batch.is_continuous)
+        {
+            float sec = 0.2f;
+            GenerateEnemy(0, batch.triangle_num);
+            yield return new WaitForSeconds(sec);
+            GenerateEnemy(1, batch.circle_num);
+            yield return new WaitForSeconds(sec);
+            GenerateEnemy(2, batch.square_num);
+            yield return new WaitForSeconds(sec);
+            GenerateEnemy(3, batch.hexagon_num);
+            yield return new WaitForSeconds(sec);
+            GenerateEnemy(4, batch.rhombus_num);
+            yield return new WaitForSeconds(sec);
+            GenerateEnemy(5, batch.swim_pentagon_num);
+            yield return new WaitForSeconds(sec);
+            GenerateEnemy(6, batch.rotate_pentagon_num);
+            yield return new WaitForSeconds(sec);
+            GenerateEnemy(7, batch.star_num);
+            yield return new WaitForSeconds(sec);
+            GenerateEnemy(8, batch.dot_num);
+        }
+        else
+        {
+            float gap_time = batch.exist_time/batch.sum();
+            int triangle_num =batch.triangle_num;
+            int circle_num =batch.circle_num;
+            int square_num =batch.square_num;
+            int hexagon_num=batch.hexagon_num;
+            int rhombus_num=batch.rhombus_num;
+            int swim_pentagon_num= batch.swim_pentagon_num;
+            int rotate_pentagon_num=batch.rotate_pentagon_num ;
+            int star_num=batch.star_num;
+            int dot_num=batch.dot_num;
+
+        }
     }
 
     void GenerateEnemy(int index, int num)
@@ -204,29 +211,26 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     }
     public void Hatch(Vector2 pos, EnemyType type)
     {
-        if (type == EnemyType.Dot)
-        {
-            Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
-            newEnemy.is_hatched = true;
-            enemies.Add(newEnemy);
-        }
-        else if (type == EnemyType.Rhombus)
-        {
-            Rhombus newEnemy = Instantiate(rhombus, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Rhombus>();
-            newEnemy.is_hatched = true;
-            enemies.Add(newEnemy);
-        }
+        Enemy newEnemy = Instantiate(prefabDic[type2intDic[type]], new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Enemy>();
+        newEnemy.is_hatched = true;
+        enemies.Add(newEnemy);
     }
     public void HatchwithTarget(Vector2 pos, EnemyType type, Vector2 target)
     {
-        if (type == EnemyType.Dot)
-        {
-            Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
-            newEnemy.SetTarget(target);
-            newEnemy.is_hatched = true;
-            enemies.Add(newEnemy);
-        }
+        Enemy newEnemy = Instantiate(prefabDic[type2intDic[type]], new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Enemy>();
+        newEnemy.SetTarget(target);
+        newEnemy.is_hatched=true;
+        enemies.Add(newEnemy);
     }
+
+    public void HatchwithCenterRotate(Vector2 pos, EnemyType type,Enemy enemy)
+    {
+        Enemy newEnemy = Instantiate(prefabDic[type2intDic[type]], new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Enemy>();
+        newEnemy.SetCenterRotate(enemy);
+        newEnemy.is_hatched = true;
+        enemies.Add(newEnemy);
+    }
+
     public Vector3 RandomPositionOut()
     {
         float x, y;
@@ -267,7 +271,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         current_level = level;
         current_batches = Constant.LevelDic[current_level];
         current_wait_time = Constant.waitDic[current_level];
-        current_generate_gap_time = Constant.generateGapDic[current_level];
         batch_length = current_batches.Length;
         batch_counter = 0;
     }
