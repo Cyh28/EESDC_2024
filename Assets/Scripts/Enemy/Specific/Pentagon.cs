@@ -46,7 +46,6 @@ public class Pentagon : Enemy
         {
             rotate_mode = true;
             pentagon_rotate_speed = Constant.pentagon_rotate_speed;
-            Debug.Log("penta:" + pentagon_call_time);
             pentagon_call_time = Constant.pentagon_call_time;
             if (UnityEngine.Random.value < 0.5f)
                 rotate_direction = 1f;

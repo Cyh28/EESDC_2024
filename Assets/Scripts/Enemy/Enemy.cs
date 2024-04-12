@@ -132,7 +132,7 @@ public class Enemy : MonoBehaviour, IEnemy
         }
         attack_mode = attack_sheild = attack_base = attack_tower = false;
     }
-    public void OnCollisionStay2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
         if (other.collider.CompareTag("Tower"))
         {
@@ -152,5 +152,14 @@ public class Enemy : MonoBehaviour, IEnemy
             attack_sheild = true;
         }
         attack_mode = attack_base || attack_sheild || attack_tower;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("SpeedField"))
+        {
+            rb.velocity *=Constant.speed_mul;
+            max_speed *= 2;
+        }
     }
 }
