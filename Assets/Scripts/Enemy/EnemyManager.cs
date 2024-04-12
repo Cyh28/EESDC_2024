@@ -176,7 +176,10 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
                 base_control.AddEnergy(enemy.energy);
                 base_control.AddScore(enemy.score);
             }
-            enemy.ani.SetTrigger("Die");
+            if(enemy.info.type == EnemyType.Rhombus)
+                enemy.transform.Find("Base").GetComponent<Animator>().SetTrigger("Die");
+            else
+                enemy.ani.SetTrigger("Die");
             enemies.Remove(enemy);
         }
     }
