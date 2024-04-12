@@ -158,6 +158,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     {
         if (enemies.Contains(enemy))
         {
+            // enemy.ani.SetTrigger("Die");
             if (enemy.info.type == EnemyType.Rhombus)
             {
                 SpeedUp(enemy.rb.position);
@@ -167,7 +168,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
                 base_control.AddEnergy(enemy.energy);
                 base_control.AddScore(enemy.score);
             }
-            enemy.ani.SetTrigger("Die");
             enemies.Remove(enemy);
         }
     }

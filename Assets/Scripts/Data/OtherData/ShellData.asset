@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9087b2007dcdc46ad96f83cf92ed8e, type: 3}
   m_Name: ShellData
   m_EditorClassIdentifier: 
-  damage: 320000003c0000004b000000
+  damage: 140000001a00000020000000
   speed:
   - 5
   - 6
   - 7
   explodeRadius:
   - 5
-  - 6
   - 7
+  - 9

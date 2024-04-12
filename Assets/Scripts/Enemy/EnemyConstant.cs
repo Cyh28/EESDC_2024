@@ -150,6 +150,7 @@ public class Constant : SingletonMono<Constant>
         pentagon_fire_gap_time = enemyData.pentagon_fire_gap_time;
         pentagon_rotate_speed = enemyData.pentagon_rotate_speed;
         pentagon_call_time = enemyData.pentagon_call_time;
+        Debug.Log(pentagon_call_time);
         pentagon_swim_time = enemyData.pentagon_swim_time;
         speed_range = enemyData.rhombus_speed_range;
         speed_mul = enemyData.rhombus_speed_mul;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 800
   rotarySpeed: 500
-  firingRate: 0.4
+  firingRate: 0.3
   health: 100
   explodeRadius: 0
   explodeDelay: 0
