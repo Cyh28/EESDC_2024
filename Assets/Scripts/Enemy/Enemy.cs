@@ -15,23 +15,25 @@ public class Enemy : MonoBehaviour, IEnemy
     public float speed_rate;
     public float max_speed;
 
-    private BaseControl baseC;
+    public BaseControl baseC;
     private ShieldControl shieldC;
     private TowerBase towerC;
     public int damage;
     public int score;
     public int energy;
     public bool isDead=false;
-    public bool attack_mode = false;
-    public bool attack_base = false;
-    public bool attack_sheild = false;
-    public bool attack_tower = false;
-    public float attackCDTimer;
-    public float attackCD;
+    private bool niubi = true;
+    private bool attack_mode = false;
+    private bool attack_base = false;
+    private bool attack_sheild = false;
+    private bool attack_tower = false;
+    private float attackCDTimer;
+    private float attackCD;
 
     public bool givenBirth = false;
     public int index;
-
+    public bool is_hatched = false;
+    
     protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +42,8 @@ public class Enemy : MonoBehaviour, IEnemy
         max_speed = Constant.max_speed;
         ani = GetComponent<Animator>();
         attackCD = 1f;
+        StartCoroutine(DisableCollidefor(0.1f));
+        StartCoroutine(Protectfor(0.2f));
     }
     protected void Update()
     {
@@ -49,16 +53,23 @@ public class Enemy : MonoBehaviour, IEnemy
             Attack();
         }
     }
+    public IEnumerator DisableCollidefor(float time)
+    {
+        GetComponent<Collider2D>().enabled = false;
+        yield return new WaitForSeconds(time);
+        GetComponent<Collider2D>().enabled = true;
+    }
+    public IEnumerator Protectfor(float time)
+    {
+        yield return new WaitForSeconds(time);
+        niubi = false;
+    }
     public void Step2Place()
     {
         if (!attack_mode)
         {
             Vector2 r = new Vector2(target.x - transform.position.x, target.y - transform.position.y);
             float norm = r.magnitude;
-            if (rb.position.magnitude > 5f | norm < 0.5f)
-            {
-                SetTarget(new Vector2(0, 0));
-            }
             if (rb.velocity.magnitude < max_speed)
                 rb.AddForce(r / norm * speed_rate);
         }
@@ -79,7 +90,8 @@ public class Enemy : MonoBehaviour, IEnemy
     public void TakeDamage(int damage)
     {
         ani.SetTrigger("Injured");
-        info.hp -= damage;
+        if(!niubi)
+            info.hp -= damage;
     }
     public void Pushed(Vector2 direction, float val)
     {
@@ -108,28 +120,30 @@ public class Enemy : MonoBehaviour, IEnemy
             }
             else if (attack_tower && towerC)
             {
+                Debug.Log("attack tower");
                 towerC.DamageTower(damage);
                 attackCDTimer = attackCD;
             }
         }
         attack_sheild = attack_base = attack_tower = false;
     }
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnCollisionStay2D(Collision2D other)
     {
         if (other.collider.CompareTag("Tower"))
         {
-            Debug.Log("tower get");
-            towerC = other.collider.GetComponent<TowerBase>();
+            DisableCollidefor(0.4f);
+            target *= 0;
+            towerC = other.transform.parent.GetComponent<TowerBase>();
             attack_tower = true;
         }
         else if (other.collider.CompareTag("Base"))
         {
+            DisableCollidefor(1f);
             attack_base = true;
         }
         else if (other.collider.CompareTag("Shield"))
         {
             shieldC = other.collider.GetComponent<ShieldControl>();
-            Debug.Log("shield get");
             attack_sheild = true;
         }
         attack_mode = attack_base || attack_sheild || attack_tower;

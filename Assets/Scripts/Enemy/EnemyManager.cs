@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
 {
     List<Enemy> enemies = new List<Enemy>();
-
     public Triangle triangle;
     public Circle circle;
     public Dot dot;
@@ -26,16 +25,18 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     int batch_length;
     int batch_counter;
     bool ready;
-
     Vector3 rightUp;
     Vector3 leftDown;
     float right;
     float left;
     float up;
     float down;
+
     void Start()
     {
         ready = false;
+        GameControl gameC = GetComponent<GameControl>();
+        ChangeLevel((int)gameC.gameLevel);
         base_control = BaseControl.GetInstance();
         rightUp = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         leftDown = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
@@ -43,7 +44,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         left = leftDown.x;
         up = rightUp.y;
         down = leftDown.y;
-        ChangeLevel(0);
         prefabDic = new Dictionary<int, Enemy>
         {
             {0,triangle },
@@ -57,7 +57,12 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {8,dot},
         };
         StartCoroutine(GenerateAlong());
-        StartCoroutine(WaitTillReady(current_wait_time));
+        if((int)gameC.gameLevel==0)
+        {
+            StartCoroutine(WaitTillClick());
+        }
+        else
+            StartCoroutine(WaitFor(current_wait_time));
     }
 
     // Update is called once per frame
@@ -69,14 +74,27 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             ready = false;
             StartCoroutine(GenerateBatch(current_batches[batch_counter]));
             batch_counter++;
+            if (batch_counter > batch_length)
+                batch_counter = batch_length;
             if (batch_counter < batch_length)
             {
-                StartCoroutine(WaitTillReady(current_batches[batch_counter - 1].gap_time));
+                StartCoroutine(WaitFor(current_batches[batch_counter - 1].gap_time));
+            }
+            if(batch_counter==batch_length&&enemies.Count==0)
+            {
+                LoadNextLevel();
             }
         }
     }
-
-    IEnumerator WaitTillReady(float time)
+    
+    IEnumerator WaitTillClick()
+    {
+        while(!ready)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+    IEnumerator WaitFor(float time)
     {
         yield return new WaitForSeconds(time);
         ready = true;
@@ -144,8 +162,11 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {
                 SpeedUp(enemy.rb.position);
             }
-            base_control.AddEnergy(enemy.energy);
-            base_control.AddScore(enemy.score);
+            if (!enemy.is_hatched)
+            {
+                base_control.AddEnergy(enemy.energy);
+                base_control.AddScore(enemy.score);
+            }
             enemy.ani.SetTrigger("Die");
             enemies.Remove(enemy);
         }
@@ -186,11 +207,23 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         if (type == EnemyType.Dot)
         {
             Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
+            newEnemy.is_hatched = true;
             enemies.Add(newEnemy);
         }
         else if (type == EnemyType.Rhombus)
         {
             Rhombus newEnemy = Instantiate(rhombus, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Rhombus>();
+            newEnemy.is_hatched = true;
+            enemies.Add(newEnemy);
+        }
+    }
+    public void HatchwithTarget(Vector2 pos, EnemyType type,Vector2 target)
+    {
+        if (type == EnemyType.Dot)
+        {
+            Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
+            newEnemy.SetTarget(target);
+            newEnemy.is_hatched=true;
             enemies.Add(newEnemy);
         }
     }
@@ -225,7 +258,11 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             y = UnityEngine.Random.Range((up - 1) * ratio, (up - 1));
         return new Vector3(x, y, 0);
     }
-    public void ChangeLevel(int level)
+    public void ClickForReady()
+    {
+        ready = true;
+    }
+    private void ChangeLevel(int level)
     {
         current_level = level;
         current_batches = Constant.LevelDic[current_level];
@@ -233,5 +270,10 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         current_generate_gap_time = Constant.generateGapDic[current_level];
         batch_length = current_batches.Length;
         batch_counter = 0;
+    }
+    private void LoadNextLevel()
+    {
+        GetComponent<GameControl>().LoadNextLevel();
+        Destroy(gameObject);
     }
 }
