@@ -7,12 +7,16 @@ using UnityEngine;
 public class Pentagon : Enemy
 {
     private EnemyManager manager;
+
+    private bool rotate_mode = false;
     private float pentagon_call_time;
-    private float pentagon_swim_time;
-    private float pentagon_swim_stay_time;
-    private float pentagon_swim_speed;
-    private bool rotate_mode=false;
     private float rotate_direction = 0f;
+    private float rotate_speed = 0f;
+
+    private Vector2 attack_target;
+    private float pentagon_fire_gap_time;
+    private float pentagon_swim_time;
+
     private float left;
     private float right;
     private float up;
@@ -30,7 +34,6 @@ public class Pentagon : Enemy
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
         manager = EnemyManager.GetInstance();
-        pentagon_call_time = Constant.pentagon_call_time;
         Vector3 rightUp = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         Vector3 leftDown = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
         right = rightUp.x;
@@ -40,32 +43,31 @@ public class Pentagon : Enemy
         if (index == 6)
         {
             rotate_mode = true;
+            rotate_speed = Constant.pentagon_rotate_speed;
+            pentagon_call_time = Constant.pentagon_call_time;
             if (UnityEngine.Random.value<0.5f)
                 rotate_direction = 1f;
             else
                 rotate_direction = -1f;
+            StartCoroutine(StartHatch());
         }
         else
         {
-            pentagon_swim_speed = Constant.pentagon_swim_speed;
+            pentagon_fire_gap_time=Constant.pentagon_fire_gap_time;
             pentagon_swim_time = Constant.pentagon_swim_time;
-            pentagon_swim_stay_time = Constant.pentagon_swim_stay_time;
             rotate_mode = false;
+            attack_target = Vector2.zero;
+            StartCoroutine(FireEnemy());
             StartCoroutine(StartSwim());
         }
-        StartCoroutine(StartHatch());
     }
-    new void Update()
-    {
-        if(rotate_mode)
-            transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, speed_rate *rotate_direction* Time.deltaTime);
-    }
-    IEnumerator StartHatch()
+    IEnumerator FireEnemy()
     {
         while (true)
         {
-            yield return new WaitForSeconds(pentagon_call_time);
-            manager.Hatch(rb.position, EnemyType.Dot);
+            yield return new WaitForSeconds(pentagon_fire_gap_time);
+            StartCoroutine(DisableCollidefor(0.8f));
+            manager.HatchwithTarget(rb.position, EnemyType.Dot, attack_target);
         }
     }
     IEnumerator StartSwim()
@@ -77,11 +79,46 @@ public class Pentagon : Enemy
             while (true)
             {
                 target = new Vector2(Range(left * ratio, right * ratio), Range(down * ratio, up * ratio));
-                if ((rb.position - target).magnitude > 5f)
+                if ((rb.position - target).magnitude > 6f)
                     break;
             }
-            rb.velocity = (target - rb.position).magnitude / pentagon_swim_time * (target - rb.position).normalized;
+            SetTarget(target);
             yield return new WaitForSeconds(pentagon_swim_time);
+        }
+    }
+    private void SearchforTower()
+    {
+        List<Vector2> towerList = TowerManager.GetInstance().towerPos;
+        if (towerList.Count != 0)
+        {
+            towerList.Sort((x, y) =>
+            {
+                if ((x - rb.position).magnitude < (y - rb.position).magnitude)
+                    return -1;
+                else
+                    return 1;
+            });
+            attack_target = towerList[0];
+        }
+    }
+    IEnumerator StartHatch()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(pentagon_call_time);
+            StartCoroutine(DisableCollidefor(0.5f));
+            manager.Hatch(rb.position, EnemyType.Dot);
+        }
+    }
+
+    new void Update()
+    {
+        if (rotate_mode)
+            transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, rotate_speed * rotate_direction * Time.deltaTime);
+        else
+        {
+            base.Update();
+            SearchforTower(); 
         }
     }
     public void SelfDestroy()
