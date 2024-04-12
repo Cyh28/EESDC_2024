@@ -11,7 +11,7 @@ public class Pentagon : Enemy
     private bool rotate_mode = false;
     public float pentagon_call_time;
     private float rotate_direction = 0f;
-    private float rotate_speed = 0f;
+    private float pentagon_rotate_speed = 0f;
 
     private Vector2 attack_target;
     private float pentagon_fire_gap_time;
@@ -44,7 +44,7 @@ public class Pentagon : Enemy
         if (index == 6)
         {
             rotate_mode = true;
-            rotate_speed = Constant.pentagon_rotate_speed;
+            pentagon_rotate_speed = Constant.pentagon_rotate_speed;
             Debug.Log("penta:" + pentagon_call_time);
             pentagon_call_time = Constant.pentagon_call_time;
             if (UnityEngine.Random.value < 0.5f)
@@ -116,7 +116,7 @@ public class Pentagon : Enemy
     new void Update()
     {
         if (rotate_mode)
-            transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, rotate_speed * rotate_direction * Time.deltaTime);
+            transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, pentagon_rotate_speed * rotate_direction * Time.deltaTime);
         else
         {
             base.Update();

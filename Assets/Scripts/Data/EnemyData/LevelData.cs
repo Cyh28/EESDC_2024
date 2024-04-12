@@ -7,6 +7,5 @@ using UnityEngine;
 
 public class LevelData : ScriptableObject
 {
-    public float wait_time;
     public Batch[] batches;
 }
