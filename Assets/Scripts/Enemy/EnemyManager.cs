@@ -132,17 +132,15 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         }
         else
         {
-            float gap_time = batch.exist_time/batch.sum();
-            int triangle_num =batch.triangle_num;
-            int circle_num =batch.circle_num;
-            int square_num =batch.square_num;
-            int hexagon_num=batch.hexagon_num;
-            int rhombus_num=batch.rhombus_num;
-            int swim_pentagon_num= batch.swim_pentagon_num;
-            int rotate_pentagon_num=batch.rotate_pentagon_num ;
-            int star_num=batch.star_num;
-            int dot_num=batch.dot_num;
-
+            float gap_time = batch.exist_time/batch.Sum();
+            int swim = batch.swim_pentagon_num;
+            int rotate = batch.rotate_pentagon_num;
+            while(batch.Sum()>0)
+            {
+                yield return new WaitForSeconds(gap_time);
+                int index = batch.RandomSample();
+                GenerateEnemy(index,1);
+            }
         }
     }
 
@@ -165,7 +163,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     {
         if (enemies.Contains(enemy))
         {
-            // enemy.ani.SetTrigger("Die");
             if (enemy.info.type == EnemyType.Rhombus)
             {
                 SpeedUp(enemy.rb.position);
@@ -175,6 +172,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
                 base_control.AddEnergy(enemy.energy);
                 base_control.AddScore(enemy.score);
             }
+            enemy.ani.SetTrigger("Die");
             enemies.Remove(enemy);
         }
     }
