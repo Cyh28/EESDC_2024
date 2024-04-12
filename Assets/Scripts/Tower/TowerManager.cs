@@ -14,6 +14,7 @@ public enum TowerType
 public class TowerManager : SingletonMono<TowerManager>
 {
     public GameObject towerPa, defender, beacon, projector, parclose, detonation, charger;
+    public List<Vector2> towerPos;
     GameObject obj;
     // Start is called before the first frame update
     void Start()
@@ -50,5 +51,14 @@ public class TowerManager : SingletonMono<TowerManager>
                 obj.transform.Find("Battery").rotation = batQuaternion.Value;
                 break;
         }
+        AddTower(pos);
+    }
+    public void AddTower(Vector2 pos)
+    {
+        towerPos.Add(pos);
+    }
+    public void RemoveTower(Vector2 pos)
+    {
+        towerPos.Remove(pos);
     }
 }

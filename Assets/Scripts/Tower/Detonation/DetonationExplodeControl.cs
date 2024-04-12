@@ -30,6 +30,7 @@ public class DetonationExplodeControl : MonoBehaviour
             yield return null;
         }
         Destroy(gameObject);
+
         Destroy(transform.parent.gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collider2D)

@@ -15,6 +15,7 @@ public class ChargerControl : MonoBehaviour
     {
         yield return new WaitForSeconds(ParaDefine.GetInstance().chargerData.explodeDelay);
         entity.SetActive(false);
+        TowerManager.GetInstance().RemoveTower(transform.position);
         Trigger();
     }
     void Trigger()
