@@ -22,6 +22,7 @@ public class GameControl : SingletonDontDestory<GameControl>
 {
     public GameState gameState;
     public GameLevel gameLevel;
+    public bool levelStart;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,10 +41,12 @@ public class GameControl : SingletonDontDestory<GameControl>
         {
             case GameLevel.Level1:
                 gameLevel = GameLevel.Level2;
+                levelStart = false;
                 SceneManager.LoadScene("GameLevel2");
                 break;
             case GameLevel.Level2:
                 gameLevel = GameLevel.Level3;
+                levelStart = false;
                 SceneManager.LoadScene("GameLevel3");
                 break;
             case GameLevel.Level3:
