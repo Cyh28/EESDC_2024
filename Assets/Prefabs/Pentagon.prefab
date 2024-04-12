@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.5479, y: -15.1683, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,17 +110,15 @@ MonoBehaviour:
   target: {x: 0, y: 0}
   speed_rate: 0
   max_speed: 0
+  baseC: {fileID: 0}
   damage: 0
   score: 0
   energy: 0
   isDead: 0
   givenBirth: 0
-  attack_mode: 0
-  attack_base: 0
-  attack_sheild: 0
-  attack_tower: 0
-  attackCDTimer: 0
-  attackCD: 0
+  index: 0
+  is_hatched: 0
+  pentagon_call_time: 0
 --- !u!50 &43382002743060029
 Rigidbody2D:
   serializedVersion: 4
