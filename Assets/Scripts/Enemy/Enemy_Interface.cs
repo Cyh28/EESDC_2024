@@ -28,7 +28,7 @@ public struct Batch
     public float exist_time;
     public int Sum()
     { return triangle_num+square_num+circle_num+dot_num+swim_pentagon_num+rotate_pentagon_num+hexagon_num+rhombus_num+star_num; }
-    public int RandomSample()
+    public int RandomChoose()
     {
         int random = UnityEngine.Random.Range(0, 9);
         switch(random)
@@ -99,6 +99,17 @@ public struct Batch
             default:
                 return -1;
         }
+    }
+    public int RandomSample()
+    {
+        int index;
+        while(true)
+        {
+            index = RandomChoose();
+            if (index != -1)
+                break;
+        }
+        return index;
     }
 };
 
