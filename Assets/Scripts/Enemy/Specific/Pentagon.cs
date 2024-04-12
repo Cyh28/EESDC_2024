@@ -26,10 +26,11 @@ public class Pentagon : Enemy
     new void Start()
     {
         base.Start();
-        random=new System.Random(this.gameObject.GetInstanceID());
+        random = new System.Random(this.gameObject.GetInstanceID());
         info.type = EnemyType.Pentagon;
         info.hp = Constant.HpDic[info.type];
-        speed_rate = Constant.SpeedDic[info.type];
+        speed_rate = Constant.SpeedRateDic[info.type];
+        max_speed = Constant.MaxSpeedDic[info.type];
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
@@ -45,7 +46,7 @@ public class Pentagon : Enemy
             rotate_mode = true;
             rotate_speed = Constant.pentagon_rotate_speed;
             pentagon_call_time = Constant.pentagon_call_time;
-            if (UnityEngine.Random.value<0.5f)
+            if (UnityEngine.Random.value < 0.5f)
                 rotate_direction = 1f;
             else
                 rotate_direction = -1f;
@@ -53,7 +54,7 @@ public class Pentagon : Enemy
         }
         else
         {
-            pentagon_fire_gap_time=Constant.pentagon_fire_gap_time;
+            pentagon_fire_gap_time = Constant.pentagon_fire_gap_time;
             pentagon_swim_time = Constant.pentagon_swim_time;
             rotate_mode = false;
             attack_target = Vector2.zero;
@@ -118,7 +119,7 @@ public class Pentagon : Enemy
         else
         {
             base.Update();
-            SearchforTower(); 
+            SearchforTower();
         }
     }
     public void SelfDestroy()
@@ -134,7 +135,7 @@ public class Pentagon : Enemy
         isDead = true;
         GetComponent<Collider2D>().enabled = false;
     }
-    private float Range(float x,float y)
+    private float Range(float x, float y)
     {
         return (float)random.NextDouble() * (y - x) + x;
     }

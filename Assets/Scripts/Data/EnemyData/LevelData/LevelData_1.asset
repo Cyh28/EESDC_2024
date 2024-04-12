@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284fac10e414df0478386aba0077af81, type: 3}
   m_Name: LevelData_1
   m_EditorClassIdentifier: 
-  wait_time: 10
+  wait_time: 0
   generate_gap_time: 3
   batches:
   - triangle_num: 0
     square_num: 0
     circle_num: 0
-    dot_num: 0
+    dot_num: 1
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
-    gap_time: 0
+    gap_time: 30
   - triangle_num: 2
     square_num: 2
     circle_num: 2

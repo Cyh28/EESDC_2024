@@ -15,7 +15,8 @@ public class Hexagon : Enemy
         info.type = EnemyType.Hexagon;
         manager = EnemyManager.GetInstance();
         info.hp = Constant.HpDic[info.type];
-        speed_rate = Constant.SpeedDic[info.type];
+        speed_rate = Constant.SpeedRateDic[info.type];
+        max_speed = Constant.MaxSpeedDic[info.type];
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];

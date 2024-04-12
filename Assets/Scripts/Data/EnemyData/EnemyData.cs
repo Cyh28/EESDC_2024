@@ -13,6 +13,5 @@ public class EnemyData : ScriptableObject
     public float pentagon_rotate_speed;
     public float pentagon_call_time;
     public float pentagon_swim_time;
-    public float max_speed;
 }
 

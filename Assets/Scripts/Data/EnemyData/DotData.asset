@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a657a5733d2e724d99186de4b585f31, type: 3}
   m_Name: DotData
   m_EditorClassIdentifier: 
-  hp: 100
-  speed: 0.5
+  hp: 20
+  speed_rate: 1
   damage: 1
-  reward_score: 1
-  reward_energy: 1
+  reward_score: 10
+  reward_energy: 10
+  max_speed: 3

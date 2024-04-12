@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e43302e418f2034dbfb7ad7a88e792d, type: 3}
   m_Name: ProjectorData
   m_EditorClassIdentifier: 
-  cost: 10
+  cost: 1200
   rotarySpeed: 300
   firingRate: 0.7
   health: 100
+  explodeRadius: 0
+  explodeDelay: 0
+  explodeTime: 0
+  effectLastTime: 0
+  damage: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
