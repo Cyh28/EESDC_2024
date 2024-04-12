@@ -93,10 +93,16 @@ public class Enemy : MonoBehaviour, IEnemy
             info.hp -= damage;
         if (info.hp <= 0)
         {
-            ani.SetTrigger("Die");
+            if (info.type == EnemyType.Rhombus)
+                transform.Find("Base").GetComponent<Animator>().SetTrigger("Die");
+            else
+                ani.SetTrigger("Die");
             return;
         }
-        ani.SetTrigger("Injured");
+        if (info.type == EnemyType.Rhombus)
+            transform.Find("Base").GetComponent<Animator>().SetTrigger("Injured");
+        else
+            ani.SetTrigger("Injured");
     }
     public void Pushed(Vector2 direction, float val)
     {
