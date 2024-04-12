@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e43302e418f2034dbfb7ad7a88e792d, type: 3}
   m_Name: DefenderData
   m_EditorClassIdentifier: 
-  cost: 800
+  cost: 750
   rotarySpeed: 500
   firingRate: 0.3
   health: 100

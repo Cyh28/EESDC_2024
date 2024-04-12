@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4486335347201685416}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.5695, y: -16.9555, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.45868054, y: 0.68854207, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -137,15 +137,14 @@ MonoBehaviour:
   target: {x: 0, y: 0}
   speed_rate: 0
   max_speed: 0
+  baseC: {fileID: 0}
   damage: 0
   score: 0
   energy: 0
+  isDead: 0
   givenBirth: 0
-  attack_mode: 0
-  attack_base: 0
-  attack_sheild: 0
-  attackCDTimer: 0
-  attackCD: 0.8
+  index: 0
+  is_hatched: 0
 --- !u!95 &1967588114830942560
 Animator:
   serializedVersion: 5

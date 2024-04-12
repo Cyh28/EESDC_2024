@@ -12,6 +12,7 @@ public class Pentagon : Enemy
     public float pentagon_call_time;
     private float rotate_direction = 0f;
     private float pentagon_rotate_speed = 0f;
+    private float pentagon_rotate_theta = 0f, pentagon_rotate_theta2, rotate_radius;
 
     private Vector2 attack_target;
     private float pentagon_fire_gap_time;
@@ -51,6 +52,7 @@ public class Pentagon : Enemy
                 rotate_direction = 1f;
             else
                 rotate_direction = -1f;
+            pentagon_rotate_theta = Mathf.Atan2(transform.position.y, transform.position.x);
             StartCoroutine(StartHatch());
         }
         else
@@ -81,7 +83,7 @@ public class Pentagon : Enemy
             while (true)
             {
                 target = new Vector2(Range(left * ratio, right * ratio), Range(down * ratio, up * ratio));
-                if (target.magnitude>4f && target.magnitude<6f && (target-rb.position).magnitude>1f)
+                if (target.magnitude > 4f && target.magnitude < 6f && (target - rb.position).magnitude > 1f)
                     break;
             }
             SetTarget(target);
@@ -117,7 +119,17 @@ public class Pentagon : Enemy
     new void Update()
     {
         if (rotate_mode)
-            transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, pentagon_rotate_speed * rotate_direction * Time.deltaTime);
+        {
+            pentagon_rotate_theta2 = pentagon_rotate_theta + pentagon_rotate_speed * rotate_direction * Time.deltaTime;
+            rotate_radius = transform.position.magnitude;
+            rb.velocity = new Vector2(rotate_radius * Mathf.Cos(pentagon_rotate_theta2 * Mathf.Deg2Rad) - rotate_radius * Mathf.Cos(pentagon_rotate_theta * Mathf.Deg2Rad),
+                rotate_radius * Mathf.Sin(pentagon_rotate_theta2 * Mathf.Deg2Rad) - rotate_radius * Mathf.Sin(pentagon_rotate_theta * Mathf.Deg2Rad)).normalized *
+                pentagon_rotate_speed * Mathf.Deg2Rad * rotate_radius;
+            if (rb.velocity.magnitude > max_speed)
+                rb.velocity = rb.velocity.normalized * max_speed;
+            pentagon_rotate_theta = pentagon_rotate_theta2;
+            // transform.RotateAround(new Vector3(0f, 0f, 0f), Vector3.forward, pentagon_rotate_speed * rotate_direction * Time.deltaTime);
+        }
         else
         {
             base.Update();

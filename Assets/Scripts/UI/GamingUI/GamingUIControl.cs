@@ -69,7 +69,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     IEnumerator IWaitToStart()
     {
         shaderAnim.SetTrigger("ShowText");
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2.5f);
         shaderAnim.SetTrigger("Disappear");
     }
     // Update is called once per frame

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a657a5733d2e724d99186de4b585f31, type: 3}
   m_Name: PentagonData
   m_EditorClassIdentifier: 
-  hp: 120
-  speed_rate: 1
+  hp: 70
+  speed_rate: 0.3
   damage: 1
   reward_score: 105
   reward_energy: 105
-  max_speed: 1.8
+  max_speed: 1.2
