@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class GamingUIControl : SingletonMono<GamingUIControl>
 {
     public Slider healthBar;
-    public TextMeshProUGUI healthText, energyText, scoreText;
+    public TextMeshProUGUI healthText, energyText, scoreText, description, day;
     public AnimationCurve animationCurve;
     public float animationTime;
     public GameObject energyIcon;
@@ -44,11 +44,26 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
             // towerText[towerType].Item1.fontSize
         }
         shaderAnim = transform.Find("LevelShader").GetComponent<Animator>();
+        day = transform.Find("LevelShader").Find("Day").GetComponent<TextMeshProUGUI>();
+        description = transform.Find("LevelShader").Find("Description").GetComponent<TextMeshProUGUI>();
         WaitToStart();
     }
 
     public void WaitToStart()
     {
+        day.text = "Day " + (int)GameControl.GetInstance().gameLevel;
+        switch (GameControl.GetInstance().gameLevel)
+        {
+            case GameLevel.Level1:
+                description.text = "day1";
+                break;
+            case GameLevel.Level2:
+                description.text = "day1";
+                break;
+            case GameLevel.Level3:
+                description.text = "day1";
+                break;
+        }
         StartCoroutine(IWaitToStart());
     }
     IEnumerator IWaitToStart()

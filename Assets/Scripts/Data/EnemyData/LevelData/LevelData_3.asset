@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: LevelData_3
   m_EditorClassIdentifier: 
   wait_time: 0
-  generate_gap_time: 100
   batches:
   - triangle_num: 1
     square_num: 0
@@ -24,4 +23,5 @@ MonoBehaviour:
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 30

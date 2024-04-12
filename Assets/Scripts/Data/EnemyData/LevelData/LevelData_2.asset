@@ -13,41 +13,48 @@ MonoBehaviour:
   m_Name: LevelData_2
   m_EditorClassIdentifier: 
   wait_time: 1
-  generate_gap_time: 1
   batches:
   - triangle_num: 1
     square_num: 1
     circle_num: 1
     dot_num: 1
-    pentagon_num: 1
+    swim_pentagon_num: 0
+    rotate_pentagon_num: 0
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 30
   - triangle_num: 2
     square_num: 2
     circle_num: 2
     dot_num: 0
-    pentagon_num: 0
+    swim_pentagon_num: 0
+    rotate_pentagon_num: 0
     hexagon_num: 2
     rhombus_num: 2
     star_num: 0
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 0
   - triangle_num: 3
     square_num: 3
     circle_num: 3
     dot_num: 3
-    pentagon_num: 3
+    swim_pentagon_num: 0
+    rotate_pentagon_num: 0
     hexagon_num: 3
     rhombus_num: 3
     star_num: 0
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 0
   - triangle_num: 4
     square_num: 4
     circle_num: 4
     dot_num: 4
-    pentagon_num: 4
+    swim_pentagon_num: 0
+    rotate_pentagon_num: 0
     hexagon_num: 4
     rhombus_num: 4
     star_num: 4
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 0
