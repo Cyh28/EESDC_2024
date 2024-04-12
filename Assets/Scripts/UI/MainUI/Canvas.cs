@@ -26,7 +26,7 @@ public class UIMain : MonoBehaviour
     {
         GameControl.GetInstance().gameState = GameState.Playing;
         GameControl.GetInstance().gameLevel = GameLevel.Level1;
-        SceneManager.LoadScene("Gaming_hzf");
+        SceneManager.LoadScene("GameLevel1");
     }
     public void GameSetting(GameObject Settingpanel)
     {
