@@ -107,6 +107,7 @@ public class DefenderControl : TowerBase
     IEnumerator Attack()
     {
         batteryAnim.SetTrigger("Shoot");
+        AudioControl.GetInstance().LaserShoot();
         GameObject bullet = Instantiate(laser[GetLaserLevel()], transform.position, Quaternion.AngleAxis(currentAngle + 90, Vector3.forward), bulletFa.transform);
         bullet.GetComponent<Rigidbody2D>().velocity = laserData.speed[GetLaserLevel()] * (
             Vector2.right * Mathf.Cos(currentAngle * Mathf.Deg2Rad) + Vector2.up * Mathf.Sin(currentAngle * Mathf.Deg2Rad));
