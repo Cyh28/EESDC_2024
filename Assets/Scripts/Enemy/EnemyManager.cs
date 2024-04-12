@@ -126,7 +126,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         Vector3 position;
         for (int i = 0; i < num; i++)
         {
-            if (index == 3||index== 5) //hexagon and swim pentagon
+            if (index == 3 || index == 5) //hexagon and swim pentagon
                 position = RandomPositionIn();
             else
                 position = RandomPositionOut();
@@ -199,14 +199,14 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         float x, y;
         int gap = 3;
         x = UnityEngine.Random.Range(left - gap, right + gap);
-        if (x < left-1 || x > right+1)
+        if (x < left - 1 || x > right + 1)
             y = UnityEngine.Random.Range(down - gap, up + gap);
         else
         {
             if (UnityEngine.Random.value < 0.5f)
-                y = UnityEngine.Random.Range(down - gap, down-1);
+                y = UnityEngine.Random.Range(down - gap, down - 1);
             else
-                y = UnityEngine.Random.Range(up+1, up + gap);
+                y = UnityEngine.Random.Range(up + 1, up + gap);
         }
         return new Vector3(x, y, 0);
     }
@@ -216,13 +216,13 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         float x, y;
         float ratio = 2f / 3f;
         if (UnityEngine.Random.value < 0.5f)
-            x = UnityEngine.Random.Range((left+1), (left+1) * ratio);
+            x = UnityEngine.Random.Range((left + 1), (left + 1) * ratio);
         else
-            x = UnityEngine.Random.Range((right-1)*ratio  , (right-1));
+            x = UnityEngine.Random.Range((right - 1) * ratio, (right - 1));
         if (UnityEngine.Random.value < 0.5f)
-            y = UnityEngine.Random.Range((down+1), (down + 1) * ratio);
+            y = UnityEngine.Random.Range((down + 1), (down + 1) * ratio);
         else
-            y = UnityEngine.Random.Range((up-1)*ratio, (up-1));
+            y = UnityEngine.Random.Range((up - 1) * ratio, (up - 1));
         return new Vector3(x, y, 0);
     }
     public void ChangeLevel(int level)
