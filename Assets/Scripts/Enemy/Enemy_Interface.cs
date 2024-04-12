@@ -18,7 +18,8 @@ public struct Batch
     public int square_num;
     public int circle_num;
     public int dot_num;
-    public int pentagon_num;
+    public int swim_pentagon_num;
+    public int rotate_pentagon_num;
     public int hexagon_num;
     public int rhombus_num;
     public int star_num;
