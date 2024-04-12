@@ -229,14 +229,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         enemies.Add(newEnemy);
     }
 
-    public void HatchwithCenterRotate(Vector2 pos, EnemyType type,Enemy enemy)
-    {
-        Enemy newEnemy = Instantiate(prefabDic[type2intDic[type]], new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Enemy>();
-        newEnemy.SetCenterRotate(enemy);
-        newEnemy.is_hatched = true;
-        enemies.Add(newEnemy);
-    }
-
     public Vector3 RandomPositionOut()
     {
         float x, y;
