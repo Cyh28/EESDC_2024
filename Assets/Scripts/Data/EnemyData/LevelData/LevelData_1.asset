@@ -15,16 +15,16 @@ MonoBehaviour:
   wait_time: 0
   generate_gap_time: 3
   batches:
-  - triangle_num: 0
+  - triangle_num: 20
     square_num: 0
     circle_num: 0
-    dot_num: 5
+    dot_num: 10
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
-    is_continuous: 0
+    is_continuous: 1
     exist_time: 30
   - triangle_num: 2
     square_num: 2

@@ -15,16 +15,17 @@ MonoBehaviour:
   wait_time: 0
   generate_gap_time: 10
   batches:
-  - triangle_num: 0
+  - triangle_num: 20
     square_num: 0
     circle_num: 0
-    dot_num: 1
+    dot_num: 10
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
-    gap_time: 30
+    is_continuous: 1
+    exist_time: 30
   - triangle_num: 0
     square_num: 0
     circle_num: 0
@@ -34,7 +35,8 @@ MonoBehaviour:
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 0
   - triangle_num: 0
     square_num: 0
     circle_num: 0
@@ -44,7 +46,8 @@ MonoBehaviour:
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 0
   - triangle_num: 0
     square_num: 0
     circle_num: 0
@@ -54,7 +57,8 @@ MonoBehaviour:
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 0
   - triangle_num: 0
     square_num: 0
     circle_num: 0
@@ -64,7 +68,8 @@ MonoBehaviour:
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 0
   - triangle_num: 0
     square_num: 0
     circle_num: 0
@@ -74,4 +79,5 @@ MonoBehaviour:
     hexagon_num: 6
     rhombus_num: 0
     star_num: 0
-    gap_time: 0
+    is_continuous: 0
+    exist_time: 0

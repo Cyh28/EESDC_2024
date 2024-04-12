@@ -9,7 +9,7 @@ public class AudioControl : SingletonMono<AudioControl>
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        laserShoot1.
+        // laserShoot1.
     }
     public void LaserShoot()
     {
