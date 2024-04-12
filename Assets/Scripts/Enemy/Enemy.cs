@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour, IEnemy
     public Vector2 target;
     public float speed_rate;
     public float max_speed;
+    public bool center_rotate = false;
+    public Enemy rotate_center;
+    public float rotate_speed;
 
     public BaseControl baseC;
     private ShieldControl shieldC;
@@ -49,7 +52,17 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         if (!isDead)
         {
-            Step2Place();
+            if (!center_rotate)
+                Step2Place();
+            else
+            {
+                if(rotate_center==null)
+                {
+                    center_rotate = false;
+                    return;
+                }
+                transform.RotateAround(rotate_center.rb.position, Vector3.forward, rotate_speed * Time.deltaTime);
+            }
             Attack();
         }
     }
@@ -77,6 +90,12 @@ public class Enemy : MonoBehaviour, IEnemy
     public void SetTarget(Vector2 place)
     {
         target = place;
+    }
+
+    public void SetCenterRotate(Enemy enemy)
+    {
+        center_rotate = true;
+        rotate_center = enemy;
     }
     public void UpdateInfo()
     {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HexagonData
   m_EditorClassIdentifier: 
   hp: 200
-  speed: 0
+  speed: 0.01
   damage: 1
   reward_score: 1
   reward_energy: 1

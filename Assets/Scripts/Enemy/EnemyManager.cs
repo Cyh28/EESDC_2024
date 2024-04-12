@@ -16,6 +16,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     public Pentagon pentagon;
     public Hexagon hexagon;
     Dictionary<int, Enemy> prefabDic;
+    Dictionary<EnemyType, int> type2intDic;
     BaseControl base_control;
 
     int current_level;
@@ -55,6 +56,17 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {6,pentagon }, //rotate
             {7,star},
             {8,dot},
+        };
+        type2intDic = new Dictionary<EnemyType, int>
+        {
+            {EnemyType.Triangle,0},
+            { EnemyType.Circle,1},
+            { EnemyType.Square,2},
+            { EnemyType.Hexagon,3},
+            { EnemyType.Rhombus,4},
+            { EnemyType.Pentagon,5},
+            { EnemyType.Star,7},
+            {EnemyType.Dot,8},
         };
         StartCoroutine(GenerateAlong());
         if((int)gameC.gameLevel==0)
@@ -204,29 +216,26 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     }
     public void Hatch(Vector2 pos, EnemyType type)
     {
-        if (type == EnemyType.Dot)
-        {
-            Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
-            newEnemy.is_hatched = true;
-            enemies.Add(newEnemy);
-        }
-        else if (type == EnemyType.Rhombus)
-        {
-            Rhombus newEnemy = Instantiate(rhombus, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Rhombus>();
-            newEnemy.is_hatched = true;
-            enemies.Add(newEnemy);
-        }
+        Enemy newEnemy = Instantiate(prefabDic[type2intDic[type]], new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Enemy>();
+        newEnemy.is_hatched = true;
+        enemies.Add(newEnemy);
     }
     public void HatchwithTarget(Vector2 pos, EnemyType type,Vector2 target)
     {
-        if (type == EnemyType.Dot)
-        {
-            Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
-            newEnemy.SetTarget(target);
-            newEnemy.is_hatched=true;
-            enemies.Add(newEnemy);
-        }
+        Enemy newEnemy = Instantiate(prefabDic[type2intDic[type]], new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Enemy>();
+        newEnemy.SetTarget(target);
+        newEnemy.is_hatched=true;
+        enemies.Add(newEnemy);
     }
+
+    public void HatchwithCenterRotate(Vector2 pos, EnemyType type,Enemy enemy)
+    {
+        Enemy newEnemy = Instantiate(prefabDic[type2intDic[type]], new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Enemy>();
+        newEnemy.SetCenterRotate(enemy);
+        newEnemy.is_hatched = true;
+        enemies.Add(newEnemy);
+    }
+
     public Vector3 RandomPositionOut()
     {
         float x, y;
