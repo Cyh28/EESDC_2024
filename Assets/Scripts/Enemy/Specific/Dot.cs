@@ -9,9 +9,10 @@ public class Dot : Enemy
     new void Start()
     {
         base.Start();
-        info.type=EnemyType.Dot;
+        info.type = EnemyType.Dot;
         info.hp = Constant.HpDic[info.type];
-        speed_rate = Constant.SpeedDic[info.type];
+        speed_rate = Constant.SpeedRateDic[info.type];
+        max_speed = Constant.MaxSpeedDic[info.type];
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];

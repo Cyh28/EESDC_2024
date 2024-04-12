@@ -35,7 +35,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     void Start()
     {
         ready = false;
-        GameControl gameC = GetComponent<GameControl>();
+        GameControl gameC = GameControl.GetInstance();
         ChangeLevel((int)gameC.gameLevel);
         base_control = BaseControl.GetInstance();
         rightUp = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
@@ -57,7 +57,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {8,dot},
         };
         StartCoroutine(GenerateAlong());
-        if((int)gameC.gameLevel==0)
+        if ((int)gameC.gameLevel == 0)
         {
             StartCoroutine(WaitTillClick());
         }
@@ -80,16 +80,16 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {
                 StartCoroutine(WaitFor(current_batches[batch_counter - 1].gap_time));
             }
-            if(batch_counter==batch_length&&enemies.Count==0)
+            if (batch_counter == batch_length && enemies.Count == 0)
             {
                 LoadNextLevel();
             }
         }
     }
-    
+
     IEnumerator WaitTillClick()
     {
-        while(!ready)
+        while (!ready)
         {
             yield return new WaitForSeconds(0.5f);
         }
@@ -198,7 +198,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         {
             if ((enemy.rb.position - pos).magnitude < Constant.speed_range)
             {
-                enemy.rb.velocity *= Constant.speed_mul;
+                enemy.max_speed *= Constant.speed_mul;
             }
         }
     }
@@ -217,13 +217,13 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             enemies.Add(newEnemy);
         }
     }
-    public void HatchwithTarget(Vector2 pos, EnemyType type,Vector2 target)
+    public void HatchwithTarget(Vector2 pos, EnemyType type, Vector2 target)
     {
         if (type == EnemyType.Dot)
         {
             Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
             newEnemy.SetTarget(target);
-            newEnemy.is_hatched=true;
+            newEnemy.is_hatched = true;
             enemies.Add(newEnemy);
         }
     }
@@ -273,7 +273,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     }
     private void LoadNextLevel()
     {
-        GetComponent<GameControl>().LoadNextLevel();
+        GameControl.GetInstance().LoadNextLevel();
         Destroy(gameObject);
     }
 }

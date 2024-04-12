@@ -7,6 +7,8 @@ public class BaseControl : SingletonMono<BaseControl>, IBase
     int health;
     int energy;
     int score;
+    public float timer = 0;
+    public int energyNaturalRate;
     public int originEnergy;
     // Start is called before the first frame update
     // IEnumerator UpdatePerSecond()
@@ -31,6 +33,15 @@ public class BaseControl : SingletonMono<BaseControl>, IBase
     // Update is called once per frame
     void Update()
     {
+        if (timer < 1)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            timer = 0;
+            AddEnergy(energyNaturalRate);
+        }
         // Debug.Log("Heath" + health);
         // Debug.Log("Energy" + energy);
         // Debug.Log("Score" + score);
@@ -50,6 +61,7 @@ public class BaseControl : SingletonMono<BaseControl>, IBase
         if (energy < costEnergy)
             return false;
         energy -= costEnergy;
+        GamingUIControl.GetInstance().UpdateEnergy();
         return true;
     }
     public int GetScore()
