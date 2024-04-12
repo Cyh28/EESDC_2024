@@ -1,0 +1,6 @@
+2021年4月版本谷歌思源字体，上传者：B站实况游戏的狐狸
+记得给个关注哦！@
+SourceHanSansCN.zip是Region Specific Subset OTFs Simplified Chinese (简体中文)
+SourceHanSansHC.zip是Language Specific OTFs Traditional Chinese — Hong Kong (繁體中文—香港)
+SourceHanSansHWJ.zip是Language Specific HW OTFs Japanese (日本語)
+SourceHanSansHWK.zip是Language Specific HW OTFs Korean (한국어)
