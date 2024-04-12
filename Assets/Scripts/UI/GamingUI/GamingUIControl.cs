@@ -55,13 +55,13 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
         switch (GameControl.GetInstance().gameLevel)
         {
             case GameLevel.Level1:
-                description.text = "day1";
+                description.text = "恒星陨落：夜幕降临，第一道光芒的残影褪去，几何生物开始涌入人类最后的边缘防线。";
                 break;
             case GameLevel.Level2:
-                description.text = "day1";
+                description.text = "孤星独升：遥远的宇宙边缘，一颗孤星照耀着人类最后的阵地，而黑暗的几何生物却在静候时机，准备撕碎人类最后的防线。";
                 break;
             case GameLevel.Level3:
-                description.text = "day1";
+                description.text = "光与影之镜：在星空笼罩的领域里，命运与光影交织，而几何生物的阴影在星辰的光芒下愈发凶猛，最后的希望岌岌可危";
                 break;
         }
         StartCoroutine(IWaitToStart());
@@ -69,7 +69,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     IEnumerator IWaitToStart()
     {
         shaderAnim.SetTrigger("ShowText");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         shaderAnim.SetTrigger("Disappear");
     }
     // Update is called once per frame
