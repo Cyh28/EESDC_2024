@@ -46,14 +46,14 @@ public class Constant : SingletonMono<Constant>
     public static Dictionary<int, float> waitDic;
     public static Dictionary<int, float> generateGapDic;
 
+    public static float pentagon_fire_gap_time;
     public static float pentagon_call_time;
     public static float pentagon_swim_time;
-    public static float pentagon_swim_stay_time;
-    public static float pentagon_swim_speed;
     public static float speed_decay;
     public static float speed_range;
     public static float speed_mul;
     public static float max_speed;
+    public static float pentagon_rotate_speed;
 
     new private void Awake()
     {
@@ -134,10 +134,10 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Hexagon,hexagonData.reward_energy},
         };
             speed_decay = enemyData.speed_decay;
+            pentagon_fire_gap_time = enemyData.pentagon_fire_gap_time;
+            pentagon_rotate_speed = enemyData.pentagon_rotate_speed;
             pentagon_call_time = enemyData.pentagon_call_time;
             pentagon_swim_time = enemyData.pentagon_swim_time;
-            pentagon_swim_stay_time = enemyData.pentagon_swim_stay_time;
-            pentagon_swim_speed = enemyData.pentagon_swim_speed;
             speed_range = enemyData.rhombus_speed_range;
             speed_mul = enemyData.rhombus_speed_mul;
             max_speed = enemyData.max_speed;

@@ -43,7 +43,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         left = leftDown.x;
         up = rightUp.y;
         down = leftDown.y;
-        ChangeLevel(0);
+        ChangeLevel(3);
         prefabDic = new Dictionary<int, Enemy>
         {
             {0,triangle },
@@ -144,8 +144,11 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {
                 SpeedUp(enemy.rb.position);
             }
-            base_control.AddEnergy(enemy.energy);
-            base_control.AddScore(enemy.score);
+            if (!enemy.is_hatched)
+            {
+                base_control.AddEnergy(enemy.energy);
+                base_control.AddScore(enemy.score);
+            }
             enemy.ani.SetTrigger("Die");
             enemies.Remove(enemy);
         }
@@ -186,11 +189,23 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         if (type == EnemyType.Dot)
         {
             Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
+            newEnemy.is_hatched = true;
             enemies.Add(newEnemy);
         }
         else if (type == EnemyType.Rhombus)
         {
             Rhombus newEnemy = Instantiate(rhombus, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Rhombus>();
+            newEnemy.is_hatched = true;
+            enemies.Add(newEnemy);
+        }
+    }
+    public void HatchwithTarget(Vector2 pos, EnemyType type,Vector2 target)
+    {
+        if (type == EnemyType.Dot)
+        {
+            Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
+            newEnemy.SetTarget(target);
+            newEnemy.is_hatched=true;
             enemies.Add(newEnemy);
         }
     }

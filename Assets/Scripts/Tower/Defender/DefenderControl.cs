@@ -31,7 +31,7 @@ public class DefenderControl : TowerBase
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log("health:" + health);
+        Debug.Log("health:" + health);
         SearchForEnemy();
         // Debug.Log(chargingState);
     }
