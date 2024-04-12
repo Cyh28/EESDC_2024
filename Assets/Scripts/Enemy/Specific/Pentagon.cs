@@ -81,11 +81,12 @@ public class Pentagon : Enemy
             while (true)
             {
                 target = new Vector2(Range(left * ratio, right * ratio), Range(down * ratio, up * ratio));
-                if (target.magnitude>4f && target.magnitude<7f && (target-rb.position).magnitude<7f)
+                if (target.magnitude>4f && target.magnitude<6f && (target-rb.position).magnitude>1f)
                     break;
             }
             SetTarget(target);
             yield return new WaitForSeconds(pentagon_swim_time);
+            rb.velocity *= 0.3f;
         }
     }
     private void SearchforTower()

@@ -157,7 +157,7 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         Vector3 position;
         for (int i = 0; i < num; i++)
         {
-            if (index == 3 || index == 5) //hexagon and swim pentagon
+            if (index == 5) //hexagon and swim pentagon
                 position = RandomPositionIn();
             else
                 position = RandomPositionOut();
