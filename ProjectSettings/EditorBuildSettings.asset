@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gaming_hzf.unity
     guid: 6f4f07fc0f6abf748a1d54e0a68b2cc4
+  - enabled: 1
+    path: Assets/Scenes/Dialogue.unity
+    guid: 2f959b1f1ef342242aa9b363dc9bf484
+  - enabled: 1
+    path: Assets/Scenes/Guide.unity
+    guid: a2937eeca53d1654cbcc982a1d8178d1
   m_configObjects: {}

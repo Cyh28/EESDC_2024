@@ -35,8 +35,7 @@ public class UIMain : MonoBehaviour
     }
     public void GameHelp(GameObject Helppanel)
     {
-        Helppanel.SetActive(true);
-        panelGamestart.SetActive(false);
+        SceneManager.LoadScene("Dialogue");
     }
     public void GameExit()
     {

@@ -25,8 +25,8 @@ public class GameControl : SingletonDontDestory<GameControl>
     // Start is called before the first frame update
     void Start()
     {
-        gameState = GameState.MainMenu;
-        gameLevel = GameLevel.NoneGameLevel;
+        // gameState = GameState.MainMenu;
+        // gameLevel = GameLevel.NoneGameLevel;
     }
 
     // Update is called once per frame

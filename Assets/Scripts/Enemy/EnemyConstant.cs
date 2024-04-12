@@ -38,8 +38,10 @@ public class Constant : SingletonMono<Constant>
     public EnemyData enemyData;
 
     public static Dictionary<EnemyType, int> HpDic;
-    public static Dictionary<EnemyType, float> SpeedDic;
+    public static Dictionary<EnemyType, float> SpeedRateDic;
+    public static Dictionary<EnemyType, float> MaxSpeedDic;
     public static Dictionary<EnemyType, int> DamageDic;
+
     public static Dictionary<EnemyType, int> ScoreDic;
     public static Dictionary<EnemyType, int> EnergyDic;
     public static Dictionary<int, Batch[]> LevelDic;
@@ -52,7 +54,7 @@ public class Constant : SingletonMono<Constant>
     public static float speed_decay;
     public static float speed_range;
     public static float speed_mul;
-    public static float max_speed;
+    public static float speed_rate;
     public static float pentagon_rotate_speed;
 
     new private void Awake()
@@ -78,7 +80,7 @@ public class Constant : SingletonMono<Constant>
             {2,levelData_2.batches},
             {3,levelData_3.batches},
         };
-            HpDic = new Dictionary<EnemyType, int>
+        HpDic = new Dictionary<EnemyType, int>
         {
             {EnemyType.Triangle, triangleData.hp },
             {EnemyType.Dot, dotData.hp},
@@ -89,18 +91,29 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.hp},
             {EnemyType.Hexagon,hexagonData.hp},
         };
-            SpeedDic = new Dictionary<EnemyType, float>
+        MaxSpeedDic = new Dictionary<EnemyType, float>
         {
-            {EnemyType.Triangle, triangleData.speed},
-            {EnemyType.Dot, dotData.speed},
-            {EnemyType.Square, squareData.speed },
-            {EnemyType.Circle,circleData.speed},
-            {EnemyType.Pentagon ,pentagonData.speed},
-            {EnemyType.Rhombus ,rhombusData.speed},
-            {EnemyType.Star,starData.speed},
-            {EnemyType.Hexagon,hexagonData.speed},
+            {EnemyType.Triangle, triangleData.max_speed},
+            {EnemyType.Dot, dotData.max_speed},
+            {EnemyType.Square, squareData.max_speed },
+            {EnemyType.Circle,circleData.max_speed},
+            {EnemyType.Pentagon ,pentagonData.max_speed},
+            {EnemyType.Rhombus ,rhombusData.max_speed},
+            {EnemyType.Star,starData.max_speed},
+            {EnemyType.Hexagon,hexagonData.max_speed},
         };
-            DamageDic = new Dictionary<EnemyType, int>
+        SpeedRateDic = new Dictionary<EnemyType, float>
+        {
+            {EnemyType.Triangle, triangleData.speed_rate},
+            {EnemyType.Dot, dotData.speed_rate},
+            {EnemyType.Square, squareData.speed_rate },
+            {EnemyType.Circle,circleData.speed_rate},
+            {EnemyType.Pentagon ,pentagonData.speed_rate},
+            {EnemyType.Rhombus ,rhombusData.speed_rate},
+            {EnemyType.Star,starData.speed_rate},
+            {EnemyType.Hexagon,hexagonData.speed_rate},
+        };
+        DamageDic = new Dictionary<EnemyType, int>
         {
             {EnemyType.Triangle, triangleData.damage},
             {EnemyType.Dot, dotData.damage},
@@ -111,7 +124,7 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.damage},
             {EnemyType.Hexagon,hexagonData.damage},
         };
-            ScoreDic = new Dictionary<EnemyType, int>
+        ScoreDic = new Dictionary<EnemyType, int>
         {
             {EnemyType.Triangle, triangleData.reward_score},
             {EnemyType.Dot, dotData.reward_score},
@@ -122,7 +135,7 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.reward_score},
             {EnemyType.Hexagon,hexagonData.reward_score},
         };
-            EnergyDic = new Dictionary<EnemyType, int>
+        EnergyDic = new Dictionary<EnemyType, int>
         {
             {EnemyType.Triangle, triangleData.reward_energy},
             {EnemyType.Dot, dotData.reward_energy},
@@ -133,13 +146,12 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Star,starData.reward_energy},
             {EnemyType.Hexagon,hexagonData.reward_energy},
         };
-            speed_decay = enemyData.speed_decay;
-            pentagon_fire_gap_time = enemyData.pentagon_fire_gap_time;
-            pentagon_rotate_speed = enemyData.pentagon_rotate_speed;
-            pentagon_call_time = enemyData.pentagon_call_time;
-            pentagon_swim_time = enemyData.pentagon_swim_time;
-            speed_range = enemyData.rhombus_speed_range;
-            speed_mul = enemyData.rhombus_speed_mul;
-            max_speed = enemyData.max_speed;
-        }
+        speed_decay = enemyData.speed_decay;
+        pentagon_fire_gap_time = enemyData.pentagon_fire_gap_time;
+        pentagon_rotate_speed = enemyData.pentagon_rotate_speed;
+        pentagon_call_time = enemyData.pentagon_call_time;
+        pentagon_swim_time = enemyData.pentagon_swim_time;
+        speed_range = enemyData.rhombus_speed_range;
+        speed_mul = enemyData.rhombus_speed_mul;
+    }
 }

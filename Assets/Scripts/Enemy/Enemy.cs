@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public int damage;
     public int score;
     public int energy;
-    public bool isDead=false;
+    public bool isDead = false;
     private bool niubi = true;
     private bool attack_mode = false;
     private bool attack_base = false;
@@ -36,13 +36,12 @@ public class Enemy : MonoBehaviour, IEnemy
     public bool givenBirth = false;
     public int index;
     public bool is_hatched = false;
-    
+
     protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.angularVelocity = 128;
         baseC = BaseControl.GetInstance();
-        max_speed = Constant.max_speed;
         ani = GetComponent<Animator>();
         attackCD = 1f;
         StartCoroutine(DisableCollidefor(0.1f));
@@ -82,9 +81,8 @@ public class Enemy : MonoBehaviour, IEnemy
         if (!attack_mode)
         {
             Vector2 r = new Vector2(target.x - transform.position.x, target.y - transform.position.y);
-            float norm = r.magnitude;
-            if (rb.velocity.magnitude < max_speed)
-                rb.AddForce(r / norm * speed_rate);
+            if ((rb.velocity.normalized - r.normalized).magnitude > 0.1f || rb.velocity.magnitude < max_speed)
+                rb.AddForce(r.normalized * speed_rate);
         }
     }
     public void SetTarget(Vector2 place)
@@ -109,7 +107,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public void TakeDamage(int damage)
     {
         ani.SetTrigger("Injured");
-        if(!niubi)
+        if (!niubi)
             info.hp -= damage;
     }
     public void Pushed(Vector2 direction, float val)
@@ -144,7 +142,7 @@ public class Enemy : MonoBehaviour, IEnemy
                 attackCDTimer = attackCD;
             }
         }
-        attack_sheild = attack_base = attack_tower = false;
+        attack_mode = attack_sheild = attack_base = attack_tower = false;
     }
     public void OnCollisionStay2D(Collision2D other)
     {
