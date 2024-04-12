@@ -16,6 +16,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     public GameObject energyIcon;
     Dictionary<TowerType, Tuple<TextMeshProUGUI, TextMeshProUGUI>> towerText = new Dictionary<TowerType, Tuple<TextMeshProUGUI, TextMeshProUGUI>>();
     bool energyIconPlaying;
+    Animator shaderAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,6 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
         scoreText = transform.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         foreach (TowerType towerType in Enum.GetValues(typeof(TowerType)))
         {
-            Debug.Log(towerType.ToString() + "Button");
             if (towerType == TowerType.None)
                 continue;
             towerText.Add(towerType, new Tuple<TextMeshProUGUI, TextMeshProUGUI>(
@@ -34,15 +34,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
                 transform.Find("SideBar").Find(towerType.ToString() + "Button").Find("TowerCost").GetComponent<TextMeshProUGUI>()));
         }
         if (ParaDefine.GetInstance().towerData.Count == 0)
-        {
             ParaDefine.GetInstance().InitializeTowerData();
-        }
-        foreach (TowerType towerType in Enum.GetValues(typeof(TowerType)))
-        {
-            if (towerType == TowerType.None)
-                continue;
-            Debug.Log(ParaDefine.GetInstance().towerData.Count);
-        }
         foreach (TowerType towerType in Enum.GetValues(typeof(TowerType)))
         {
             if (towerType == TowerType.None)
@@ -50,8 +42,20 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
             towerText[towerType].Item1.text = towerType.ToString();
             towerText[towerType].Item2.text = ParaDefine.GetInstance().towerData[towerType].cost.ToString();
         }
+        shaderAnim = transform.Find("LevelShader").GetComponent<Animator>();
+        WaitToStart();
     }
 
+    public void WaitToStart()
+    {
+        StartCoroutine(IWaitToStart());
+    }
+    IEnumerator IWaitToStart()
+    {
+        shaderAnim.SetTrigger("ShowText");
+        yield return new WaitForSeconds(2);
+        shaderAnim.SetTrigger("Disappear");
+    }
     // Update is called once per frame
     void Update()
     {

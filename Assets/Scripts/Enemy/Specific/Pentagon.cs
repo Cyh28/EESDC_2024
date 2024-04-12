@@ -9,7 +9,7 @@ public class Pentagon : Enemy
     private EnemyManager manager;
 
     private bool rotate_mode = false;
-    private float pentagon_call_time;
+    public float pentagon_call_time;
     private float rotate_direction = 0f;
     private float rotate_speed = 0f;
 
@@ -45,6 +45,7 @@ public class Pentagon : Enemy
         {
             rotate_mode = true;
             rotate_speed = Constant.pentagon_rotate_speed;
+            Debug.Log("penta:" + pentagon_call_time);
             pentagon_call_time = Constant.pentagon_call_time;
             if (UnityEngine.Random.value < 0.5f)
                 rotate_direction = 1f;
