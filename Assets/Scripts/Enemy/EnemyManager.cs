@@ -39,21 +39,22 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         base_control = BaseControl.GetInstance();
         rightUp = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         leftDown = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        right = rightUp.x + 5;
-        left = leftDown.x - 5;
-        up = rightUp.y + 5;
-        down = leftDown.y - 5;
-        ChangeLevel(1);
+        right = rightUp.x;
+        left = leftDown.x;
+        up = rightUp.y;
+        down = leftDown.y;
+        ChangeLevel(0);
         prefabDic = new Dictionary<int, Enemy>
         {
             {0,triangle },
-            {1,dot},
+            {1,circle},
             {2,square},
-            {3,circle},
+            {3,hexagon},
             {4,rhombus },
-            {5,pentagon },
-            {6,hexagon},
+            {5,pentagon }, //swim
+            {6,pentagon }, //rotate
             {7,star},
+            {8,dot},
         };
         StartCoroutine(GenerateAlong());
         StartCoroutine(WaitTillReady(current_wait_time));
@@ -63,7 +64,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     void Update()
     {
         CheckHp();
-        // Debug.Log(batch_counter);
         if (ready)
         {
             ready = false;
@@ -89,9 +89,9 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         {
             count++;
             yield return new WaitForSeconds(current_generate_gap_time);
-            for (int i = 0; i < num_line + count % 4; i++)
+            for (int i = 0; i < num_line + count % 3; i++)
             {
-                int randomValue = UnityEngine.Random.Range(0, 4);
+                int randomValue = UnityEngine.Random.Range(0, 3);
                 GenerateEnemy(randomValue, 1);
                 yield return new WaitForSeconds(0.2f);
             }
@@ -101,29 +101,37 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     }
     IEnumerator GenerateBatch(Batch batch)
     {
+        float sec = 0.5f;
         GenerateEnemy(0, batch.triangle_num);
-        yield return new WaitForSeconds(1f);
-        GenerateEnemy(1, batch.dot_num);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(sec);
+        GenerateEnemy(1, batch.circle_num);
+        yield return new WaitForSeconds(sec);
         GenerateEnemy(2, batch.square_num);
-        yield return new WaitForSeconds(1f);
-        GenerateEnemy(3, batch.circle_num);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(sec);
+        GenerateEnemy(3, batch.hexagon_num);
+        yield return new WaitForSeconds(sec);
         GenerateEnemy(4, batch.rhombus_num);
-        yield return new WaitForSeconds(1f);
-        GenerateEnemy(5, batch.pentagon_num);
-        yield return new WaitForSeconds(1f);
-        GenerateEnemy(6, batch.hexagon_num);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(sec);
+        GenerateEnemy(5, batch.swim_pentagon_num);
+        yield return new WaitForSeconds(sec);
+        GenerateEnemy(6, batch.rotate_pentagon_num);
+        yield return new WaitForSeconds(sec);
         GenerateEnemy(7, batch.star_num);
+        yield return new WaitForSeconds(sec);
+        GenerateEnemy(8, batch.dot_num);
     }
 
     void GenerateEnemy(int index, int num)
     {
+        Vector3 position;
         for (int i = 0; i < num; i++)
         {
-            Vector3 position = RandomPosition();
+            if (index == 3||index== 5) //hexagon and swim pentagon
+                position = RandomPositionIn();
+            else
+                position = RandomPositionOut();
             Enemy newEnemy = Instantiate(prefabDic[index], position, Quaternion.identity);
+            newEnemy.index = index;
             enemies.Add(newEnemy);
         }
     }
@@ -150,12 +158,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             if (enemy.info.hp <= 0)
             {
                 RemoveEnemy(enemy);
-            }
-            else if (enemy.info.type == EnemyType.Hexagon && enemy.info.hp <= Constant.HpDic[EnemyType.Hexagon] / 2 && enemy.givenBirth == false)
-            {
-                enemy.givenBirth = true;
-                Hatch(enemy.rb.position, EnemyType.Rhombus);
-                Hatch(enemy.rb.position, EnemyType.Rhombus);
             }
         }
     }
@@ -184,31 +186,43 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         if (type == EnemyType.Dot)
         {
             Dot newEnemy = Instantiate(dot, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Dot>();
-            Vector2 target = new Vector2(UnityEngine.Random.Range(pos.x - 2f, pos.x + 2f), UnityEngine.Random.Range(pos.y - 2f, pos.y + 2f));
-            newEnemy.SetTarget(target);
             enemies.Add(newEnemy);
         }
         else if (type == EnemyType.Rhombus)
         {
             Rhombus newEnemy = Instantiate(rhombus, new Vector3(pos.x, pos.y, 0), Quaternion.identity).GetComponent<Rhombus>();
-            Vector2 target = new Vector2(UnityEngine.Random.Range(pos.x - 2f, pos.x + 2f), UnityEngine.Random.Range(pos.y - 2f, pos.y + 2f));
-            newEnemy.SetTarget(target);
             enemies.Add(newEnemy);
         }
     }
-    Vector3 RandomPosition()
+    public Vector3 RandomPositionOut()
     {
         float x, y;
-        x = UnityEngine.Random.Range(left - 5, right + 5);
-        if (x < left || x > right)
-            y = UnityEngine.Random.Range(down - 5, up + 5);
+        int gap = 3;
+        x = UnityEngine.Random.Range(left - gap, right + gap);
+        if (x < left-1 || x > right+1)
+            y = UnityEngine.Random.Range(down - gap, up + gap);
         else
         {
             if (UnityEngine.Random.value < 0.5f)
-                y = UnityEngine.Random.Range(down - 5, down);
+                y = UnityEngine.Random.Range(down - gap, down-1);
             else
-                y = UnityEngine.Random.Range(up, up + 5);
+                y = UnityEngine.Random.Range(up+1, up + gap);
         }
+        return new Vector3(x, y, 0);
+    }
+
+    public Vector3 RandomPositionIn()
+    {
+        float x, y;
+        float ratio = 2f / 3f;
+        if (UnityEngine.Random.value < 0.5f)
+            x = UnityEngine.Random.Range((left+1), (left+1) * ratio);
+        else
+            x = UnityEngine.Random.Range((right-1)*ratio  , (right-1));
+        if (UnityEngine.Random.value < 0.5f)
+            y = UnityEngine.Random.Range((down+1), (down + 1) * ratio);
+        else
+            y = UnityEngine.Random.Range((up-1)*ratio, (up-1));
         return new Vector3(x, y, 0);
     }
     public void ChangeLevel(int level)
