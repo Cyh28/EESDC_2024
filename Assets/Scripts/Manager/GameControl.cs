@@ -17,6 +17,7 @@ public enum GameLevel
     Level2,
     Level3,
 }
+
 public class GameControl : SingletonDontDestory<GameControl>
 {
     public GameState gameState;
