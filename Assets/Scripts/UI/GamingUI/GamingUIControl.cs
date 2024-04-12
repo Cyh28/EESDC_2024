@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class GamingUIControl : SingletonMono<GamingUIControl>
 {
     public Slider healthBar;
-    public TextMeshProUGUI healthText, energyText, scoreText;
+    public TextMeshProUGUI healthText, energyText, scoreText, description, day;
     public AnimationCurve animationCurve;
     public float animationTime;
     public GameObject energyIcon;
@@ -41,19 +41,35 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
                 continue;
             towerText[towerType].Item1.text = towerType.ToString();
             towerText[towerType].Item2.text = ParaDefine.GetInstance().towerData[towerType].cost.ToString();
+            // towerText[towerType].Item1.fontSize
         }
         shaderAnim = transform.Find("LevelShader").GetComponent<Animator>();
+        day = transform.Find("LevelShader").Find("Day").GetComponent<TextMeshProUGUI>();
+        description = transform.Find("LevelShader").Find("Description").GetComponent<TextMeshProUGUI>();
         WaitToStart();
     }
 
     public void WaitToStart()
     {
+        day.text = "Day " + (int)GameControl.GetInstance().gameLevel;
+        switch (GameControl.GetInstance().gameLevel)
+        {
+            case GameLevel.Level1:
+                description.text = "恒星陨落：夜幕降临，第一道光芒的残影褪去，几何生物开始涌入人类最后的边缘防线。";
+                break;
+            case GameLevel.Level2:
+                description.text = "孤星独升：遥远的宇宙边缘，一颗孤星照耀着人类最后的阵地，而黑暗的几何生物却在静候时机，准备撕碎人类最后的防线。";
+                break;
+            case GameLevel.Level3:
+                description.text = "光与影之镜：在星空笼罩的领域里，命运与光影交织，而几何生物的阴影在星辰的光芒下愈发凶猛，最后的希望岌岌可危";
+                break;
+        }
         StartCoroutine(IWaitToStart());
     }
     IEnumerator IWaitToStart()
     {
         shaderAnim.SetTrigger("ShowText");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         shaderAnim.SetTrigger("Disappear");
     }
     // Update is called once per frame
