@@ -46,6 +46,7 @@ public class Constant : SingletonMono<Constant>
     public static Dictionary<EnemyType, int> EnergyDic;
     public static Dictionary<int, Batch[]> LevelDic;
 
+    public static float hexagon_call_time;
     public static float pentagon_fire_gap_time;
     public static float pentagon_call_time;
     public static float pentagon_swim_time;
@@ -131,6 +132,7 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Hexagon,hexagonData.reward_energy},
         };
         speed_decay = enemyData.speed_decay;
+        hexagon_call_time=enemyData.hexagon_call_time;
         pentagon_fire_gap_time = enemyData.pentagon_fire_gap_time;
         pentagon_rotate_speed = enemyData.pentagon_rotate_speed;
         pentagon_call_time = enemyData.pentagon_call_time;

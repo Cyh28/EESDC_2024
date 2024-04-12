@@ -9,6 +9,7 @@ using static UnityEditor.PlayerSettings;
 public class Hexagon : Enemy
 {
     private EnemyManager manager;
+    private float hexagon_call_time;
     new void Start()
     {
         base.Start();
@@ -20,11 +21,20 @@ public class Hexagon : Enemy
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
+        hexagon_call_time = Constant.hexagon_call_time;
+        StartCoroutine(StartHatch());
+    }
+    IEnumerator StartHatch()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(hexagon_call_time);
+            manager.Hatch(rb.position, EnemyType.Dot);
+        }
     }
     new void Update()
     {
         base.Update();
-        manager.HatchwithCenterRotate(rb.position, EnemyType.Dot, this);
     }
     public void SelfDestroy()
     {
