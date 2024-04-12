@@ -8,6 +8,5 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     public float wait_time;
-    public float generate_gap_time;
     public Batch[] batches;
 }
