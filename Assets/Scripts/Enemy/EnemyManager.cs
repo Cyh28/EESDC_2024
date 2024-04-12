@@ -171,10 +171,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     {
         if (enemies.Contains(enemy))
         {
-            if (enemy.info.type == EnemyType.Rhombus)
-            {
-                SpeedUp(enemy.rb.position);
-            }
             if (!enemy.is_hatched)
             {
                 base_control.AddEnergy(enemy.energy);
@@ -204,16 +200,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             enemyInfos.Add(enemy.info);
         }
         return enemyInfos;
-    }
-    public void SpeedUp(Vector2 pos)
-    {
-        foreach (Enemy enemy in enemies)
-        {
-            if ((enemy.rb.position - pos).magnitude < Constant.speed_range)
-            {
-                enemy.max_speed *= Constant.speed_mul;
-            }
-        }
     }
     public void Hatch(Vector2 pos, EnemyType type)
     {
