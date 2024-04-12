@@ -33,7 +33,7 @@ public class Main : MonoBehaviour, IPointerUpHandler
         Self = this;
         var guideMask = FindObjectOfType<GuideMask>();
         guideMask.Init();
-        GuideMask.Self.Play(Target1);
+        GuideMask.Self.Play(Target1, true);
 
     }
 

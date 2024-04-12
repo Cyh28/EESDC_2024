@@ -21,7 +21,7 @@ public class GuideMask : MaskableGraphic, ICanvasRaycastFilter
         gameObject.SetActive(false);
     }
 
-    public void Play(RectTransform target)
+    public void Play(RectTransform target, bool isTower = false)
     {
         gameObject.SetActive(true);
 
@@ -34,16 +34,30 @@ public class GuideMask : MaskableGraphic, ICanvasRaycastFilter
             Close();
             return;
         }
-        _targetArea.anchorMax = target.anchorMax;
-        _targetArea.anchorMin = target.anchorMin;
-        _targetArea.anchoredPosition = target.anchoredPosition;
-        _targetArea.anchoredPosition3D = target.anchoredPosition3D;
-        _targetArea.offsetMax = target.offsetMax;
-        _targetArea.offsetMin = target.offsetMin;
-        _targetArea.pivot = target.pivot;
-        _targetArea.sizeDelta = target.sizeDelta;
-        _targetArea.localPosition = localPoint;
-
+        if (isTower)
+        {
+            _targetArea.anchorMax = new Vector2(target.anchorMax.x, target.anchorMax.y * target.transform.parent.GetComponent<RectTransform>().anchorMax.y);
+            _targetArea.anchorMin = new Vector2(target.anchorMin.x, target.anchorMin.y * target.transform.parent.GetComponent<RectTransform>().anchorMax.y);
+            _targetArea.anchoredPosition = target.anchoredPosition;
+            _targetArea.anchoredPosition3D = target.anchoredPosition3D;
+            _targetArea.offsetMax = Vector2.zero;
+            _targetArea.offsetMin = Vector2.zero;
+            _targetArea.pivot = target.pivot;
+            _targetArea.sizeDelta = target.sizeDelta;
+            _targetArea.localPosition = localPoint;
+        }
+        else
+        {
+            _targetArea.anchorMax = target.anchorMax;
+            _targetArea.anchorMin = target.anchorMin;
+            _targetArea.anchoredPosition = target.anchoredPosition;
+            _targetArea.anchoredPosition3D = target.anchoredPosition3D;
+            _targetArea.offsetMax = target.offsetMax;
+            _targetArea.offsetMin = target.offsetMin;
+            _targetArea.pivot = target.pivot;
+            _targetArea.sizeDelta = target.sizeDelta;
+            _targetArea.localPosition = localPoint;
+        }
         _targetArea.ForceUpdateRectTransforms();
         _target = _targetArea;
         _target.ForceUpdateRectTransforms();
