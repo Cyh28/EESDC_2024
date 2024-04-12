@@ -74,14 +74,14 @@ public class Pentagon : Enemy
     }
     IEnumerator StartSwim()
     {
-        float ratio = 0.8f;
+        float ratio = 0.5f;
         Vector2 target;
         while (true)
         {
             while (true)
             {
                 target = new Vector2(Range(left * ratio, right * ratio), Range(down * ratio, up * ratio));
-                if ((rb.position - target).magnitude > 6f)
+                if (target.magnitude>4f && target.magnitude<7f && (target-rb.position).magnitude<7f)
                     break;
             }
             SetTarget(target);
