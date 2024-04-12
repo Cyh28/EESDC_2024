@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RhombusData
   m_EditorClassIdentifier: 
   hp: 50
-  speed_rate: 1
+  speed_rate: 0.2
   damage: 1
   reward_score: 45
   reward_energy: 45
-  max_speed: 2.3
+  max_speed: 1.2

@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   speed_decay: 0.9
-  hexagon_call_time: 1.5
-  rhombus_speed_range: 5
-  rhombus_speed_mul: 1.2
-  pentagon_fire_gap_time: 2
+  hexagon_call_time: 1
+  rhombus_speed_mul: 2
+  pentagon_fire_gap_time: 1.5
   pentagon_rotate_speed: 10
-  pentagon_call_time: 2
+  pentagon_call_time: 1.5
   pentagon_swim_time: 4

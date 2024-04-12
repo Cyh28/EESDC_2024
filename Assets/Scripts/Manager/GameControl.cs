@@ -56,6 +56,6 @@ public class GameControl : SingletonDontDestory<GameControl>
     }
     void ShowWinPanel()
     {
-
+        GamingUIControl.GetInstance().ShowWinPanel();
     }
 }

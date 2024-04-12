@@ -5,6 +5,7 @@ using System.Data;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GamingUIControl : SingletonMono<GamingUIControl>
@@ -16,7 +17,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     public GameObject energyIcon;
     Dictionary<TowerType, Tuple<TextMeshProUGUI, TextMeshProUGUI>> towerText = new Dictionary<TowerType, Tuple<TextMeshProUGUI, TextMeshProUGUI>>();
     bool energyIconPlaying;
-    Animator shaderAnim;
+    Animator shaderAnim, winAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -150,5 +151,16 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     {
         if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().chargerData.cost)
             PlayerControl.GetInstance().holdingCharger = true;
+    }
+    public void ShowWinPanel()
+    {
+        winAnim = transform.Find("WinShader").GetComponent<Animator>();
+        winAnim.SetTrigger("WinText");
+        StartCoroutine(delaybackMenu());
+    }
+    IEnumerator delaybackMenu()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("MainUI");
     }
 }
