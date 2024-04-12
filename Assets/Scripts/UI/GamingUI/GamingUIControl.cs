@@ -41,6 +41,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
                 continue;
             towerText[towerType].Item1.text = towerType.ToString();
             towerText[towerType].Item2.text = ParaDefine.GetInstance().towerData[towerType].cost.ToString();
+            // towerText[towerType].Item1.fontSize
         }
         shaderAnim = transform.Find("LevelShader").GetComponent<Animator>();
         WaitToStart();
