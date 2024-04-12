@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284fac10e414df0478386aba0077af81, type: 3}
   m_Name: LevelData_2
   m_EditorClassIdentifier: 
+  wait_time: 1
+  generate_gap_time: 1
   batches:
   - triangle_num: 1
     square_num: 1
@@ -21,6 +23,7 @@ MonoBehaviour:
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
+    gap_time: 0
   - triangle_num: 2
     square_num: 2
     circle_num: 2
@@ -29,6 +32,7 @@ MonoBehaviour:
     hexagon_num: 2
     rhombus_num: 2
     star_num: 0
+    gap_time: 0
   - triangle_num: 3
     square_num: 3
     circle_num: 3
@@ -37,6 +41,7 @@ MonoBehaviour:
     hexagon_num: 3
     rhombus_num: 3
     star_num: 0
+    gap_time: 0
   - triangle_num: 4
     square_num: 4
     circle_num: 4
@@ -45,3 +50,4 @@ MonoBehaviour:
     hexagon_num: 4
     rhombus_num: 4
     star_num: 4
+    gap_time: 0

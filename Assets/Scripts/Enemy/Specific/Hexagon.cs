@@ -5,19 +5,28 @@ using UnityEngine;
 
 public class Hexagon : Enemy
 {
+    private EnemyManager manager;
     new void Start()
     {
         base.Start();
+        manager=EnemyManager.GetInstance();
         info.type = EnemyType.Hexagon;
         info.hp = Constant.HpDic[info.type];
         speed_rate = Constant.SpeedDic[info.type];
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
+        //避免和塔碰撞
+        StartCoroutine(Fixed());
+    }
+    IEnumerator Fixed()
+    {
+        yield return new WaitForSeconds(1f);
+        rb.velocity *= 0;
     }
     new void Update()
     {
-        base.Update();
+        
     }
     public void SelfDestroy()
     {
