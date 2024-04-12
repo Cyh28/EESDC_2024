@@ -16,6 +16,7 @@ public class DetonationControl : MonoBehaviour
     {
         yield return new WaitForSeconds(ParaDefine.GetInstance().detonationData.explodeTime);
         entity.SetActive(false);
+        TowerManager.GetInstance().RemoveTower(transform.position);
         Trigger();
     }
     void Trigger()

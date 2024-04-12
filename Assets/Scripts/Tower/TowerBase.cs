@@ -15,6 +15,7 @@ public class TowerBase : MonoBehaviour
         health -= damage;
         if (health < 0)
         {
+            TowerManager.GetInstance().RemoveTower(transform.position);
             Destroy(gameObject);
         }
     }
