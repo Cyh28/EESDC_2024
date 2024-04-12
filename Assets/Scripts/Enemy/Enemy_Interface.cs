@@ -23,7 +23,10 @@ public struct Batch
     public int hexagon_num;
     public int rhombus_num;
     public int star_num;
-    public float gap_time;
+    public bool is_continuous;
+    public float exist_time;
+    public int sum()
+    { return triangle_num+square_num+circle_num+dot_num+swim_pentagon_num+rotate_pentagon_num+hexagon_num+rhombus_num+star_num; }
 };
 
 public interface IEnemy
