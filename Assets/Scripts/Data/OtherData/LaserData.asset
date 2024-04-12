@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53baec5efbf8143488d417aeb9b3f5dc, type: 3}
   m_Name: LaserData
   m_EditorClassIdentifier: 
-  damage: 1e0000002800000032000000
+  damage: 090000000c0000000f000000
   speed:
   - 10
-  - 15
-  - 20
+  - 18
+  - 25
   lifeTime: 5

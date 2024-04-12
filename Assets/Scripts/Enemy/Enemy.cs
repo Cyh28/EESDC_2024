@@ -106,9 +106,14 @@ public class Enemy : MonoBehaviour, IEnemy
     }
     public void TakeDamage(int damage)
     {
-        ani.SetTrigger("Injured");
         if (!niubi)
             info.hp -= damage;
+        if (info.hp <= 0)
+        {
+            ani.SetTrigger("Die");
+            return;
+        }
+        ani.SetTrigger("Injured");
     }
     public void Pushed(Vector2 direction, float val)
     {
