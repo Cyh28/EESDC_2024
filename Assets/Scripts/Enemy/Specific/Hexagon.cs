@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System.Buffers.Text;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Hexagon : Enemy
 {
@@ -9,24 +12,17 @@ public class Hexagon : Enemy
     new void Start()
     {
         base.Start();
-        manager=EnemyManager.GetInstance();
         info.type = EnemyType.Hexagon;
+        manager = EnemyManager.GetInstance();
         info.hp = Constant.HpDic[info.type];
         speed_rate = Constant.SpeedDic[info.type];
         damage = Constant.DamageDic[info.type];
         score = Constant.ScoreDic[info.type];
         energy = Constant.EnergyDic[info.type];
-        //避免和塔碰撞
-        StartCoroutine(Fixed());
-    }
-    IEnumerator Fixed()
-    {
-        yield return new WaitForSeconds(1f);
-        rb.velocity *= 0;
     }
     new void Update()
     {
-        
+        base.Update();
     }
     public void SelfDestroy()
     {
