@@ -1221,7 +1221,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &739959648
+--- !u!224 &759853763 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3608041643451911554, guid: fcf786770eeaeab4fb6c7f08bfc8a8b2, type: 3}
+  m_PrefabInstance: {fileID: 4840548502482436814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!43 &764757755
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1386,11 +1391,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!224 &759853763 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3608041643451911554, guid: fcf786770eeaeab4fb6c7f08bfc8a8b2, type: 3}
-  m_PrefabInstance: {fileID: 4840548502482436814}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &788116433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,7 +1787,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1315667722}
   selectedCommands:
-  - {fileID: 1315667792}
+  - {fileID: 1315667765}
   variables:
   - {fileID: 1315667728}
   description: 
@@ -2437,7 +2437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 37
   indentLevel: 0
-  storyText: "\u73B0\u5728\u51C6\u5907\u5F00\u59CB\u6307\u6325\u4F5C\u6218\u5427\uFF01"
+  storyText: "\u73B0\u5728\u51C6\u5907\u5F00\u59CB\u8BBE\u8BA1\u9635\u578B\uFF0C\u6307\u6325\u4F5C\u6218\u5427\uFF01"
   description: 
   character: {fileID: 613847967}
   portrait: {fileID: 21300000, guid: 6976560513dc2ef40859b5640b76a114, type: 3}
@@ -4055,6 +4055,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 51140140261294714, guid: fcf786770eeaeab4fb6c7f08bfc8a8b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 227773378378554637, guid: fcf786770eeaeab4fb6c7f08bfc8a8b2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
