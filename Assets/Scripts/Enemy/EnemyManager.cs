@@ -69,11 +69,10 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             {EnemyType.Dot,8},
         };
         if ((int)gameC.gameLevel == 0)
-        {
             StartCoroutine(WaitTillClick());
-        }
         else
-            StartCoroutine(WaitFor(current_wait_time));
+            StartCoroutine(WaitTillLevelStart());
+        StartCoroutine(WaitFor(current_wait_time));
     }
 
     // Update is called once per frame
@@ -100,6 +99,15 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         while (!ready)
         {
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    IEnumerator WaitTillLevelStart()
+    {
+        while(!ready)
+        {
+            yield return new WaitForSeconds(0.5f);
+            ready = GameControl.GetInstance().levelStart;
         }
     }
     IEnumerator WaitFor(float time)
