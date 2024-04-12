@@ -22,14 +22,16 @@ public class Enemy : MonoBehaviour, IEnemy
     public int score;
     public int energy;
     public bool isDead=false;
-
-    public bool givenBirth = false;
     public bool attack_mode = false;
     public bool attack_base = false;
     public bool attack_sheild = false;
     public bool attack_tower = false;
     public float attackCDTimer;
     public float attackCD;
+
+    public bool givenBirth = false;
+    public int index;
+
     protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
