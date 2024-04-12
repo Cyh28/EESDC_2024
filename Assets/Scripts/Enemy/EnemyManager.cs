@@ -21,8 +21,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
 
     int current_level;
     Batch[] current_batches;
-    float current_wait_time;
-    float current_generate_gap_time;
     int batch_length;
     int batch_counter;
     bool ready;
@@ -72,7 +70,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
             StartCoroutine(WaitTillClick());
         else
             StartCoroutine(WaitTillLevelStart());
-        StartCoroutine(WaitFor(current_wait_time));
     }
 
     // Update is called once per frame
@@ -82,8 +79,11 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
         if (ready)
         {
             ready = false;
-            StartCoroutine(GenerateBatch(current_batches[batch_counter]));
-            StartCoroutine(WaitFor(current_batches[batch_counter].exist_time));
+            if (batch_counter < batch_length)
+            {
+                StartCoroutine(GenerateBatch(current_batches[batch_counter]));
+                StartCoroutine(WaitFor(current_batches[batch_counter].exist_time));
+            }
             batch_counter++;
             if (batch_counter > batch_length)
                 batch_counter = batch_length;
@@ -276,7 +276,6 @@ public class EnemyManager : SingletonMono<EnemyManager>, IEnemyManager
     {
         current_level = level;
         current_batches = Constant.LevelDic[current_level];
-        current_wait_time = Constant.waitDic[current_level];
         batch_length = current_batches.Length;
         batch_counter = 0;
     }

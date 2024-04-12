@@ -45,7 +45,6 @@ public class Constant : SingletonMono<Constant>
     public static Dictionary<EnemyType, int> ScoreDic;
     public static Dictionary<EnemyType, int> EnergyDic;
     public static Dictionary<int, Batch[]> LevelDic;
-    public static Dictionary<int, float> waitDic;
 
     public static float pentagon_fire_gap_time;
     public static float pentagon_call_time;
@@ -58,13 +57,6 @@ public class Constant : SingletonMono<Constant>
 
     new private void Awake()
     {
-        waitDic = new Dictionary<int, float>
-        {
-            {0,levelData_0.wait_time},
-            {1,levelData_1.wait_time},
-            {2,levelData_2.wait_time},
-            {3,levelData_3.wait_time},
-        };
         LevelDic = new Dictionary<int, Batch[]>
         {
             {0,levelData_0.batches },
@@ -142,7 +134,6 @@ public class Constant : SingletonMono<Constant>
         pentagon_fire_gap_time = enemyData.pentagon_fire_gap_time;
         pentagon_rotate_speed = enemyData.pentagon_rotate_speed;
         pentagon_call_time = enemyData.pentagon_call_time;
-        Debug.Log(pentagon_call_time);
         pentagon_swim_time = enemyData.pentagon_swim_time;
         speed_range = enemyData.rhombus_speed_range;
         speed_mul = enemyData.rhombus_speed_mul;
