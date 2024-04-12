@@ -46,7 +46,6 @@ public class Constant : SingletonMono<Constant>
     public static Dictionary<EnemyType, int> EnergyDic;
     public static Dictionary<int, Batch[]> LevelDic;
     public static Dictionary<int, float> waitDic;
-    public static Dictionary<int, float> generateGapDic;
 
     public static float pentagon_fire_gap_time;
     public static float pentagon_call_time;
@@ -65,13 +64,6 @@ public class Constant : SingletonMono<Constant>
             {1,levelData_1.wait_time},
             {2,levelData_2.wait_time},
             {3,levelData_3.wait_time},
-        };
-        generateGapDic = new Dictionary<int, float>
-        {
-            {0,levelData_0.generate_gap_time},
-            {1,levelData_1.generate_gap_time},
-            {2,levelData_2.generate_gap_time},
-            {3,levelData_3.generate_gap_time},
         };
         LevelDic = new Dictionary<int, Batch[]>
         {

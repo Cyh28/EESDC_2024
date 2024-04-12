@@ -24,6 +24,7 @@ public class Hexagon : Enemy
     new void Update()
     {
         base.Update();
+        manager.HatchwithCenterRotate(rb.position, EnemyType.Dot, this);
     }
     public void SelfDestroy()
     {
