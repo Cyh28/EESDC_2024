@@ -41,6 +41,8 @@ public class Enemy : MonoBehaviour, IEnemy
         baseC = BaseControl.GetInstance();
         ani = GetComponent<Animator>();
         attackCD = 1f;
+        if (index == 5)
+            ani.SetTrigger("Birth");
         StartCoroutine(DisableCollidefor(0.1f));
         StartCoroutine(Protectfor(0.2f));
     }
