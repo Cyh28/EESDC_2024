@@ -163,4 +163,15 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
         yield return new WaitForSeconds(10f);
         SceneManager.LoadScene("MainUI");
     }
+    public void ShowFailPanel()
+    {
+        winAnim = transform.Find("FailShader").GetComponent<Animator>();
+        winAnim.SetTrigger("WinText");
+        StartCoroutine(delaybackMenuf());
+    }
+    IEnumerator delaybackMenuf()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("MainUI");
+    }
 }

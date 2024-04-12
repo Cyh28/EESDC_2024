@@ -15,10 +15,13 @@ public class Debugger : SingletonMono<Debugger>
     // Update is called once per frame
     void Update()
     {
-        // if (cnt-- <= 0)
-        // {
-        //     cnt = 30;
-        //     shield.GetComponent<ShieldControl>().ShieldTakeDamage(1);
-        // }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GameControl.GetInstance().LoadNextLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameControl.GetInstance().ShowFailPanel();
+        }
     }
 }

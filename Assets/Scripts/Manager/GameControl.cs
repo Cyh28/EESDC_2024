@@ -58,4 +58,8 @@ public class GameControl : SingletonDontDestory<GameControl>
     {
         GamingUIControl.GetInstance().ShowWinPanel();
     }
+    public void ShowFailPanel()
+    {
+        GamingUIControl.GetInstance().ShowFailPanel();
+    }
 }

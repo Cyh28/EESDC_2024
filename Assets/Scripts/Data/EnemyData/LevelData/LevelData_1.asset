@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: LevelData_1
   m_EditorClassIdentifier: 
   batches:
-  - triangle_num: 8
+  - triangle_num: 7
     square_num: 0
     circle_num: 0
-    dot_num: 10
+    dot_num: 9
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
     hexagon_num: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
     is_continuous: 1
     exist_time: 15
   - triangle_num: 3
-    square_num: 3
+    square_num: 2
     circle_num: 0
     dot_num: 3
     swim_pentagon_num: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
     is_continuous: 1
     exist_time: 10
   - triangle_num: 3
-    square_num: 5
+    square_num: 4
     circle_num: 0
     dot_num: 3
     swim_pentagon_num: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
     star_num: 0
     is_continuous: 0
     exist_time: 15
-  - triangle_num: 5
-    square_num: 5
+  - triangle_num: 4
+    square_num: 4
     circle_num: 4
     dot_num: 3
     swim_pentagon_num: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     exist_time: 15
   - triangle_num: 0
     square_num: 0
-    circle_num: 15
+    circle_num: 13
     dot_num: 0
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
@@ -68,9 +68,9 @@ MonoBehaviour:
     star_num: 0
     is_continuous: 1
     exist_time: 15
-  - triangle_num: 5
+  - triangle_num: 4
     square_num: 4
-    circle_num: 5
+    circle_num: 4
     dot_num: 5
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
@@ -80,9 +80,9 @@ MonoBehaviour:
     is_continuous: 0
     exist_time: 15
   - triangle_num: 5
-    square_num: 5
+    square_num: 4
     circle_num: 5
-    dot_num: 7
+    dot_num: 5
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
     hexagon_num: 0
