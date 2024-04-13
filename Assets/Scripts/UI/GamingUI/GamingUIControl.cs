@@ -62,7 +62,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
                 description.text = "孤星独升：遥远的宇宙边缘，一颗孤星照耀着人类最后的阵地，而黑暗的几何生物却在静候时机，准备撕碎人类最后的防线。";
                 break;
             case GameLevel.Level3:
-                description.text = "光与影之镜：在星空笼罩的领域里，命运与光影交织，而几何生物的阴影在星辰的光芒下愈发凶猛，最后的希望岌岌可危";
+                description.text = "光与影之镜：在星空笼罩的领域里，命运与光影交织，而几何生物的阴影在星辰的光芒下愈发凶猛，这次战斗是最后的希望";
                 break;
         }
         StartCoroutine(IWaitToStart());
@@ -154,6 +154,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     }
     public void ShowWinPanel()
     {
+        transform.Find("WinShader").gameObject.SetActive(true);
         winAnim = transform.Find("WinShader").GetComponent<Animator>();
         winAnim.SetTrigger("WinText");
         StartCoroutine(delaybackMenu());
@@ -165,6 +166,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     }
     public void ShowFailPanel()
     {
+        transform.Find("FailShader").gameObject.SetActive(true);
         winAnim = transform.Find("FailShader").GetComponent<Animator>();
         winAnim.SetTrigger("WinText");
         StartCoroutine(delaybackMenuf());
