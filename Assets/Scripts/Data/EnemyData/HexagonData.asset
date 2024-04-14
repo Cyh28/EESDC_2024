@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a657a5733d2e724d99186de4b585f31, type: 3}
   m_Name: HexagonData
   m_EditorClassIdentifier: 
-  hp: 200
-  speed_rate: 1
+  hp: 400
+  speed_rate: 0.1
   damage: 1
   reward_score: 160
   reward_energy: 160
-  max_speed: 1
+  max_speed: 0.1

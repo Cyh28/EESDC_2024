@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelData_1
   m_EditorClassIdentifier: 
   batches:
-  - triangle_num: 6
+  - triangle_num: 7
     square_num: 0
     circle_num: 0
     dot_num: 9
@@ -25,7 +25,7 @@ MonoBehaviour:
     is_continuous: 1
     exist_time: 15
   - triangle_num: 3
-    square_num: 5
+    square_num: 2
     circle_num: 0
     dot_num: 3
     swim_pentagon_num: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
     is_continuous: 1
     exist_time: 10
   - triangle_num: 3
-    square_num: 6
+    square_num: 4
     circle_num: 0
     dot_num: 3
     swim_pentagon_num: 0
@@ -48,8 +48,8 @@ MonoBehaviour:
     exist_time: 15
   - triangle_num: 4
     square_num: 4
-    circle_num: 3
-    dot_num: 0
+    circle_num: 4
+    dot_num: 3
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
     hexagon_num: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     exist_time: 15
   - triangle_num: 0
     square_num: 0
-    circle_num: 12
+    circle_num: 13
     dot_num: 0
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
@@ -69,9 +69,9 @@ MonoBehaviour:
     is_continuous: 1
     exist_time: 15
   - triangle_num: 4
-    square_num: 3
+    square_num: 4
     circle_num: 4
-    dot_num: 4
+    dot_num: 5
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
     hexagon_num: 0
@@ -79,26 +79,15 @@ MonoBehaviour:
     star_num: 0
     is_continuous: 0
     exist_time: 15
-  - triangle_num: 4
+  - triangle_num: 5
     square_num: 4
-    circle_num: 4
-    dot_num: 6
+    circle_num: 5
+    dot_num: 5
     swim_pentagon_num: 0
     rotate_pentagon_num: 0
     hexagon_num: 0
-    rhombus_num: 3
-    star_num: 3
-    is_continuous: 1
-    exist_time: 30
-  - triangle_num: 0
-    square_num: 2
-    circle_num: 2
-    dot_num: 0
-    swim_pentagon_num: 2
-    rotate_pentagon_num: 2
-    hexagon_num: 0
-    rhombus_num: 2
-    star_num: 2
+    rhombus_num: 4
+    star_num: 4
     is_continuous: 1
     exist_time: 30
   - triangle_num: 0
@@ -107,8 +96,19 @@ MonoBehaviour:
     dot_num: 0
     swim_pentagon_num: 2
     rotate_pentagon_num: 2
-    hexagon_num: 1
+    hexagon_num: 0
     rhombus_num: 3
     star_num: 3
+    is_continuous: 1
+    exist_time: 30
+  - triangle_num: 0
+    square_num: 4
+    circle_num: 4
+    dot_num: 0
+    swim_pentagon_num: 2
+    rotate_pentagon_num: 2
+    hexagon_num: 1
+    rhombus_num: 4
+    star_num: 4
     is_continuous: 0
     exist_time: 20

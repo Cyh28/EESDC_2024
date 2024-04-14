@@ -12,16 +12,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284fac10e414df0478386aba0077af81, type: 3}
   m_Name: LevelData_3
   m_EditorClassIdentifier: 
-  wait_time: 3
   batches:
-  - triangle_num: 1
-    square_num: 0
+  - triangle_num: 10
+    square_num: 8
     circle_num: 0
-    dot_num: 0
-    swim_pentagon_num: 1
+    dot_num: 13
+    swim_pentagon_num: 0
     rotate_pentagon_num: 0
     hexagon_num: 0
     rhombus_num: 0
     star_num: 0
+    is_continuous: 1
+    exist_time: 15
+  - triangle_num: 7
+    square_num: 7
+    circle_num: 7
+    dot_num: 7
+    swim_pentagon_num: 0
+    rotate_pentagon_num: 0
+    hexagon_num: 0
+    rhombus_num: 0
+    star_num: 0
+    is_continuous: 1
+    exist_time: 10
+  - triangle_num: 6
+    square_num: 8
+    circle_num: 6
+    dot_num: 6
+    swim_pentagon_num: 0
+    rotate_pentagon_num: 0
+    hexagon_num: 0
+    rhombus_num: 2
+    star_num: 2
     is_continuous: 0
-    exist_time: 0
+    exist_time: 15
+  - triangle_num: 7
+    square_num: 7
+    circle_num: 6
+    dot_num: 5
+    swim_pentagon_num: 0
+    rotate_pentagon_num: 0
+    hexagon_num: 0
+    rhombus_num: 3
+    star_num: 3
+    is_continuous: 1
+    exist_time: 15
+  - triangle_num: 0
+    square_num: 0
+    circle_num: 20
+    dot_num: 0
+    swim_pentagon_num: 1
+    rotate_pentagon_num: 1
+    hexagon_num: 0
+    rhombus_num: 0
+    star_num: 0
+    is_continuous: 1
+    exist_time: 15
+  - triangle_num: 7
+    square_num: 6
+    circle_num: 7
+    dot_num: 7
+    swim_pentagon_num: 2
+    rotate_pentagon_num: 2
+    hexagon_num: 0
+    rhombus_num: 2
+    star_num: 2
+    is_continuous: 0
+    exist_time: 15
+  - triangle_num: 7
+    square_num: 7
+    circle_num: 7
+    dot_num: 9
+    swim_pentagon_num: 2
+    rotate_pentagon_num: 2
+    hexagon_num: 0
+    rhombus_num: 5
+    star_num: 5
+    is_continuous: 1
+    exist_time: 30
+  - triangle_num: 0
+    square_num: 8
+    circle_num: 4
+    dot_num: 0
+    swim_pentagon_num: 4
+    rotate_pentagon_num: 4
+    hexagon_num: 0
+    rhombus_num: 4
+    star_num: 4
+    is_continuous: 1
+    exist_time: 30
+  - triangle_num: 0
+    square_num: 6
+    circle_num: 5
+    dot_num: 0
+    swim_pentagon_num: 4
+    rotate_pentagon_num: 4
+    hexagon_num: 3
+    rhombus_num: 5
+    star_num: 5
+    is_continuous: 0
+    exist_time: 20

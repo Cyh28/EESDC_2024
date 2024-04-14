@@ -85,6 +85,7 @@ public class BaseControl : SingletonMono<BaseControl>, IBase
         health -= damage;
         if (health <= 0)
         {
+            GameControl.GetInstance().ShowFailPanel();
             Destroy(gameObject);
         }
         if (damage > 0)

@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IEnemy
@@ -50,7 +47,7 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         if (!isDead)
         {
-               Step2Place();
+            Step2Place();
             Attack();
         }
     }
@@ -162,9 +159,9 @@ public class Enemy : MonoBehaviour, IEnemy
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("SpeedField"))
+        if (other.CompareTag("SpeedField"))
         {
-            rb.velocity *=Constant.speed_mul;
+            rb.velocity *= Constant.speed_mul;
             max_speed *= 2;
         }
     }

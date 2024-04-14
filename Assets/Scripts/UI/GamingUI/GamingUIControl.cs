@@ -5,6 +5,7 @@ using System.Data;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GamingUIControl : SingletonMono<GamingUIControl>
@@ -16,7 +17,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     public GameObject energyIcon;
     Dictionary<TowerType, Tuple<TextMeshProUGUI, TextMeshProUGUI>> towerText = new Dictionary<TowerType, Tuple<TextMeshProUGUI, TextMeshProUGUI>>();
     bool energyIconPlaying;
-    Animator shaderAnim;
+    Animator shaderAnim, winAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +62,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
                 description.text = "孤星独升：遥远的宇宙边缘，一颗孤星照耀着人类最后的阵地，而黑暗的几何生物却在静候时机，准备撕碎人类最后的防线。";
                 break;
             case GameLevel.Level3:
-                description.text = "光与影之镜：在星空笼罩的领域里，命运与光影交织，而几何生物的阴影在星辰的光芒下愈发凶猛，最后的希望岌岌可危";
+                description.text = "光与影之镜：在星空笼罩的领域里，命运与光影交织，而几何生物的阴影在星辰的光芒下愈发凶猛，这次战斗是最后的希望";
                 break;
         }
         StartCoroutine(IWaitToStart());
@@ -69,7 +70,7 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     IEnumerator IWaitToStart()
     {
         shaderAnim.SetTrigger("ShowText");
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2.5f);
         shaderAnim.SetTrigger("Disappear");
     }
     // Update is called once per frame
@@ -150,5 +151,29 @@ public class GamingUIControl : SingletonMono<GamingUIControl>
     {
         if (BaseControl.GetInstance().GetEnergy() > ParaDefine.GetInstance().chargerData.cost)
             PlayerControl.GetInstance().holdingCharger = true;
+    }
+    public void ShowWinPanel()
+    {
+        transform.Find("WinShader").gameObject.SetActive(true);
+        winAnim = transform.Find("WinShader").GetComponent<Animator>();
+        winAnim.SetTrigger("WinText");
+        StartCoroutine(delaybackMenu());
+    }
+    IEnumerator delaybackMenu()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("MainUI");
+    }
+    public void ShowFailPanel()
+    {
+        transform.Find("FailShader").gameObject.SetActive(true);
+        winAnim = transform.Find("FailShader").GetComponent<Animator>();
+        winAnim.SetTrigger("WinText");
+        StartCoroutine(delaybackMenuf());
+    }
+    IEnumerator delaybackMenuf()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("MainUI");
     }
 }

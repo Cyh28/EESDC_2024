@@ -1,13 +1,6 @@
 ﻿using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEditor.PackageManager;
-using UnityEditor.U2D.Aseprite;
-using UnityEngine;
-using UnityEngine.UIElements;
 public enum EnemyType
 {
     None,
@@ -131,7 +124,7 @@ public class Constant : SingletonMono<Constant>
             {EnemyType.Hexagon,hexagonData.reward_energy},
         };
         speed_decay = enemyData.speed_decay;
-        hexagon_call_time=enemyData.hexagon_call_time;
+        hexagon_call_time = enemyData.hexagon_call_time;
         pentagon_fire_gap_time = enemyData.pentagon_fire_gap_time;
         pentagon_rotate_speed = enemyData.pentagon_rotate_speed;
         pentagon_call_time = enemyData.pentagon_call_time;
